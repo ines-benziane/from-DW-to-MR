@@ -1,0 +1,28 @@
+{
+    "section": [
+        {
+            "section_name": "T2",
+            "segment": "thighs",
+            "method": "t2map",
+            "version" : "1.0",
+            "flexibility": [],
+            "generate": false
+        },
+        {
+            "section_name": "FF",
+            "segment": "thighs",
+            "method": "dixon3pts",
+            "version" : "1.0",
+            "flexibility": ["version" ],
+            "generate": false
+        },
+        {
+            "section_name": "MRF",
+            "segment": "thighs",
+            "method": "T1mrf",
+            "version" : "1.0",
+            "flexibility": ["method"],
+            "generate": false
+        }
+    ]
+}

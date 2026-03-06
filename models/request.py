@@ -9,4 +9,4 @@ class StatRequest(BaseModel):
 class SectionRequest(BaseModel):
     stats : list[StatRequest]
     segment : str
-    method : str
+    method : dict{method : version}
