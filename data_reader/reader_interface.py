@@ -9,9 +9,9 @@ from models.response import DataResponse
 class ReaderInterface(ABC):
     """Abstract Reader"""
 
-    def __init__(self, patient_id, data_source):
+    def __init__(self, patient_id,path_to_data):
         self.patient_id = patient_id
-        self.data_source = data_source
+        self.path_to_data = path_to_data
 
     @abstractmethod
     def fetch_data(self, request: SectionRequest) -> DataResponse:

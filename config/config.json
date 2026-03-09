@@ -5,7 +5,7 @@
             "segment": "thighs",
             "method": "t2map",
             "version" : "1.0",
-            "flexibility": [],
+            "flexibility": ["strict"],
             "generate": false
         },
         {

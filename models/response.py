@@ -1,8 +1,6 @@
 from models.domain import Exam 
 from pydantic import BaseModel
+from typing import Optional 
 
 class DataResponse(BaseModel):
-    exam: Exam
-    can_generate : bool 
-    is_missing : list[str]
-
+    exam: Optional[Exam]

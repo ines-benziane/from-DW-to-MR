@@ -1,12 +1,10 @@
 from pydantic import BaseModel 
-from typing import Literal
-
-class StatRequest(BaseModel):
-    name : str
-    scope : Literal["volume", "slice", "both"]
-    required : bool 
+from typing import Literal, Optional
 
 class SectionRequest(BaseModel):
-    stats : list[StatRequest]
+    section_name : str
     segment : str
-    method : dict{method : version}
+    method : str
+    version : str
+    flexibility : Literal["strict", "version", "method"]
+    generate : bool 
