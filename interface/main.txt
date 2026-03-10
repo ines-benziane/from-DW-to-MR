@@ -1,0 +1,8 @@
+Boucle sur chaque élément de l'objet "section de config.json : 
+
+    possible = check_compatibility(section.section_name, section.method, section.version)
+    if possible == True :
+        req = req = request.SectionRequest(section_name="FF"section.section_name, segment=section.segment,  ...)
+        section_data = Data_Reader.fetch_data(req)
+        section_generator.generate_section(section_data)
+        

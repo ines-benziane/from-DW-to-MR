@@ -1,0 +1,17 @@
+dixon3pt.1.0:
+  - FF-mean
+
+dixon3pt.1.1:
+  - FF-mean
+  - FF-IQR
+
+t2map-3exp-nob1.1.0:
+  - T2-mean
+  - T2-max
+  - T2-min
+
+t2map-3exp-nob1.1.1:
+  - T2-mean
+  - T2-max
+  - T2-min
+  - T2-sd

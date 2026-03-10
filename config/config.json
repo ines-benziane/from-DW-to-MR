@@ -5,7 +5,7 @@
             "segment": "thighs",
             "method": "t2map",
             "version" : "1.0",
-            "flexibility": ["strict"],
+            "flexibility": "strict",
             "generate": false,
             "date": null
         },
@@ -14,7 +14,7 @@
             "segment": "thighs",
             "method": "dixon3pts",
             "version" : "1.0",
-            "flexibility": ["version" ],
+            "flexibility": "version",
             "generate": false,
             "date" : "20260305"
         },
@@ -23,7 +23,7 @@
             "segment": "thighs",
             "method": "T1mrf",
             "version" : "1.0",
-            "flexibility": ["method"],
+            "flexibility": "method",
             "generate": false,
             "date" : null
         }

@@ -39,6 +39,9 @@ class ExamMetadata(BaseModel):
     method: str
     segmentation: str
     patient_id: str
+    segment : str
+    version : str
+    exam_date : str
 
 
 class Exam(BaseModel):

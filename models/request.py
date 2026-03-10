@@ -10,3 +10,4 @@ class SectionRequest(BaseModel):
     generate : bool 
     date : Optional[str] = None
     compatible_methods : Optional[list[str]] = None
+    compatible_versions : Optional[list[str]] = None
