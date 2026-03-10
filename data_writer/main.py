@@ -15,7 +15,7 @@ OUTPUT_PATH = BASE_DIR / "json_output"
 def main() -> None:
     """Main pipeline: read CSV → build Exam → write JSON."""
 
-    exam = parse_csv(Path(CSV_PATH), "meth", "segmentation", "patient_id") #Sera géré par l'orchestrateur plus tard 
+    exam = parse_csv(Path(CSV_PATH), "meth", "segmentation", "patient_id") #Sera géré par l'orchestrateur plus tard
     writer = JsonWriter()
     writer.write(exam, Path(OUTPUT_PATH))
     print(f"Written {len(exam.muscles)} muscles to {OUTPUT_PATH}")

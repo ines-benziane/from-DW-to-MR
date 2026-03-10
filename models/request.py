@@ -8,3 +8,5 @@ class SectionRequest(BaseModel):
     version : str
     flexibility : Literal["strict", "version", "method"]
     generate : bool 
+    date : Optional[str] = None
+    compatible_methods : Optional[list[str]] = None

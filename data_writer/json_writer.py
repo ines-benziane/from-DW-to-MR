@@ -1,5 +1,5 @@
 """
-JSON Writer — persists an Exam as a JSON file.
+JSON Writer — concrete class
 """
 
 from pathlib import Path

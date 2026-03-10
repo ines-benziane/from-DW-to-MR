@@ -6,7 +6,8 @@
             "method": "t2map",
             "version" : "1.0",
             "flexibility": ["strict"],
-            "generate": false
+            "generate": false,
+            "date": null
         },
         {
             "section_name": "FF",
@@ -14,7 +15,8 @@
             "method": "dixon3pts",
             "version" : "1.0",
             "flexibility": ["version" ],
-            "generate": false
+            "generate": false,
+            "date" : "20260305"
         },
         {
             "section_name": "MRF",
@@ -22,7 +24,8 @@
             "method": "T1mrf",
             "version" : "1.0",
             "flexibility": ["method"],
-            "generate": false
+            "generate": false,
+            "date" : null
         }
     ]
 }
