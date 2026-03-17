@@ -3,29 +3,26 @@
         {
             "section_name": "T2",
             "segment": "thighs",
-            "method": "t2map",
-            "version" : "1.0",
-            "flexibility": "strict",
+            "method": {"t2map" : "1.0", "t2map-2epg" : ">=2.0"},
             "generate": false,
-            "date": null
+            "date": null, 
+            "aquisition" : "1.0"
         },
         {
             "section_name": "FF",
             "segment": "thighs",
-            "method": "dixon3pts",
-            "version" : "1.0",
-            "flexibility": "version",
+            "method": {"dixon3pts" : ">=1.2", "bdixon3pt" : "<=3.0"},
             "generate": false,
-            "date" : "20260305"
+            "date" : "20260305",
+            "aquisition" : "1.0"
         },
         {
             "section_name": "MRF",
             "segment": "thighs",
-            "method": "T1mrf",
-            "version" : "1.0",
-            "flexibility": "method",
+            "method": {"t1map-mrf" :"2.0"},
             "generate": false,
-            "date" : null
+            "date" : null,
+            "aquisition" : "1.0"
         }
     ]
 }

@@ -15,31 +15,32 @@ OUTPUT_PATH = BASE_DIR / "json_output"
 def main() -> None:
     """Main pipeline: read CSV → build Exam → write JSON."""
 
-    exam = parse_csv(Path(CSV_PATH), "meth", "segment", "patient_id", "version", "date") #Sera géré par l'orchestrateur plus tard
+    exam = parse_csv(Path(CSV_PATH), "patient_id", "exam_date", "segment", "meth",  "version", "aquisiton" ) #Sera géré par l'orchestrateur plus tard
+
     writer = JsonWriter()
     writer.write(exam, Path(OUTPUT_PATH))
     print(f"Written {len(exam.muscles)} muscles to {OUTPUT_PATH}")
 
-    exam = parse_csv(Path(CSV_PATH), "meth01", "thighs", "pat001", "1.0", "20210101")
+    exam = parse_csv(Path(CSV_PATH), "pat001", "20260312", "thighs", "meth01", "1.0", "pre-exercise")
     writer.write(exam, Path(OUTPUT_PATH))
     print(f"Written {len(exam.muscles)} muscles to {OUTPUT_PATH}")
 
-    exam = parse_csv(Path(CSV_PATH), "meth01", "thighs", "pat001", "1.0", "20250101")
-    writer.write(exam, Path(OUTPUT_PATH))
-    print(f"Written {len(exam.muscles)} muscles to {OUTPUT_PATH}")
-
-    
-    exam = parse_csv(Path(CSV_PATH), "meth02", "thighs", "pat001", "1.0", "20210101")
+    exam = parse_csv(Path(CSV_PATH), "pat001", "20260312", "thighs", "meth01", "1.1", "pre-exercise")
     writer.write(exam, Path(OUTPUT_PATH))
     print(f"Written {len(exam.muscles)} muscles to {OUTPUT_PATH}")
 
     
-    exam = parse_csv(Path(CSV_PATH), "meth01", "thighs", "pat001", "1.1", "20210101")
+    exam = parse_csv(Path(CSV_PATH), "pat002", "20260312", "thighs", "meth01", "1.0", "pre-exercise")
+    writer.write(exam, Path(OUTPUT_PATH))
+    print(f"Written {len(exam.muscles)} muscles to {OUTPUT_PATH}")
+
+    
+    exam = parse_csv(Path(CSV_PATH), "pat001", "20260312", "thighs", "meth02", "1.0", "pre-exercise")
     writer.write(exam, Path(OUTPUT_PATH))
     print(f"Written {len(exam.muscles)} muscles to {OUTPUT_PATH}")
     
     
-    exam = parse_csv(Path(CSV_PATH), "meth01", "thighs", "pat001", "1.1", "20220101")
+    exam = parse_csv(Path(CSV_PATH), "pat001", "20260312", "thighs", "meth02", "1.1", "pre-exercise")
     writer.write(exam, Path(OUTPUT_PATH))
     print(f"Written {len(exam.muscles)} muscles to {OUTPUT_PATH}")
 

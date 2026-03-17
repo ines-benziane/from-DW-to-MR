@@ -58,7 +58,7 @@ def _build_slice_result(row: dict) -> SliceData:
 def get_slice_number(s):
     return int(''.join(filter(str.isdigit, s.index)) or '0')
 
-def parse_csv(csv_path: Path, method, segment, patient_id, version, date) -> Exam:
+def parse_csv(csv_path: Path, patient_id,  exam_date, segment,  method, version, aquisition) -> Exam:
     """Parse a results CSV file and return a muscle-centric Exam."""
     muscles_map: dict[tuple[str, str], MuscleData] = {}
     with open(csv_path, newline="", encoding="utf-8") as f:
@@ -86,6 +86,6 @@ def parse_csv(csv_path: Path, method, segment, patient_id, version, date) -> Exa
         muscle.slices.sort(key=get_slice_number)
     return Exam (
         muscles=list(muscles_map.values()),
-        metadata = ExamMetadata(method = method, segment = segment, segmentation = "seg", patient_id = patient_id, version = version, exam_date = date)
+        metadata = ExamMetadata(patient_id = patient_id, exam_date = exam_date, segment = segment, method = method,  version = version, aquisition = aquisition, segmentation = "seg")
         )
 

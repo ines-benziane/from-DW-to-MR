@@ -6,8 +6,7 @@ class SectionRequest(BaseModel):
     segment : str
     method : str
     version : str
-    flexibility : Literal["strict", "version", "method"]
+    operator : str
     generate : bool 
     date : Optional[str] = None
-    compatible_methods : Optional[list[str]] = None
-    compatible_versions : Optional[list[str]] = None
+    aquisition : str

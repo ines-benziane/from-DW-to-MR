@@ -1,6 +1,7 @@
-from models import request, response
 from data_reader.json_reader import JsonReader
+from models import request, response
 import pytest
+# python -m pytest tests/test_data_reader.py
 
 @pytest.fixture
 def Data_Reader():
