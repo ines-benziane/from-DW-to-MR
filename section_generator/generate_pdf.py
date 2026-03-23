@@ -94,6 +94,13 @@ def set_logo(data, base_path, image_encoder):
         data["header"]['logo_base64_uri'] = ''
 
 
+
+def points_to_line_path(points):
+    first = points[0]
+    m = f"M {first[0]},{first[1]}"
+    l = " ".join(f"L {x},{y}" for x, y in points[1:])
+    return f"{m} {l} Z"
+
 def transform_by_slice(muscles):
     """
         Permet la transition entre l'objet "Exam" reçu, qui a une structure "muscle centric" avec ce module le section generator qui a
@@ -105,14 +112,19 @@ def transform_by_slice(muscles):
         for s in muscle["slices"] :
             if s["index"] not in slices_map :
                 slices_map[s["index"]] = {"muscles": []}
+            if s["outline"] == None or s["outline"] == "": 
+                svg_path = ""
+            else :  
+                svg_path = points_to_line_path(s["outline"])
             slices_map[s["index"]]["muscles"].append(
                 {"id": muscle["name"],
                 "side": muscle["side"],
-                "stats" : s["stats"]}
+                "stats" : s["stats"],
+                "outline" : svg_path}
             )
     for key, value in slices_map.items() :
         slices.append({"muscles": value["muscles"], "slices": {"number": key}})
-    print(f"Muscle: {muscle['name']}, Side: {muscle['side']}, Stats: {s['stats']}")
+    print(f"Muscle: {muscle['name']}, Side: {muscle['side']}, Stats: {s['stats']}, outline : {svg_path}")
     return  slices
 
 def create_pdf(exams): #exams = list d'examens. 1 examen = 1 section. 
