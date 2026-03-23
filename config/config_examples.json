@@ -1,0 +1,17 @@
+        {
+            "section_name": "FF",
+            "segment": "thighs",
+            "method": {"dixon3pts" : ">=1.2", "bdixon3pt" : "<=3.0"},
+            "generate": false,
+            "date" : null,
+            "acquisition" : "1.0"
+        }
+        
+        {
+            "section_name": "MRF",
+            "segment": "thighs",
+            "method": {"t1map-mrf" :">=2.0"},
+            "generate": false,
+            "date" : null,
+            "acquisition" : "1.0"
+        }

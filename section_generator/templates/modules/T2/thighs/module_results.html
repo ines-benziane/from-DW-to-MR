@@ -1,0 +1,203 @@
+<div class="module-t2">
+
+    <div style="display: flex; align-items: flex-start; margin: 20px 0;">
+        <img src="images/corps_entier_thighs_highlighted.png" 
+            style="width: 170px; height: auto; object-fit: contain; margin-right: 25px;" 
+            alt="Corps entier">
+
+            <div style="flex: 1; padding-top: 0;">
+                <h3 style="margin-top: 0; color: #0056b3;">Repères anatomiques</h3>
+                <p style="margin-top: 3px;">
+                    <strong>Région :</strong> {{ 'membres inférieurs' }}<br>
+                    <strong>Segments :</strong> {{ 'cuisses' }}<br>
+    
+                </p>
+                <div style="font-size: 10px; line-height: 1.4; margin-top: 8px;">
+                    <strong style="display:block; margin-bottom:4px;">Muscles :</strong>
+                    <ul style="
+                        margin: 0;
+                        padding-left: 0;
+                        list-style: none;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        column-gap: 16px;
+                        row-gap: 2px;
+                    ">
+                        <li><strong>VL</strong> – Vastus Lateralis</li>
+                        <li><strong>VI</strong> – Vastus Intermedius</li>
+                        <li><strong>VM</strong> – Vastus Medialis</li>
+                        <li><strong>RF</strong> – Rectus Femoris</li>
+                        <li><strong>SAR</strong> – Sartorius</li>
+                        <li><strong>GRA</strong> – Gracilis</li>
+                        <li><strong>SM</strong> – Semimembranosus</li>
+                        <li><strong>ST</strong> – Semitendinosus</li>
+                        <li><strong>BF</strong> – Biceps Femoris</li>
+                        <li><strong>AM</strong> – Adductor Magnus</li>
+                        <li><strong>AL</strong> – Adductor Longus</li>
+                    </ul>
+                </div>
+                   
+            </div>
+        <div style="display: flex; align-items: center;">
+            <img src="images/cuisse_schema.png" 
+            style="width: 150px; height: auto; object-fit: contain; margin-right: 25px; margin-top: 40px; filter: sepia(1) saturate(2) hue-rotate(320deg) brightness(1.1);" 
+            alt="Schéma cuisse">
+        </div>
+    </div>
+
+    </div>
+    {% if antecedent %}
+    <div style="margin: 10px 0; padding: 10px; border: 1px solid #0056b3; background-color: #f0f7ff; border-radius: 5px;">
+        <h4 style="margin: 0 0 5px 0; color: #0056b3; font-size: 9pt;">Comparaison avec l'examen précédent</h4>
+        <p style="font-size: 8.5pt; margin: 0;">
+            Moyennes antérieures : 
+            {% for slice in antecedent %}
+                <strong>S{{ loop.index }}:</strong> 
+                G: {{ "%.1f"|format(slice.muscles_L[0].stats['T2-mean']|float) if slice.muscles_L else '--' }} / 
+                D: {{ "%.1f"|format(slice.muscles_R[0].stats['T2-mean']|float) if slice.muscles_R else '--' }}
+                {% if not loop.last %} | {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+    {% endif %}
+    {% if module_data %}
+        
+        {% for slice in module_data %}
+        <div class="visualization-module" style="margin-bottom: 15px;">
+           
+            {% set muscles_L = slice.muscles | selectattr("side", "equalto", "L") | list %}
+            {% set muscles_R = slice.muscles | selectattr("side", "equalto", "R") | list %}
+
+
+            <div class="anatomy-container" style="display: flex; flex-direction: column; padding: 0px; background: #f9f9f9; border-radius: 8px;">
+                {% set muscles_list = ['VL', 'VI', 'VM', 'RF', 'SAR', 'GRA', 'SM', 'ST', 'BF', 'AM', 'AL'] %}
+                <div style="text-align: center; font-size: 8pt; font-weight: bold; margin-bottom: 5px;">Slice {{ slice.slices.number }}</div>
+                <div style="display: flex; justify-content: space-around; align-items: center;">
+                <div class="metrics-col" style="flex: 1;">
+                    <h5 style="margin: 0 0 8px 0; color: #2c3e50; text-align: center; font-size: 9pt;">Gauche (L)</h5>
+                    <table style="width: 100%; font-size: 7.5pt; border-collapse: collapse; table-layout: fixed;">
+                        {% for pair in muscles_list | batch(2) %}
+                        <tr>
+                            {% for m in pair %}
+                                {% set muscle_data = muscles_L | selectattr("id", "equalto", m) | first %}
+                                <td style="padding: 2px 5px; text-align: left; white-space: nowrap;">
+                                    {% if muscle_data and muscle_data.stats %}
+                                        <strong>{{ m }}:</strong> {{ "%.1f"|format(muscle_data.stats['T2-mean']|float)}}
+                                    {% else %}
+                                        <span style="color: #bbb;"> {{ m }}: --</span>"
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div style="display: flex; gap: 15px; justify-content: center; flex: 1.5;">
+                    
+                    <div style="text-align: center;">
+                        <span style="font-size: 7pt; color: #888;">L</span><br>
+                        <svg width="120" height="120" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                            <g stroke="#2c3e50" stroke-width="0.5">
+                                <!-- Slice outline -->
+                                <path d="{{ slice.slices.contour }}" fill="none" stroke="#666" stroke-width="1"/>
+                                {% for muscle in muscles_L %}
+                                    {% set val = muscle.stats['T2-mean'] %}
+                                    {% set color = "rgba(220, 220, 220, 0.05)" %}
+
+                                    {% if val is number %}
+                                        {% set v = val | float %}
+                                        {# Palette Vik de Crameri - Divergente bleu->jaune/orange->rouge, seuil à 39ms #}
+                                        {% if v >= 49 %} {% set color = "rgb(171, 22, 30)" %}
+                                        {% elif v >= 47 %} {% set color = "rgb(203, 60, 42)" %}
+                                        {% elif v >= 45 %} {% set color = "rgb(229, 107, 63)" %}
+                                        {% elif v >= 43 %} {% set color = "rgb(243, 156, 93)" %}
+                                        {% elif v >= 41 %} {% set color = "rgb(250, 196, 132)" %}
+                                        {% elif v >= 39.5 %} {% set color = "rgb(252, 228, 174)" %}
+                                        {% elif v >= 39 %} {% set color = "rgb(245, 245, 208)" %}
+                                        {% elif v >= 37 %} {% set color = "rgb(172, 188, 205)" %}
+                                        {% elif v >= 35 %} {% set color = "rgb(133, 159, 186)" %}
+                                        {% elif v >= 32 %} {% set color = "rgb(100, 132, 170)" %}
+                                        {% elif v >= 29 %} {% set color = "rgb(75, 105, 157)" %}
+                                        {% elif v >= 26 %} {% set color = "rgb(52, 78, 145)" %}
+                                        {% elif v >= 23 %} {% set color = "rgb(28, 49, 133)" %}
+                                        {% else %} {% set color = "rgb(0, 16, 120)" %}
+                                        {% endif %}
+                                    {% endif %}
+
+                                    <path d="{{ muscle.path }}" fill="{{ color }}">
+                                        <title>{{ muscle.id }}: {{ "%.1f"|format(v) if v is defined else "--" }}</title>
+                                    </path>
+                                {% endfor %}
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <span style="font-size: 7pt; color: #888;">R</span><br>
+                        <svg width="120" height="120" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                            <g stroke="#2c3e50" stroke-width="0.5">
+                                <g transform="translate(600, 0) scale(-1, 1)">
+                                    <!-- Slice outline -->
+                                    <path d="{{ slice.slices.contour }}" fill="none" stroke="#666" stroke-width="1"/>
+                                    {% for muscle in muscles_R %}
+                                        {% set val = muscle.stats['T2-mean'] %}
+                                        {% set color = "rgba(220, 220, 220, 0.05)" %}
+
+                                        {% if val is number %}
+                                            {% set v = val | float %}
+                                            {# Palette Vik de Crameri - Divergente bleu->jaune/orange->rouge, seuil à 39ms #}
+                                            {% if v >= 49 %} {% set color = "rgb(171, 22, 30)" %}
+                                            {% elif v >= 47 %} {% set color = "rgb(203, 60, 42)" %}
+                                            {% elif v >= 45 %} {% set color = "rgb(229, 107, 63)" %}
+                                            {% elif v >= 43 %} {% set color = "rgb(243, 156, 93)" %}
+                                            {% elif v >= 41 %} {% set color = "rgb(250, 196, 132)" %}
+                                            {% elif v >= 39.5 %} {% set color = "rgb(252, 228, 174)" %}
+                                            {% elif v >= 39 %} {% set color = "rgb(245, 245, 208)" %}
+                                            {% elif v >= 37 %} {% set color = "rgb(172, 188, 205)" %}
+                                            {% elif v >= 35 %} {% set color = "rgb(133, 159, 186)" %}
+                                            {% elif v >= 32 %} {% set color = "rgb(100, 132, 170)" %}
+                                            {% elif v >= 29 %} {% set color = "rgb(75, 105, 157)" %}
+                                            {% elif v >= 26 %} {% set color = "rgb(52, 78, 145)" %}
+                                            {% elif v >= 23 %} {% set color = "rgb(28, 49, 133)" %}
+                                            {% else %} {% set color = "rgb(0, 16, 120)" %}
+                                            {% endif %}
+
+                                        {% endif %}
+
+                                        <path d="{{ muscle.path }}" fill="{{ color }}"></path>
+                                    {% endfor %}
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="metrics-col" style="flex: 1;">
+                    <h5 style="margin: 0 0 8px 0; color: #2c3e50; text-align: center; font-size: 9pt;">Droite (R)</h5>
+                    <table style="width: 100%; font-size: 7.5pt; border-collapse: collapse; table-layout: fixed;">
+                        {% for pair in muscles_list | batch(2) %}
+                        <tr>
+                            {% for m in pair %}
+                                {% set muscle_data = muscles_R | selectattr("id", "equalto", m) | first %}
+                                <td style="padding: 2px 5px; text-align: left; white-space: nowrap;">
+                                    {% if muscle_data and muscle_data.stats['T2-mean'] is number %}
+                                        <strong>{{ m }}:</strong> {{ "%.1f"|format(muscle_data.stats['T2-mean']|float) }}
+                                    {% else %}
+                                        <span style="color: #bbb;">{{ m ~ '_R' }}: --</span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Aucune donnée de mesure de cuisse (T2) n'a été trouvée.</p>
+    {% endif %}
+</div>
+<hr class="module-separator">

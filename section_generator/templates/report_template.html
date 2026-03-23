@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title> {{ header.report_title }} - {{ patient.patient_id }} </title>
+        <link rel="stylesheet" href="styles/report_styles.css">
+    </head>
+    <body>
+        <!-- <div style="width: 210mm; min-height: 297mm; padding: 20mm; margin: 10mm auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); box-sizing: border-box;"> -->
+            <header class="report-header">
+                <div class="header-left">
+                    <img class="logo" src="{{ header.logo_base64_uri }}" alt="Logo Institut Myologie">
+                </div>
+                <div class="header-right">
+                    <p class="lab-address">{{ header.lab_address | safe }}</p>
+                </div>
+            </header>
+        
+            <h1 class="main-title">{{ header.report_title }}</h1>
+            <div class="metadata-bar">
+                <div class="metadata-left">
+                    <p>Patient(e) : {{ patient.patient_name }}<br>
+                    Date de naissance : {{ patient.birth_date }}</p>
+                </div>
+                <div class="metadata-right">
+                    <p>Adressé(e) par {{ patient.referring_doctor }}<br>
+                    Date d'examen : {{ acquisition.exam_date }}</p>
+                </div>
+            </div>
+
+            <hr class="separator"/>
+            <div class="content">
+                {% for report in all_reports %}
+                    <div class="report-section" style="page-break-inside: avoid; margin-bottom: 30px;">
+                        {% set acquisition = report.acquisition %}
+
+                        {% set results = report.results %}
+                        {% set module_data = results %}
+                        {% set report_sections = report.all_reports %}
+                        {% set region = acquisition.segment %}
+                        {% set sequence = report.acquisition.section_name %}
+                        {% set module_path = 'modules/' ~ sequence ~ '/' ~ region ~ '/module_results.html' %}
+                        {% include module_path ignore missing with context %}
+
+                    </div>
+
+                    {% if not loop.last %}
+                        <hr class="module-separator" style="border: 2px solid #eee; margin: 40px 0;">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        <!-- </div> -->
+    </body>
+</html>

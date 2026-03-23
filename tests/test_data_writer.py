@@ -33,7 +33,7 @@ def sample_csv_path(tmp_path):
 
 @pytest.fixture
 def sample_exam(sample_csv_path):
-    return parse_csv(sample_csv_path,  "patient_id", "exam_date", "segment", "meth",  "version", "aquisiton" )
+    return parse_csv(sample_csv_path,  "patient_id", "exam_date", "segment", "meth",  "version", "acquisiton" )
 
 
 class TestParseLabel:

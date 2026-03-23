@@ -9,4 +9,4 @@ class SectionRequest(BaseModel):
     operator : str
     generate : bool 
     date : Optional[str] = None
-    aquisition : str
+    acquisition : str

@@ -41,10 +41,9 @@ class ExamMetadata(BaseModel):
     segment : str
     method: str
     version : str
-    aquisition : str
+    acquisition : str
     segmentation: str
-
-
+    section_name : str
 
 class Exam(BaseModel):
     """Root domain object — one exam, one biomarker. """
