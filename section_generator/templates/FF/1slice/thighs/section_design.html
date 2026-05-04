@@ -1,0 +1,27 @@
+{% from "FF/macros.html" import slice_row, colorbar_ff%}
+
+{% set muscles_list = ['VL', 'VI', 'VM', 'RF', 'SAR', 'GRA', 'SM', 'ST', 'BF', 'AM', 'AL'] %}
+
+<div class="module-ff">
+    <h2 style="text-align:center; color:#0056b3; font-size:11pt; margin:6px 0;">FF - Cuisses</h2>
+
+    {{ colorbar_ff(report.colorbar) }}
+
+    {% if report.summary_slice %}
+        <div class="visualization-module">
+            <div style="text-align: center; font-size: 8pt; font-weight: bold; margin-bottom: 5px;">FF moyen (données volumétriques)</div>
+            {{ slice_row(report.summary_slice, muscles_list, show_title=false) }}
+        </div>
+    {% else %}
+        <p>Aucune donnée de mesure FF (cuisses) n'a été trouvée.</p>
+    {% endif %}
+
+    {% if report.antecedent_slice %}
+    <div class="visualization-module" style="margin-top: 40px; background: #fcfcfc; border-radius: 8px; padding: 10px;">
+        <div style="text-align: center; font-size: 11pt; font-weight: bold; margin-bottom: 10px;">
+            Examen précédent — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
+        </div>
+        {{ slice_row(report.antecedent_slice, muscles_list, show_title=false) }}
+    </div>
+    {% endif %}
+</div>

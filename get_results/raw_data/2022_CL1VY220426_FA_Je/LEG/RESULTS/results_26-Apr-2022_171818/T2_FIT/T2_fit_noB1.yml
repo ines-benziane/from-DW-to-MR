@@ -1,0 +1,3249 @@
+- slice:
+  - signal_mean: [3.0329076951748983, 3.3481889289871996, 4.030576736387115, 3.726586937511202,
+      3.0799750714094873, 3.5147084932536554, 3.097358750559507, 2.891760235773379,
+      2.8968422334569235, 2.713646952696628, 2.75451665696145, 2.889176644306556,
+      3.0475028888743796, 2.888792746133503, 2.8142176334640934, 3.0399750379587798,
+      2.7346781323355915]
+    num_pixel_initial: 1117.0
+    num_pixel_mask_fit: 1117.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 0.0
+    mean_fat_percent_mask: 0.0
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+  - signal_mean: [4.134523964877575, 3.197997679748471, 3.710364365140922, 2.8142176334640956,
+      2.7781402590596422, 2.9243203182981046, 2.985854220095845, 3.0312471135926295,
+      2.9626938015980353, 2.782676365872458, 2.6742081547757612, 2.934100443447826,
+      2.658281137468206, 2.79535066996041, 2.912395184227669, 2.8027234922294637,
+      2.74360188243101]
+    num_pixel_initial: 1117.0
+    num_pixel_mask_fit: 1117.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 0.0
+    mean_fat_percent_mask: 0.0
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+  - signal_mean: [5.010610139475179, 4.117740044184948, 4.488027995030439, 3.407516097677952,
+      3.0655791869267137, 3.6763340540232994, 3.048673220962263, 3.108695127315662,
+      3.3079893560463454, 2.9097491137816824, 3.0379186971213645, 3.120945089192539,
+      2.882529325546557, 2.8055902185161905, 2.8775750107795366, 2.6929804988925414,
+      2.7313994986483126]
+    num_pixel_initial: 1117.0
+    num_pixel_mask_fit: 1117.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 0.0
+    mean_fat_percent_mask: 0.0
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+  - signal_mean: [5.869830911774364, 5.368613504841686, 4.567419271249059, 4.241857280236249,
+      4.193445307891464, 4.097216733505236, 3.8700073558534296, 3.9525522896079908,
+      3.8993094556716743, 3.770369965168366, 3.590599007474512, 3.64402973053494,
+      3.589526064861934, 3.5489753253324743, 4.118437216501677, 3.651376012164918,
+      3.7870833655878524]
+    num_pixel_initial: 1117.0
+    num_pixel_mask_fit: 1117.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 0.0
+    mean_fat_percent_mask: 0.0
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+  - signal_mean: [4.7577103759408, 5.23134318428929, 5.150139728706637, 5.149630174747051,
+      4.033671052757261, 4.876945289438268, 4.104945767135194, 3.9514026174462433,
+      4.100540527541065, 4.188534865244421, 3.8763188698604636, 4.005213444402001,
+      3.6968805484894047, 3.7166413350529477, 3.7144215307400494, 4.121975645087497,
+      3.643824521518024]
+    num_pixel_initial: 1117.0
+    num_pixel_mask_fit: 1117.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 0.0
+    mean_fat_percent_mask: 0.0
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+  - signal_mean: [7.03335370585499, 5.882967670159638, 6.283929700331946, 5.747734188633324,
+      4.966458728656488, 4.798589594698899, 5.130307548005046, 4.265816905882824,
+      4.229660359722786, 4.06677611333841, 4.312420669058079, 4.082830450016577, 3.875624988302144,
+      4.3065994341347755, 4.120897861516839, 4.188040037162169, 3.968771906265009]
+    num_pixel_initial: 1117.0
+    num_pixel_mask_fit: 1117.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 0.0
+    mean_fat_percent_mask: 0.0
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+  - signal_mean: [5.382350913704058, 6.605290286346924, 4.507065194705924, 4.2286624823050625,
+      4.735702943159466, 3.5225386713463074, 3.5451895140074505, 3.5317083718086897,
+      3.5160836780130342, 3.4496142880421727, 3.744534986475176, 3.1286858597102927,
+      3.282659284506808, 3.272257363915651, 3.1976517262976643, 3.126019385060952,
+      3.205099695857723]
+    num_pixel_initial: 1117.0
+    num_pixel_mask_fit: 1117.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 0.0
+    mean_fat_percent_mask: 0.0
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+  - signal_mean: [3.8718067005500267, 4.133695818703592, 3.7529777607371875, 3.7952169178719384,
+      4.1433939312761865, 3.575940353752183, 3.560185216607131, 3.4627571129963397,
+      3.616652969375016, 3.679018582271328, 3.6768113253943966, 3.686549692317219,
+      3.728817215714841, 3.4755192429498063, 3.3792475735080343, 3.7820377979303466,
+      3.522266041167377]
+    num_pixel_initial: 1117.0
+    num_pixel_mask_fit: 1117.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 0.0
+    mean_fat_percent_mask: 0.0
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+  - signal_mean: [3.923082218382747, 4.188786937701984, 4.397682380148365, 3.907047778274659,
+      4.169399086801853, 3.9733688775946585, 3.9326385329795444, 3.8605683826636477,
+      3.9306256591358095, 3.937473479950052, 3.9414265562148474, 3.723241924388533,
+      3.8062403501116924, 3.756249626807166, 4.035313935621009, 3.688393329350736,
+      3.865066211482292]
+    num_pixel_initial: 1117.0
+    num_pixel_mask_fit: 1117.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 0.0
+    mean_fat_percent_mask: 0.0
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+  roiname: NOISE
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 271.0
+    num_pixel_mask_fit: 271.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 3.6362809043563638
+    mean_fat_percent_mask: 3.6362809043563638
+    weight_water: 1363.8858814281327
+    weight_fat: 0.05963656770716828
+    T2: 37.07616199616007
+    T2_se: 3.8291108412020236
+    weight_water_se: 80.22187568626964
+    weight_fat_se: 0.02393211232274075
+    fat_fraction_T2: 7.933219661462205
+    number_echo_fit: 15.0
+    fit_r2: 0.9980839757428212
+    fit_diff_residual: -3.5771039527077164E-4
+    noise_threshold: 2.7313994986483126
+    signal_mean: [1019.8819188191882, 1048.5276752767527, 714.8745387453874, 599.0885608856089,
+      448.6642066420664, 375.45756457564573, 285.15867158671585, 246.23247232472326,
+      189.43333333333334, 167.25830258302582, 131.97407407407408, 118.85185185185185,
+      95.7100371747212, 87.86296296296297, 71.86296296296297, 67.48148148148148, 56.43703703703704]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 300.0
+    num_pixel_mask_fit: 300.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.7540024740133533
+    mean_fat_percent_mask: 2.7540024740133533
+    weight_water: 1455.2636800576793
+    weight_fat: 0.05156530210532968
+    T2: 36.91405545154244
+    T2_se: 3.618182356750374
+    weight_water_se: 81.98616179987607
+    weight_fat_se: 0.024040580676174286
+    fat_fraction_T2: 6.527005085279207
+    number_echo_fit: 15.0
+    fit_r2: 0.9982103668456541
+    fit_diff_residual: -2.4332212217359483E-4
+    noise_threshold: 3.7870833655878524
+    signal_mean: [1077.07, 1088.22, 742.2066666666667, 617.7066666666667, 461.1533333333333,
+      382.94, 288.5366666666667, 248.49666666666667, 188.4, 165.33666666666667, 128.19666666666666,
+      115.00666666666666, 91.38666666666667, 83.11666666666666, 67.60666666666667,
+      63.416666666666664, 52.07333333333333]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 205.0
+    num_pixel_mask_fit: 205.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.6125715248515418
+    mean_fat_percent_mask: 2.6125715248515418
+    weight_water: 1415.1162516903773
+    weight_fat: 0.05008658427818609
+    T2: 37.66944154654886
+    T2_se: 3.7646263873637835
+    weight_water_se: 77.88718040043705
+    weight_fat_se: 0.024738503734207395
+    fat_fraction_T2: 6.52017292931025
+    number_echo_fit: 15.0
+    fit_r2: 0.9981866832098168
+    fit_diff_residual: -5.69645551543374E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [1049.6439024390245, 1075.331707317073, 731.1463414634146, 612.2975609756097,
+      458.41951219512197, 381.65365853658534, 289.58048780487803, 248.41951219512194,
+      189.9170731707317, 166.59024390243903, 129.40975609756097, 115.55121951219512,
+      91.82439024390244, 83.55121951219512, 68.55665024630542, 63.37128712871287,
+      52.98514851485149]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 164.0
+    num_pixel_mask_fit: 164.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.197513465641874
+    mean_fat_percent_mask: 2.197513465641874
+    weight_water: 1329.3276810315717
+    weight_fat: 0.08372305728846775
+    T2: 35.77007615743517
+    T2_se: 4.1036288770391
+    weight_water_se: 93.52934675181928
+    weight_fat_se: 0.0242561188676318
+    fat_fraction_T2: 11.041145427066056
+    number_echo_fit: 15.0
+    fit_r2: 0.9976975927354117
+    fit_diff_residual: -4.3909770059258335E-4
+    noise_threshold: 3.968771906265009
+    signal_mean: [1007.7987804878048, 1055.2012195121952, 717.3719512195122, 604.9329268292682,
+      457.0426829268293, 385.0426829268293, 293.8353658536585, 256.7743902439024,
+      199.0609756097561, 177.85365853658536, 141.1158536585366, 128.3109756097561,
+      104.61585365853658, 99.33540372670808, 87.37908496732027, 84.13422818791946,
+      75.34027777777777]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 83.0
+    num_pixel_mask_fit: 83.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.849870694259171
+    mean_fat_percent_mask: 1.849870694259171
+    weight_water: 1244.1762057274404
+    weight_fat: 0.061388712936069165
+    T2: 36.27079819360772
+    T2_se: 3.487655853315715
+    weight_water_se: 71.31786400441297
+    weight_fat_se: 0.01952192932785414
+    fat_fraction_T2: 8.86174526101628
+    number_echo_fit: 15.0
+    fit_r2: 0.9983275402204845
+    fit_diff_residual: -4.534261373407844E-4
+    noise_threshold: 3.205099695857723
+    signal_mean: [906.156626506024, 962.3734939759037, 653.7469879518072, 544.0, 411.4698795180723,
+      342.87951807228916, 260.7831325301205, 226.09638554216866, 172.36144578313252,
+      153.27710843373495, 122.71084337349397, 108.90361445783132, 88.20731707317073,
+      83.39024390243902, 68.8875, 65.45679012345678, 56.46835443037975]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: TA_R
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 69.0
+    num_pixel_mask_fit: 69.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 7.445194390236282
+    mean_fat_percent_mask: 7.445194390236282
+    weight_water: 1135.4825871695796
+    weight_fat: 0.10111890814954407
+    T2: 35.49429195771527
+    T2_se: 4.481207212099047
+    weight_water_se: 89.30337394215917
+    weight_fat_se: 0.022477952051997485
+    fat_fraction_T2: 14.929427837153062
+    number_echo_fit: 15.0
+    fit_r2: 0.9974388490299335
+    fit_diff_residual: -4.236227034937201E-5
+    noise_threshold: 2.7313994986483126
+    signal_mean: [957.8840579710145, 928.6376811594203, 656.6811594202899, 559.6666666666666,
+      421.1014492753623, 363.231884057971, 282.2463768115942, 249.05797101449275,
+      199.8985507246377, 180.4927536231884, 149.40579710144928, 135.53623188405797,
+      116.04347826086956, 109.76470588235294, 93.61764705882354, 90.01470588235294,
+      78.20588235294117]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 103.0
+    num_pixel_mask_fit: 103.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 5.347188257658564
+    mean_fat_percent_mask: 5.347188257658564
+    weight_water: 1341.8880496256547
+    weight_fat: 0.0799620661527783
+    T2: 34.18474343359849
+    T2_se: 3.244371006981485
+    weight_water_se: 85.41809256938268
+    weight_fat_se: 0.018627145381492148
+    fat_fraction_T2: 10.508948209414031
+    number_echo_fit: 15.0
+    fit_r2: 0.9983218471592761
+    fit_diff_residual: -1.9990968317529223E-4
+    noise_threshold: 3.7870833655878524
+    signal_mean: [1050.3398058252428, 995.4660194174758, 699.3106796116505, 577.3300970873786,
+      431.6116504854369, 361.68932038834953, 275.0485436893204, 238.5728155339806,
+      186.0, 164.2135922330097, 132.19417475728156, 119.95145631067962, 99.75728155339806,
+      92.96116504854369, 78.57843137254902, 76.1078431372549, 64.18627450980392]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 106.0
+    num_pixel_mask_fit: 106.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 6.183540246180461
+    mean_fat_percent_mask: 6.183540246180461
+    weight_water: 1349.7984409044416
+    weight_fat: 0.11089034718397087
+    T2: 34.67165321867458
+    T2_se: 3.3728822195776225
+    weight_water_se: 85.69015474259322
+    weight_fat_se: 0.01971558974226989
+    fat_fraction_T2: 13.933794313167564
+    number_echo_fit: 15.0
+    fit_r2: 0.9984007442184062
+    fit_diff_residual: -4.5841819925485083E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [1117.4622641509434, 1061.2264150943397, 756.7452830188679, 634.4622641509434,
+      481.41509433962267, 406.8301886792453, 319.4811320754717, 276.9433962264151,
+      223.49056603773585, 196.85849056603774, 163.16037735849056, 150.11428571428573,
+      127.78095238095239, 118.35849056603773, 102.64150943396227, 97.48113207547169,
+      87.5576923076923]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 98.0
+    num_pixel_mask_fit: 98.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.43311625799018
+    mean_fat_percent_mask: 2.43311625799018
+    weight_water: 1413.15388914435
+    weight_fat: 0.03911665270257144
+    T2: 35.02509313496651
+    T2_se: 3.974040905361356
+    weight_water_se: 102.56907612641248
+    weight_fat_se: 0.02453048358597806
+    fat_fraction_T2: 5.17270267671098
+    number_echo_fit: 15.0
+    fit_r2: 0.9973663429697055
+    fit_diff_residual: -5.224365912468443E-4
+    noise_threshold: 3.968771906265009
+    signal_mean: [1046.1734693877552, 994.969387755102, 675.5, 561.4489795918367,
+      402.5816326530612, 334.9387755102041, 245.6734693877551, 208.51020408163265,
+      156.40816326530611, 135.68367346938774, 103.24489795918367, 93.5, 70.95918367346938,
+      65.10204081632654, 52.05154639175258, 48.4639175257732, 40.364583333333336]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 57.0
+    num_pixel_mask_fit: 57.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.023275843184749
+    mean_fat_percent_mask: 2.023275843184749
+    weight_water: 1345.153084554618
+    weight_fat: 0.05780976963200157
+    T2: 36.15100485143973
+    T2_se: 4.3503512644701345
+    weight_water_se: 97.15513362867546
+    weight_fat_se: 0.026253945631105655
+    fat_fraction_T2: 7.807915071654676
+    number_echo_fit: 15.0
+    fit_r2: 0.9973096689286819
+    fit_diff_residual: -9.89587689375071E-4
+    noise_threshold: 3.205099695857723
+    signal_mean: [1026.701754385965, 1019.0877192982456, 687.9473684210526, 582.3508771929825,
+      428.280701754386, 359.4561403508772, 270.03508771929825, 229.73684210526315,
+      178.4561403508772, 156.56140350877192, 122.52631578947368, 110.78947368421052,
+      88.98245614035088, 82.12280701754386, 68.49122807017544, 65.59649122807018,
+      54.6140350877193]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: TP_R
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 75.0
+    num_pixel_mask_fit: 75.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 10.87641668795076
+    mean_fat_percent_mask: 10.87641668795076
+    weight_water: 1140.0704203447906
+    weight_fat: 0.1282896191334415
+    T2: 35.62661969269277
+    T2_se: 4.81305382254213
+    weight_water_se: 95.23019830241788
+    weight_fat_se: 0.024316429092945457
+    fat_fraction_T2: 18.150472382816407
+    number_echo_fit: 15.0
+    fit_r2: 0.9973036838105128
+    fit_diff_residual: -4.7600346972842544E-4
+    noise_threshold: 2.7313994986483126
+    signal_mean: [1000.5333333333333, 990.64, 701.1066666666667, 604.3866666666667,
+      460.7733333333333, 400.93333333333334, 315.68, 279.96, 228.10666666666665, 207.84,
+      174.64, 160.68, 138.0, 130.04, 114.0, 110.04054054054055, 98.73972602739725]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 96.0
+    num_pixel_mask_fit: 96.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 9.07756439923087
+    mean_fat_percent_mask: 9.07756439923087
+    weight_water: 1188.1089128481692
+    weight_fat: 0.19279314030388178
+    T2: 37.204581944680854
+    T2_se: 4.571923292625129
+    weight_water_se: 82.54911432591553
+    weight_fat_se: 0.02496407475722695
+    fat_fraction_T2: 24.229624354568553
+    number_echo_fit: 15.0
+    fit_r2: 0.9981784581992018
+    fit_diff_residual: -1.2205409333887474E-5
+    noise_threshold: 3.7870833655878524
+    signal_mean: [1161.21875, 1151.25, 842.9791666666666, 732.5416666666666, 579.0520833333334,
+      506.625, 414.4270833333333, 370.90625, 311.4791666666667, 284.1770833333333,
+      244.89583333333334, 226.08333333333334, 199.11458333333334, 187.07368421052632,
+      167.18947368421053, 156.8842105263158, 143.6595744680851]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 104.0
+    num_pixel_mask_fit: 104.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 6.899391420846471
+    mean_fat_percent_mask: 6.899391420846471
+    weight_water: 1306.4315521314256
+    weight_fat: 0.1534996657491883
+    T2: 36.21769267647537
+    T2_se: 3.997263525646801
+    weight_water_se: 86.21373547260623
+    weight_fat_se: 0.023465048823982287
+    fat_fraction_T2: 18.801085137114598
+    number_echo_fit: 15.0
+    fit_r2: 0.9982590739642346
+    fit_diff_residual: -2.782124004809816E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [1180.0673076923076, 1146.1442307692307, 824.1923076923077, 704.5192307692307,
+      546.6153846153846, 471.5576923076923, 377.5480769230769, 334.0673076923077,
+      275.52884615384613, 247.6153846153846, 209.4903846153846, 192.375, 166.73076923076923,
+      156.66346153846155, 137.94230769230768, 130.18269230769232, 116.74038461538461]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 73.0
+    num_pixel_mask_fit: 73.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 5.791432472388734
+    mean_fat_percent_mask: 5.791432472388734
+    weight_water: 1346.652364985074
+    weight_fat: 0.09270246284687228
+    T2: 35.20026476540998
+    T2_se: 4.211348550917698
+    weight_water_se: 102.04826990620495
+    weight_fat_se: 0.02487705612722449
+    fat_fraction_T2: 11.945376820587377
+    number_echo_fit: 15.0
+    fit_r2: 0.9975057945953515
+    fit_diff_residual: -7.108322819249224E-8
+    noise_threshold: 3.968771906265009
+    signal_mean: [1088.3972602739725, 1052.7671232876712, 732.6849315068494, 618.4520547945206,
+      460.041095890411, 392.09589041095893, 300.6986301369863, 263.1232876712329,
+      206.35616438356163, 184.6164383561644, 149.31506849315068, 137.56164383561645,
+      113.42465753424658, 106.64383561643835, 90.17808219178082, 87.68493150684931,
+      74.79452054794521]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 61.0
+    num_pixel_mask_fit: 61.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 4.903790475997645
+    mean_fat_percent_mask: 4.903790475997645
+    weight_water: 1266.2265311033034
+    weight_fat: 0.08788852267853367
+    T2: 35.819539263802
+    T2_se: 4.018706674285362
+    weight_water_se: 86.88166510486985
+    weight_fat_se: 0.0226529787926652
+    fat_fraction_T2: 12.032476894651221
+    number_echo_fit: 15.0
+    fit_r2: 0.9978526287244694
+    fit_diff_residual: -3.863765930773866E-4
+    noise_threshold: 3.205099695857723
+    signal_mean: [1009.2622950819672, 1006.4262295081967, 697.1147540983607, 590.311475409836,
+      444.57377049180326, 375.4918032786885, 291.0163934426229, 252.2295081967213,
+      199.47540983606558, 177.95081967213116, 144.0983606557377, 131.81967213114754,
+      109.50819672131148, 102.52459016393442, 87.91666666666667, 82.93442622950819,
+      74.23728813559322]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: ED_R
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 196.0
+    num_pixel_mask_fit: 196.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 7.010229132704504
+    mean_fat_percent_mask: 7.010229132704504
+    weight_water: 1201.377491949701
+    weight_fat: 0.09407399916212807
+    T2: 36.315717417445136
+    T2_se: 4.078539557454604
+    weight_water_se: 80.22748499760155
+    weight_fat_se: 0.022067000847859966
+    fat_fraction_T2: 13.368371638601975
+    number_echo_fit: 15.0
+    fit_r2: 0.9979480514536108
+    fit_diff_residual: -2.5330920149713165E-4
+    noise_threshold: 2.7313994986483126
+    signal_mean: [990.8928571428571, 986.2091836734694, 685.0561224489796, 581.7704081632653,
+      439.91326530612247, 374.515306122449, 293.0255102040816, 255.15816326530611,
+      205.96428571428572, 182.68367346938774, 150.8826530612245, 137.17857142857142,
+      115.28061224489795, 107.52551020408163, 91.13265306122449, 87.29591836734694,
+      75.77435897435898]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 206.0
+    num_pixel_mask_fit: 206.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 6.377155671062451
+    mean_fat_percent_mask: 6.377155671062451
+    weight_water: 1291.3960403253745
+    weight_fat: 0.11417174180964072
+    T2: 35.602691716395675
+    T2_se: 3.9921957572713893
+    weight_water_se: 89.65486626301981
+    weight_fat_se: 0.022833481034921624
+    fat_fraction_T2: 14.837464022396349
+    number_echo_fit: 15.0
+    fit_r2: 0.9979806584312781
+    fit_diff_residual: -6.881757066423688E-6
+    noise_threshold: 3.7870833655878524
+    signal_mean: [1089.495145631068, 1062.2038834951456, 747.8398058252427, 633.8980582524272,
+      482.1407766990291, 411.43203883495147, 322.25728155339806, 284.09708737864077,
+      226.96601941747574, 204.8398058252427, 169.05825242718447, 154.92233009708738,
+      132.24271844660194, 122.10679611650485, 107.75242718446601, 100.7609756097561,
+      89.66341463414633]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 234.0
+    num_pixel_mask_fit: 234.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 6.2236902963200285
+    mean_fat_percent_mask: 6.2236902963200285
+    weight_water: 1330.3555646469927
+    weight_fat: 0.12254062853408862
+    T2: 35.08115469464583
+    T2_se: 3.8460977615409995
+    weight_water_se: 93.00636713257927
+    weight_fat_se: 0.02238009268431078
+    fat_fraction_T2: 15.363255116572258
+    number_echo_fit: 15.0
+    fit_r2: 0.9980638801107226
+    fit_diff_residual: -2.421602317781435E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [1133.7649572649573, 1094.320512820513, 770.8418803418804, 653.2820512820513,
+      496.85470085470087, 422.7991452991453, 333.65384615384613, 291.5, 236.44444444444446,
+      211.12820512820514, 174.53846153846155, 161.91416309012877, 137.30042918454936,
+      128.83261802575106, 113.17241379310344, 106.63362068965517, 94.76293103448276]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 177.0
+    num_pixel_mask_fit: 177.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 6.647175876984723
+    mean_fat_percent_mask: 6.647175876984723
+    weight_water: 1295.9938095508105
+    weight_fat: 0.11390749559029471
+    T2: 35.20466792172365
+    T2_se: 4.244820714014203
+    weight_water_se: 98.9529641689162
+    weight_fat_se: 0.02413407364287362
+    fat_fraction_T2: 14.763429689569394
+    number_echo_fit: 15.0
+    fit_r2: 0.9976333559086429
+    fit_diff_residual: -3.411198763814127E-5
+    noise_threshold: 3.968771906265009
+    signal_mean: [1096.542372881356, 1060.6723163841807, 743.54802259887, 631.7909604519774,
+      476.51977401129943, 407.84180790960454, 317.7005649717514, 280.2090395480226,
+      223.89830508474577, 201.96610169491527, 167.17045454545453, 154.65714285714284,
+      130.58522727272728, 121.41477272727273, 105.66477272727273, 99.5965909090909,
+      88.3465909090909]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 139.0
+    num_pixel_mask_fit: 139.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 7.238761925594434
+    mean_fat_percent_mask: 7.238761925594434
+    weight_water: 1207.9865894979723
+    weight_fat: 0.15684331883721114
+    T2: 35.387317457266825
+    T2_se: 4.614337871344535
+    weight_water_se: 98.7197574565173
+    weight_fat_se: 0.024560860905626758
+    fat_fraction_T2: 20.37379176386209
+    number_echo_fit: 15.0
+    fit_r2: 0.9976103254112566
+    fit_diff_residual: -9.919105687572483E-5
+    noise_threshold: 3.205099695857723
+    signal_mean: [1096.3381294964029, 1091.3956834532373, 772.2661870503597, 667.4172661870504,
+      515.5107913669065, 447.42446043165467, 358.37410071942446, 317.28776978417267,
+      261.51798561151077, 238.22302158273382, 200.42446043165467, 187.37410071942446,
+      162.18115942028984, 153.0071942446043, 137.76470588235293, 129.81884057971016,
+      119.99253731343283]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: PER_R
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 609.0
+    num_pixel_mask_fit: 609.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 3.1712593719608657
+    mean_fat_percent_mask: 3.1712593719608657
+    weight_water: 1245.9541780757875
+    weight_fat: 0.05627307273994693
+    T2: 35.7252132053944
+    T2_se: 3.30262954113698
+    weight_water_se: 70.82043911328242
+    weight_fat_se: 0.01827776236148701
+    fat_fraction_T2: 8.172989176394156
+    number_echo_fit: 15.0
+    fit_r2: 0.9984016638322625
+    fit_diff_residual: -7.2184969087985E-4
+    noise_threshold: 2.7313994986483126
+    signal_mean: [959.8784893267651, 917.6683087027915, 640.5303776683087, 531.4811165845649,
+      394.9967159277504, 329.2282430213465, 251.3136288998358, 213.367816091954, 167.05090311986865,
+      145.20032840722496, 115.55008210180624, 103.05254515599343, 84.20032840722496,
+      75.61904761904762, 64.33113673805602, 58.467980295566505, 51.004950495049506]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 707.0
+    num_pixel_mask_fit: 707.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 3.1265502115853163
+    mean_fat_percent_mask: 3.1265502115853163
+    weight_water: 1328.4176147001056
+    weight_fat: 0.06523660494598277
+    T2: 35.1996484665636
+    T2_se: 3.165518425451431
+    weight_water_se: 75.67129457568763
+    weight_fat_se: 0.01844570783819449
+    fat_fraction_T2: 8.823697649936108
+    number_echo_fit: 15.0
+    fit_r2: 0.9984833759365129
+    fit_diff_residual: -1.5906706707369267E-7
+    noise_threshold: 3.7870833655878524
+    signal_mean: [1035.7199434229137, 974.1796322489391, 685.1640735502122, 565.08486562942,
+      421.4639321074965, 351.6775106082037, 268.4144271570014, 229.13012729844414,
+      178.0834512022631, 157.22630834512023, 124.55445544554455, 112.4950495049505,
+      91.57708628005658, 84.21074964639321, 70.19519094766619, 65.37199434229137,
+      55.916548797736915]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 639.0
+    num_pixel_mask_fit: 639.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.5929044522296043
+    mean_fat_percent_mask: 2.5929044522296043
+    weight_water: 1352.5345957285147
+    weight_fat: 0.06288966958930867
+    T2: 35.018321274478396
+    T2_se: 2.911669531011782
+    weight_water_se: 71.96729896868624
+    weight_fat_se: 0.017199011688683333
+    fat_fraction_T2: 8.39396109796291
+    number_echo_fit: 15.0
+    fit_r2: 0.9986826939272058
+    fit_diff_residual: -4.2319667933909955E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [1052.5712050078248, 978.5524256651017, 690.1079812206573, 566.4413145539907,
+      422.4507042253521, 350.84350547730827, 267.9593114241002, 227.1846635367762,
+      177.93114241001564, 154.35993740219092, 122.50391236306729, 109.90453834115806,
+      89.55399061032864, 82.35993740219092, 68.36150234741784, 64.19092331768388,
+      54.05007824726135]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 398.0
+    num_pixel_mask_fit: 398.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.78173324048071
+    mean_fat_percent_mask: 2.78173324048071
+    weight_water: 1366.072049070493
+    weight_fat: 0.05504149924552516
+    T2: 34.81086435103392
+    T2_se: 2.4343239055678296
+    weight_water_se: 61.853343495384706
+    weight_fat_se: 0.014450151594370936
+    fat_fraction_T2: 7.356065027576683
+    number_echo_fit: 15.0
+    fit_r2: 0.9990389554515382
+    fit_diff_residual: -1.5911626372400178E-4
+    noise_threshold: 3.968771906265009
+    signal_mean: [1047.5753768844222, 967.3492462311558, 681.4824120603015, 554.6758793969849,
+      414.95979899497485, 338.96984924623115, 260.20603015075375, 217.27638190954775,
+      169.90201005025125, 144.98492462311557, 115.47738693467336, 102.67929292929293,
+      82.55919395465995, 75.3620253164557, 62.56060606060606, 58.12151898734177, 49.068010075566754]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 178.0
+    num_pixel_mask_fit: 178.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 3.5154059016583323
+    mean_fat_percent_mask: 3.5154059016583323
+    weight_water: 1348.2547916149394
+    weight_fat: 0.08220020585938621
+    T2: 34.50874292304613
+    T2_se: 3.3363729465850867
+    weight_water_se: 85.84969036264647
+    weight_fat_se: 0.019401872044613883
+    fat_fraction_T2: 10.726001134968694
+    number_echo_fit: 15.0
+    fit_r2: 0.9982847392631518
+    fit_diff_residual: -2.555480285124645E-4
+    noise_threshold: 3.205099695857723
+    signal_mean: [1074.685393258427, 996.561797752809, 708.8258426966293, 588.376404494382,
+      441.9325842696629, 370.23595505617976, 282.58988764044943, 243.7191011235955,
+      190.53932584269663, 168.12921348314606, 134.6067415730337, 124.75428571428571,
+      103.77142857142857, 95.36, 82.22857142857143, 77.25142857142858, 67.88]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: SOL_R
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 439.0
+    num_pixel_mask_fit: 439.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.147827266387039
+    mean_fat_percent_mask: 2.147827266387039
+    weight_water: 1166.9272764752138
+    weight_fat: 0.03295633878804505
+    T2: 34.328150203199684
+    T2_se: 2.779950290582306
+    weight_water_se: 62.87314404412541
+    weight_fat_se: 0.013929440709686835
+    fat_fraction_T2: 5.27211558016276
+    number_echo_fit: 15.0
+    fit_r2: 0.9986277533450357
+    fit_diff_residual: -0.0010018454623157425
+    noise_threshold: 2.7313994986483126
+    signal_mean: [858.6879271070615, 790.5785876993166, 554.4874715261959, 447.75854214123007,
+      327.8291571753986, 268.80865603644645, 199.09794988610477, 167.63553530751707,
+      125.98177676537586, 109.16628701594533, 82.76765375854214, 74.23234624145786,
+      57.184510250569474, 52.416856492027335, 41.43507972665148, 38.182232346241456,
+      31.862700228832953]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 584.0
+    num_pixel_mask_fit: 584.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.5920674345666561
+    mean_fat_percent_mask: 1.5920674345666561
+    weight_water: 1259.1074305092534
+    weight_fat: 0.03317417191903052
+    T2: 33.75570841698981
+    T2_se: 2.457338906818716
+    weight_water_se: 62.97471759427344
+    weight_fat_se: 0.013095709789536274
+    fat_fraction_T2: 4.935893623472152
+    number_echo_fit: 15.0
+    fit_r2: 0.9988603136228643
+    fit_diff_residual: -0.0014739267819621205
+    noise_threshold: 3.7870833655878524
+    signal_mean: [917.6335616438356, 837.2465753424658, 587.3356164383562, 470.7054794520548,
+      344.152397260274, 279.71061643835617, 207.7208904109589, 172.11472602739727,
+      129.59246575342465, 110.7431506849315, 84.77701543739279, 74.99312714776632,
+      57.78485370051635, 53.19310344827586, 41.4, 39.3125, 31.667838312829524]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 778.0
+    num_pixel_mask_fit: 778.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.6018014352911198
+    mean_fat_percent_mask: 1.6018014352911198
+    weight_water: 1257.7574679064883
+    weight_fat: 0.033473675391182636
+    T2: 33.21835096151945
+    T2_se: 2.467504634229961
+    weight_water_se: 66.14534052353952
+    weight_fat_se: 0.012955676824760426
+    fat_fraction_T2: 4.983314422847277
+    number_echo_fit: 15.0
+    fit_r2: 0.9987926656490342
+    fit_diff_residual: -3.56057532787446E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [913.8830334190231, 832.0539845758354, 578.9884318766067, 464.5424164524422,
+      337.5141388174807, 273.82519280205656, 202.51928020565552, 166.9421593830334,
+      126.22193548387096, 106.54709677419355, 81.81582360570687, 71.328125, 57.343957503320055,
+      51.1248322147651, 41.71293800539083, 38.48622589531681, 31.88317107093185]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 681.0
+    num_pixel_mask_fit: 681.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.8527519725365396
+    mean_fat_percent_mask: 1.8527519725365396
+    weight_water: 1213.4723217971768
+    weight_fat: 0.043724623323865
+    T2: 33.89685154638611
+    T2_se: 2.8387911453415846
+    weight_water_se: 69.27165590674485
+    weight_fat_se: 0.01463250605383758
+    fat_fraction_T2: 6.6300277883740515
+    number_echo_fit: 15.0
+    fit_r2: 0.998555755097776
+    fit_diff_residual: -2.8126406423467643E-5
+    noise_threshold: 3.968771906265009
+    signal_mean: [908.4082232011748, 834.3773861967694, 585.1086637298091, 474.9544787077827,
+      348.1820851688693, 286.91336270190897, 214.02790014684288, 180.7209985315712,
+      137.59471365638765, 119.38619676945667, 92.61086637298091, 82.6, 65.65634218289085,
+      59.93943870014771, 49.96686746987952, 46.2060606060606, 39.60769230769231]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 600.0
+    num_pixel_mask_fit: 600.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.1012307062742486
+    mean_fat_percent_mask: 2.1012307062742486
+    weight_water: 1170.0979669433693
+    weight_fat: 0.053621525012282525
+    T2: 34.346027990158326
+    T2_se: 2.9094985675688143
+    weight_water_se: 65.8812685238147
+    weight_fat_se: 0.014624677226041057
+    fat_fraction_T2: 8.282843148815566
+    number_echo_fit: 15.0
+    fit_r2: 0.9985983695854852
+    fit_diff_residual: -0.0013236123892284013
+    noise_threshold: 3.205099695857723
+    signal_mean: [904.7, 828.4483333333334, 587.5633333333334, 480.5233333333333,
+      356.0783333333333, 296.33, 224.45166666666665, 190.555, 147.875, 128.545, 101.755,
+      90.88333333333334, 74.41652613827993, 68.03716216216216, 57.53793103448276,
+      53.81217391304348, 46.42300884955752]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: GAS_MED_R
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 43.0
+    num_pixel_mask_fit: 43.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.9846197028037946
+    mean_fat_percent_mask: 2.9846197028037946
+    weight_water: 1293.3556493263247
+    weight_fat: 0.04158947547870923
+    T2: 32.78712266773751
+    T2_se: 4.242988485807423
+    weight_water_se: 121.37420651334264
+    weight_fat_se: 0.022651136023360857
+    fat_fraction_T2: 5.959274193092152
+    number_echo_fit: 15.0
+    fit_r2: 0.9963698716946426
+    fit_diff_residual: -1.6313160995196085E-4
+    noise_threshold: 2.7313994986483126
+    signal_mean: [942.7674418604652, 873.0, 595.953488372093, 489.51162790697674,
+      346.8837209302326, 293.09302325581393, 206.86046511627907, 180.7906976744186,
+      128.13953488372093, 113.79069767441861, 79.72093023255815, 76.95348837209302,
+      63.486486486486484, 58.64102564102564, 49.17142857142857, 47.02857142857143,
+      39.885714285714286]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 128.0
+    num_pixel_mask_fit: 128.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.8522299894734988
+    mean_fat_percent_mask: 1.8522299894734988
+    weight_water: 1377.5412193019756
+    weight_fat: 0.022432451350153416
+    T2: 35.14070282985177
+    T2_se: 3.667371147900621
+    weight_water_se: 91.3663143062845
+    weight_fat_se: 0.022128813750499843
+    fat_fraction_T2: 3.109324387129536
+    number_echo_fit: 15.0
+    fit_r2: 0.9976781100729298
+    fit_diff_residual: -0.0011545545548088398
+    noise_threshold: 3.7870833655878524
+    signal_mean: [995.2109375, 938.7265625, 636.5625, 524.3203125, 373.125, 306.375,
+      226.7578125, 184.4453125, 138.75, 116.9140625, 87.40625, 78.2265625, 54.578125,
+      54.9375, 36.71774193548387, 37.6015625, 28.863247863247864]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 324.0
+    num_pixel_mask_fit: 324.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.3803711945276214
+    mean_fat_percent_mask: 2.3803711945276214
+    weight_water: 1366.9594677097546
+    weight_fat: 0.038162716016832354
+    T2: 34.10099731999626
+    T2_se: 3.3708744579014684
+    weight_water_se: 91.05611276426657
+    weight_fat_se: 0.0196737288373778
+    fat_fraction_T2: 5.214782124771562
+    number_echo_fit: 15.0
+    fit_r2: 0.9979372347599902
+    fit_diff_residual: -7.041183067713064E-7
+    noise_threshold: 3.643824521518024
+    signal_mean: [1005.0308641975308, 941.8179012345679, 642.0061728395061, 526.925925925926,
+      378.54938271604937, 312.570987654321, 230.4506172839506, 192.1851851851852,
+      145.1702786377709, 123.6749226006192, 94.5807453416149, 82.48447204968944, 66.8801261829653,
+      59.64102564102564, 49.358306188925084, 46.71854304635762, 37.37748344370861]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 335.0
+    num_pixel_mask_fit: 335.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.510245423261655
+    mean_fat_percent_mask: 2.510245423261655
+    weight_water: 1346.220951095906
+    weight_fat: 0.04123261162490023
+    T2: 34.46553432876836
+    T2_se: 3.2061502882005257
+    weight_water_se: 82.6785739663926
+    weight_fat_se: 0.01859659004169464
+    fat_fraction_T2: 5.692247938171109
+    number_echo_fit: 15.0
+    fit_r2: 0.9982146306113037
+    fit_diff_residual: -7.717807419780343E-4
+    noise_threshold: 3.968771906265009
+    signal_mean: [1009.3432835820895, 934.6626865671642, 644.0, 527.8716417910448,
+      383.6537313432836, 316.0268656716418, 234.97014925373134, 197.22089552238805,
+      149.76716417910447, 128.78507462686568, 98.6089552238806, 88.25671641791045,
+      68.89820359281437, 62.27462686567164, 51.969325153374236, 47.28834355828221,
+      41.106918238993714]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 374.0
+    num_pixel_mask_fit: 374.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 3.141838843708028
+    mean_fat_percent_mask: 3.141838843708028
+    weight_water: 1266.3570208081212
+    weight_fat: 0.052104128850219755
+    T2: 35.0089057876598
+    T2_se: 3.2763937648635917
+    weight_water_se: 75.88304440610432
+    weight_fat_se: 0.01811615938226463
+    fat_fraction_T2: 7.5001335965412155
+    number_echo_fit: 15.0
+    fit_r2: 0.9982967373706211
+    fit_diff_residual: -6.590082668012087E-5
+    noise_threshold: 3.205099695857723
+    signal_mean: [985.024064171123, 911.2032085561498, 634.0695187165776, 523.2513368983957,
+      384.8181818181818, 320.32620320855614, 242.9090909090909, 204.42245989304814,
+      159.61764705882354, 137.3957219251337, 107.87967914438502, 97.65508021390374,
+      77.56684491978609, 72.39572192513369, 58.74530831099196, 54.916666666666664,
+      47.30684931506849]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: GAS_LAT_R
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 275.0
+    num_pixel_mask_fit: 275.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 3.4022453575467044
+    mean_fat_percent_mask: 3.4022453575467044
+    weight_water: 939.1879968448669
+    weight_fat: 0.04451697018718891
+    T2: 34.3993606309283
+    T2_se: 2.7167052699724863
+    weight_water_se: 49.1518442831366
+    weight_fat_se: 0.010975293130203082
+    fat_fraction_T2: 8.54284757594335
+    number_echo_fit: 15.0
+    fit_r2: 0.9987912460061298
+    fit_diff_residual: -4.957208723510576E-7
+    noise_threshold: 2.7313994986483126
+    signal_mean: [711.2036363636364, 667.5818181818182, 475.2, 387.24363636363637,
+      288.73454545454547, 239.5381818181818, 182.22181818181818, 154.7890909090909,
+      120.52, 105.24452554744525, 84.2992700729927, 75.25274725274726, 61.42335766423358,
+      55.96350364963504, 46.85766423357664, 43.5985401459854, 37.45220588235294]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 278.0
+    num_pixel_mask_fit: 278.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 3.498084908975056
+    mean_fat_percent_mask: 3.498084908975056
+    weight_water: 951.9673410052055
+    weight_fat: 0.05279354728875214
+    T2: 34.75799784274346
+    T2_se: 2.829239467743026
+    weight_water_se: 50.32202367948423
+    weight_fat_se: 0.011688284222003048
+    fat_fraction_T2: 9.852049175534834
+    number_echo_fit: 15.0
+    fit_r2: 0.9987688750853725
+    fit_diff_residual: -8.656683266963228E-4
+    noise_threshold: 3.7870833655878524
+    signal_mean: [731.5071942446043, 690.8956834532374, 497.4424460431655, 406.8956834532374,
+      306.19424460431657, 256.16906474820144, 196.14028776978418, 168.3453237410072,
+      132.14028776978418, 116.27697841726619, 93.2410071942446, 84.15827338129496,
+      68.66906474820144, 63.97482014388489, 53.25179856115108, 51.039855072463766,
+      43.45652173913044]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 245.0
+    num_pixel_mask_fit: 245.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.486092638937476
+    mean_fat_percent_mask: 2.486092638937476
+    weight_water: 981.8701316013005
+    weight_fat: 0.036204311067804175
+    T2: 35.45787058328778
+    T2_se: 2.6301061768251017
+    weight_water_se: 45.46329349884604
+    weight_fat_se: 0.011398072400059543
+    fat_fraction_T2: 6.774145618077121
+    number_echo_fit: 15.0
+    fit_r2: 0.9989283694091189
+    fit_diff_residual: -0.0011773024313583846
+    noise_threshold: 3.643824521518024
+    signal_mean: [734.2081632653061, 691.5387755102041, 491.9836734693878, 399.71020408163264,
+      298.37142857142857, 246.3877551020408, 187.49795918367346, 157.9591836734694,
+      122.03673469387755, 105.36326530612244, 82.75102040816327, 73.55102040816327,
+      58.457142857142856, 53.46938775510204, 43.159183673469386, 40.53061224489796,
+      32.83265306122449]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 223.0
+    num_pixel_mask_fit: 223.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.016269884614894
+    mean_fat_percent_mask: 2.016269884614894
+    weight_water: 1031.8841132056923
+    weight_fat: 0.048676038252939674
+    T2: 34.02096658924828
+    T2_se: 3.318151371709579
+    weight_water_se: 68.12541913776704
+    weight_fat_se: 0.014589561632142783
+    fat_fraction_T2: 8.50534507497253
+    number_echo_fit: 15.0
+    fit_r2: 0.9981324929273206
+    fit_diff_residual: -4.338176540272798E-4
+    noise_threshold: 3.968771906265009
+    signal_mean: [784.9641255605382, 733.067264573991, 515.4618834080718, 424.63677130044846,
+      311.7982062780269, 260.7937219730942, 195.52466367713004, 167.66816143497758,
+      129.31390134529147, 112.4170403587444, 89.73094170403587, 79.7927927927928,
+      65.55454545454545, 60.65581395348837, 51.81220657276995, 47.905660377358494,
+      41.770334928229666]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 124.0
+    num_pixel_mask_fit: 124.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 4.169412418413644
+    mean_fat_percent_mask: 4.169412418413644
+    weight_water: 938.6461560942547
+    weight_fat: 0.11373877981915352
+    T2: 32.2053441303696
+    T2_se: 3.6276357384922946
+    weight_water_se: 79.18193726467223
+    weight_fat_se: 0.013837910456635918
+    fat_fraction_T2: 19.276155218068233
+    number_echo_fit: 15.0
+    fit_r2: 0.9979981077419743
+    fit_diff_residual: -3.7054774349343234E-5
+    noise_threshold: 3.205099695857723
+    signal_mean: [808.3064516129032, 762.0241935483871, 558.0322580645161, 468.96774193548384,
+      360.10483870967744, 311.03225806451616, 244.66129032258064, 218.1451612903226,
+      177.55645161290323, 162.2741935483871, 136.4516129032258, 126.0241935483871,
+      109.60483870967742, 104.27868852459017, 96.47863247863248, 91.48305084745763,
+      85.96491228070175]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: TA_L
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 106.0
+    num_pixel_mask_fit: 106.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 6.049655739784922
+    mean_fat_percent_mask: 6.049655739784922
+    weight_water: 908.6968439848438
+    weight_fat: 0.07909524409513215
+    T2: 34.13749157344226
+    T2_se: 2.4779667724232866
+    weight_water_se: 44.357894527809776
+    weight_fat_se: 0.009622774944386112
+    fat_fraction_T2: 14.641628662610778
+    number_echo_fit: 15.0
+    fit_r2: 0.9991107835831494
+    fit_diff_residual: -0.0010319007658452506
+    noise_threshold: 2.7313994986483126
+    signal_mean: [745.7735849056604, 704.1981132075472, 514.1792452830189, 423.41509433962267,
+      326.4433962264151, 273.92452830188677, 217.0, 187.16037735849056, 153.7904761904762,
+      135.19811320754718, 114.39047619047619, 103.84761904761905, 87.42857142857143,
+      82.37142857142857, 70.41904761904762, 67.65714285714286, 59.08653846153846]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 122.0
+    num_pixel_mask_fit: 122.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 4.002715198389778
+    mean_fat_percent_mask: 4.002715198389778
+    weight_water: 959.8679119735681
+    weight_fat: 0.04939855598300781
+    T2: 33.981961913973535
+    T2_se: 2.952792961060414
+    weight_water_se: 56.58157555832679
+    weight_fat_se: 0.012065156927094638
+    fat_fraction_T2: 9.207941668866049
+    number_echo_fit: 15.0
+    fit_r2: 0.9985396303008849
+    fit_diff_residual: -2.749995521824644E-4
+    noise_threshold: 3.7870833655878524
+    signal_mean: [713.1311475409836, 682.1639344262295, 487.2704918032787, 397.5163934426229,
+      295.27868852459017, 247.64754098360655, 187.50819672131146, 160.5327868852459,
+      124.27049180327869, 109.45081967213115, 86.52459016393442, 78.0327868852459,
+      63.59836065573771, 59.41803278688525, 50.31404958677686, 47.942622950819676,
+      41.47933884297521]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 127.0
+    num_pixel_mask_fit: 127.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 4.196472659180946
+    mean_fat_percent_mask: 4.196472659180946
+    weight_water: 926.4480558622536
+    weight_fat: 0.04978795058680555
+    T2: 35.61018340570795
+    T2_se: 3.206768879032076
+    weight_water_se: 51.63161135548091
+    weight_fat_se: 0.01316033047094238
+    fat_fraction_T2: 9.576292494701224
+    number_echo_fit: 15.0
+    fit_r2: 0.9985249880507862
+    fit_diff_residual: -1.7128601627547368E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [702.8582677165355, 680.3464566929134, 488.73228346456693, 403.62992125984255,
+      302.8897637795276, 254.82677165354332, 195.74015748031496, 167.68503937007873,
+      131.20472440944883, 115.92913385826772, 92.53543307086615, 82.91338582677166,
+      67.02362204724409, 62.76377952755905, 51.74015748031496, 50.77235772357724,
+      43.300813008130085]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 88.0
+    num_pixel_mask_fit: 88.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.9472309338015266
+    mean_fat_percent_mask: 2.9472309338015266
+    weight_water: 941.8785799618241
+    weight_fat: 0.039218154496382475
+    T2: 34.49034641277349
+    T2_se: 3.3456738757460442
+    weight_water_se: 60.235444405539056
+    weight_fat_se: 0.013585578853399477
+    fat_fraction_T2: 7.583241412144033
+    number_echo_fit: 15.0
+    fit_r2: 0.9981422152419065
+    fit_diff_residual: -8.321738628325193E-5
+    noise_threshold: 3.968771906265009
+    signal_mean: [689.1477272727273, 664.2727272727273, 467.79545454545456, 384.35227272727275,
+      280.82954545454544, 235.2159090909091, 176.32954545454547, 150.2159090909091,
+      115.48863636363636, 101.0340909090909, 79.57954545454545, 70.68181818181819,
+      56.44318181818182, 52.54545454545455, 43.825581395348834, 40.42528735632184,
+      34.104651162790695]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 67.0
+    num_pixel_mask_fit: 67.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.3862554918519834
+    mean_fat_percent_mask: 2.3862554918519834
+    weight_water: 974.7690562924388
+    weight_fat: 0.039063246186266914
+    T2: 34.53141370332605
+    T2_se: 3.3407820078350987
+    weight_water_se: 62.03008605116452
+    weight_fat_se: 0.014053680723766244
+    fat_fraction_T2: 7.319272989531197
+    number_echo_fit: 15.0
+    fit_r2: 0.9981435619417476
+    fit_diff_residual: -6.984936256841934E-4
+    noise_threshold: 3.205099695857723
+    signal_mean: [726.6417910447761, 677.6417910447761, 482.4925373134328, 394.8059701492537,
+      289.82089552238807, 242.2537313432836, 180.6417910447761, 155.1492537313433,
+      117.4776119402985, 102.59701492537313, 80.29850746268657, 72.44776119402985,
+      57.134328358208954, 55.59701492537314, 42.80597014925373, 41.64179104477612,
+      33.43283582089552]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: TP_L
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 81.0
+    num_pixel_mask_fit: 81.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 5.02634685569692
+    mean_fat_percent_mask: 5.02634685569692
+    weight_water: 985.4221211033567
+    weight_fat: 0.07339191686438057
+    T2: 32.91114744813625
+    T2_se: 2.880471746631031
+    weight_water_se: 62.11419209448229
+    weight_fat_se: 0.011754537680401557
+    fat_fraction_T2: 12.798569989433375
+    number_echo_fit: 15.0
+    fit_r2: 0.9985962864072802
+    fit_diff_residual: -1.2154202925529489E-4
+    noise_threshold: 2.7313994986483126
+    signal_mean: [789.5679012345679, 734.3456790123457, 523.7283950617284, 430.4074074074074,
+      323.77777777777777, 271.9012345679012, 210.55555555555554, 182.01234567901236,
+      143.88888888888889, 128.6172839506173, 106.775, 97.3125, 81.075, 76.125, 66.98717948717949,
+      62.91139240506329, 55.92307692307692]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 112.0
+    num_pixel_mask_fit: 112.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 7.8198410003509595
+    mean_fat_percent_mask: 7.8198410003509595
+    weight_water: 965.1291989941778
+    weight_fat: 0.10776875405465364
+    T2: 34.50901421125476
+    T2_se: 3.063361328905639
+    weight_water_se: 56.42425084426441
+    weight_fat_se: 0.01275215754565473
+    fat_fraction_T2: 18.036076320561648
+    number_echo_fit: 15.0
+    fit_r2: 0.9987931690288303
+    fit_diff_residual: -7.621674978608439E-5
+    noise_threshold: 3.7870833655878524
+    signal_mean: [845.8839285714286, 798.2053571428571, 585.9732142857143, 490.74107142857144,
+      380.00892857142856, 325.79464285714283, 260.8125, 228.24107142857142, 189.0,
+      169.5, 143.41964285714286, 130.85714285714286, 113.66071428571429, 106.69369369369369,
+      94.1891891891892, 88.65765765765765, 80.01801801801801]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 83.0
+    num_pixel_mask_fit: 83.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 5.659809872225634
+    mean_fat_percent_mask: 5.659809872225634
+    weight_water: 1003.7002754604961
+    weight_fat: 0.07524064720927863
+    T2: 34.59272393866383
+    T2_se: 2.665045004948066
+    weight_water_se: 50.686335812947505
+    weight_fat_se: 0.011561263685610584
+    fat_fraction_T2: 12.871279803627566
+    number_echo_fit: 15.0
+    fit_r2: 0.9989681153525881
+    fit_diff_residual: -6.019227866360666E-5
+    noise_threshold: 3.643824521518024
+    signal_mean: [818.5301204819277, 765.144578313253, 553.6144578313254, 455.7590361445783,
+      347.2168674698795, 292.0120481927711, 230.09638554216866, 197.3734939759036,
+      158.89156626506025, 140.50602409638554, 115.92771084337349, 105.19277108433735,
+      88.4578313253012, 81.86746987951807, 70.91566265060241, 66.49397590361446, 58.3855421686747]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 70.0
+    num_pixel_mask_fit: 70.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 5.341672864043344
+    mean_fat_percent_mask: 5.341672864043344
+    weight_water: 992.1045995349455
+    weight_fat: 0.08368880696762274
+    T2: 33.934633924126324
+    T2_se: 3.0028855421223994
+    weight_water_se: 59.71518601528339
+    weight_fat_se: 0.012666780408224804
+    fat_fraction_T2: 14.253970338573524
+    number_echo_fit: 15.0
+    fit_r2: 0.9986580068151502
+    fit_diff_residual: -8.862998292684665E-4
+    noise_threshold: 3.968771906265009
+    signal_mean: [824.8142857142857, 772.1571428571428, 553.9571428571429, 458.6714285714286,
+      349.1, 295.3142857142857, 230.97142857142856, 200.82857142857142, 162.45714285714286,
+      144.87142857142857, 120.64285714285714, 110.25714285714285, 92.74285714285715,
+      87.38571428571429, 75.05714285714286, 71.65714285714286, 62.97142857142857]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 56.0
+    num_pixel_mask_fit: 56.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 4.439431706156928
+    mean_fat_percent_mask: 4.439431706156928
+    weight_water: 1029.2552708834799
+    weight_fat: 0.06632963394913605
+    T2: 33.65141805292363
+    T2_se: 3.0475094333666526
+    weight_water_se: 64.41473701692712
+    weight_fat_se: 0.013240839070284768
+    fat_fraction_T2: 11.268687230725261
+    number_echo_fit: 15.0
+    fit_r2: 0.9984742209661623
+    fit_diff_residual: -0.0011282362421241032
+    noise_threshold: 3.205099695857723
+    signal_mean: [814.5714285714286, 751.2678571428571, 539.3214285714286, 443.0892857142857,
+      331.0357142857143, 278.67857142857144, 213.01785714285714, 185.23214285714286,
+      145.26785714285714, 128.26785714285714, 104.25, 93.66071428571429, 79.05357142857143,
+      73.14285714285714, 63.7037037037037, 59.833333333333336, 52.407407407407405]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: ED_L
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 187.0
+    num_pixel_mask_fit: 187.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 6.948159692718604
+    mean_fat_percent_mask: 6.948159692718604
+    weight_water: 990.5682083626181
+    weight_fat: 0.07808968863933058
+    T2: 34.65407274127106
+    T2_se: 2.715519962011104
+    weight_water_se: 50.70477114321113
+    weight_fat_se: 0.011643660047598411
+    fat_fraction_T2: 13.446408913442188
+    number_echo_fit: 15.0
+    fit_r2: 0.998949325918883
+    fit_diff_residual: -0.0011726851902729152
+    noise_threshold: 2.7313994986483126
+    signal_mean: [825.0806451612904, 765.1497326203208, 552.8235294117648, 456.28877005347596,
+      348.80748663101605, 293.44919786096256, 231.27807486631016, 199.54545454545453,
+      161.2673796791444, 142.81283422459893, 118.54010695187166, 107.27272727272727,
+      90.71657754010695, 84.18716577540107, 72.60427807486631, 68.3903743315508, 60.101604278074866]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 238.0
+    num_pixel_mask_fit: 238.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 6.254404168697049
+    mean_fat_percent_mask: 6.254404168697049
+    weight_water: 1060.3846661947803
+    weight_fat: 0.10187575604020228
+    T2: 33.696790886157515
+    T2_se: 2.8827521661689204
+    weight_water_se: 62.53168215467531
+    weight_fat_se: 0.012918755046760336
+    fat_fraction_T2: 15.919043409542248
+    number_echo_fit: 15.0
+    fit_r2: 0.998788620853279
+    fit_diff_residual: -2.525629506067162E-5
+    noise_threshold: 3.7870833655878524
+    signal_mean: [889.2478991596639, 834.2773109243698, 609.0966386554621, 504.8235294117647,
+      387.47058823529414, 329.46638655462186, 259.6386554621849, 226.97058823529412,
+      184.60504201680672, 165.7563025210084, 138.79746835443038, 126.9493670886076,
+      108.89451476793249, 101.30379746835443, 90.25213675213675, 84.50854700854701,
+      76.27155172413794]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 250.0
+    num_pixel_mask_fit: 250.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 5.702459593693361
+    mean_fat_percent_mask: 5.702459593693361
+    weight_water: 1100.1128516836027
+    weight_fat: 0.08931722039953878
+    T2: 34.17275370230648
+    T2_se: 2.744021063083526
+    weight_water_se: 59.288792553021494
+    weight_fat_se: 0.012912012279750584
+    fat_fraction_T2: 13.792826797138993
+    number_echo_fit: 15.0
+    fit_r2: 0.9988898655425531
+    fit_diff_residual: -5.185566519578799E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [905.7, 843.584, 612.376, 504.564, 385.744, 325.124, 255.444, 221.424,
+      177.452, 158.888, 130.58, 119.468, 101.08032128514056, 93.95983935742971, 81.99196787148594,
+      77.18548387096774, 68.61133603238866]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 201.0
+    num_pixel_mask_fit: 201.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 6.567110041064954
+    mean_fat_percent_mask: 6.567110041064954
+    weight_water: 1039.2259660084644
+    weight_fat: 0.1196809043643363
+    T2: 33.49885433385769
+    T2_se: 2.993834054060155
+    weight_water_se: 64.73399014389042
+    weight_fat_se: 0.013082436383836937
+    fat_fraction_T2: 18.4969683487278
+    number_echo_fit: 15.0
+    fit_r2: 0.9987568445196389
+    fit_diff_residual: -1.8311423453098996E-6
+    noise_threshold: 3.968771906265009
+    signal_mean: [908.2388059701492, 853.1542288557214, 625.273631840796, 522.1144278606965,
+      404.44776119402985, 346.318407960199, 276.04477611940297, 242.17412935323384,
+      199.4825870646766, 180.6, 153.9145728643216, 140.98492462311557, 122.64141414141415,
+      115.28282828282828, 101.81218274111676, 96.56852791878173, 87.6]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 108.0
+    num_pixel_mask_fit: 108.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 3.9747769769825605
+    mean_fat_percent_mask: 3.9747769769825605
+    weight_water: 1094.666629741404
+    weight_fat: 0.11015525459104142
+    T2: 31.502127567937375
+    T2_se: 3.1277829261979555
+    weight_water_se: 84.6082227647288
+    weight_fat_se: 0.013648211835738291
+    fat_fraction_T2: 16.548842464591626
+    number_echo_fit: 15.0
+    fit_r2: 0.9982947691290794
+    fit_diff_residual: -7.695823136089075E-6
+    noise_threshold: 3.205099695857723
+    signal_mean: [909.8888888888889, 838.9351851851852, 607.8425925925926, 503.94444444444446,
+      382.4074074074074, 325.4537037037037, 253.2685185185185, 222.3148148148148,
+      180.82075471698113, 163.93333333333334, 137.69230769230768, 125.09615384615384,
+      108.95145631067962, 105.35, 92.03030303030303, 89.4020618556701, 81.80851063829788]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: PER_L
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 704.0
+    num_pixel_mask_fit: 704.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.5479820102737545
+    mean_fat_percent_mask: 2.5479820102737545
+    weight_water: 1246.2548698347762
+    weight_fat: 0.06025173902385079
+    T2: 35.519756944653466
+    T2_se: 2.902033997108468
+    weight_water_se: 63.337976989593244
+    weight_fat_se: 0.015986522638102747
+    fat_fraction_T2: 8.698649587110644
+    number_echo_fit: 15.0
+    fit_r2: 0.9987575595354061
+    fit_diff_residual: -5.69674143051202E-4
+    noise_threshold: 2.7313994986483126
+    signal_mean: [970.734375, 906.4857954545455, 646.203125, 530.921875, 398.796875,
+      332.48153409090907, 254.07102272727272, 217.16477272727272, 169.1690340909091,
+      147.9815340909091, 118.24147727272727, 105.57954545454545, 86.67329545454545,
+      78.07386363636364, 66.37126600284495, 60.40398293029872, 53.355300859598856]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 735.0
+    num_pixel_mask_fit: 735.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.6280955694113928
+    mean_fat_percent_mask: 2.6280955694113928
+    weight_water: 1245.5372267385117
+    weight_fat: 0.06866382296725791
+    T2: 34.64924303333899
+    T2_se: 2.4992780938563683
+    weight_water_se: 58.703159504732184
+    weight_fat_se: 0.013473235074329092
+    fat_fraction_T2: 9.799260089009636
+    number_echo_fit: 15.0
+    fit_r2: 0.9990285196803452
+    fit_diff_residual: -0.0015539930673043045
+    noise_threshold: 3.7870833655878524
+    signal_mean: [972.374149659864, 900.9537414965987, 649.5183673469388, 528.7319727891156,
+      400.28163265306125, 331.6326530612245, 256.0394557823129, 218.65850340136055,
+      171.6530612244898, 151.14421768707484, 121.14013605442177, 109.60816326530612,
+      90.00816326530612, 83.19319727891157, 69.55238095238096, 65.04217687074829,
+      55.79455782312925]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 655.0
+    num_pixel_mask_fit: 655.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.511711817793426
+    mean_fat_percent_mask: 2.511711817793426
+    weight_water: 1220.5543877850337
+    weight_fat: 0.06085854350076354
+    T2: 34.887078641996396
+    T2_se: 2.565151961508569
+    weight_water_se: 57.858065124117275
+    weight_fat_se: 0.013630071159851334
+    fat_fraction_T2: 8.946871646280002
+    number_echo_fit: 15.0
+    fit_r2: 0.9989782979827695
+    fit_diff_residual: -1.3708381893806632E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [941.830534351145, 873.1969465648855, 629.1358778625954, 512.6992366412213,
+      385.5465648854962, 320.01374045801526, 246.05801526717556, 208.65801526717559,
+      163.85954198473283, 142.7496183206107, 114.4030534351145, 102.70229007633588,
+      83.65038167938931, 76.64580152671756, 64.47480916030534, 59.337920489296636,
+      51.396024464831804]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 667.0
+    num_pixel_mask_fit: 667.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 3.3018189102577318
+    mean_fat_percent_mask: 3.3018189102577318
+    weight_water: 1195.6923625507127
+    weight_fat: 0.06007573554721264
+    T2: 35.29685831512573
+    T2_se: 2.794455476339948
+    weight_water_se: 59.6325376452628
+    weight_fat_se: 0.01469086812372472
+    fat_fraction_T2: 9.009253117708376
+    number_echo_fit: 15.0
+    fit_r2: 0.9988330398719795
+    fit_diff_residual: -2.249568077061781E-5
+    noise_threshold: 3.968771906265009
+    signal_mean: [927.3958020989505, 864.3373313343328, 621.6806596701649, 509.0869565217391,
+      382.19640179910044, 319.0224887556222, 245.3448275862069, 208.76761619190404,
+      163.2143928035982, 143.65967016491754, 114.81409295352324, 101.81859070464768,
+      83.64017991004498, 76.40029985007496, 64.57293233082707, 59.86596385542169,
+      51.32277526395173]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 293.0
+    num_pixel_mask_fit: 293.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.4869525475388796
+    mean_fat_percent_mask: 2.4869525475388796
+    weight_water: 1190.839920813715
+    weight_fat: 0.05971933831138098
+    T2: 34.31271902672123
+    T2_se: 2.544324699328442
+    weight_water_se: 58.80068645084657
+    weight_fat_se: 0.013005050081835452
+    fat_fraction_T2: 8.99382401106506
+    number_echo_fit: 15.0
+    fit_r2: 0.998942289205086
+    fit_diff_residual: -2.1495848013941554E-4
+    noise_threshold: 3.205099695857723
+    signal_mean: [920.5324232081912, 843.0068259385665, 607.0580204778157, 492.65870307167233,
+      370.99658703071674, 307.4641638225256, 234.32764505119454, 199.19795221843003,
+      155.47098976109214, 135.6928327645051, 107.98976109215018, 98.19112627986348,
+      79.20477815699658, 74.60068259385666, 61.525597269624576, 58.44709897610922,
+      49.218430034129696]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: SOL_L
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 324.0
+    num_pixel_mask_fit: 324.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.513974488003183
+    mean_fat_percent_mask: 2.513974488003183
+    weight_water: 1265.6072954156007
+    weight_fat: 0.027179683828999903
+    T2: 36.79812469546923
+    T2_se: 3.6391725731982234
+    weight_water_se: 72.41519976463223
+    weight_fat_se: 0.020973473755717224
+    fat_fraction_T2: 4.060278302964342
+    number_echo_fit: 15.0
+    fit_r2: 0.9980718829777978
+    fit_diff_residual: -3.2003126726465325E-6
+    noise_threshold: 2.7313994986483126
+    signal_mean: [909.2253086419753, 917.5524691358024, 616.1141975308642, 510.7746913580247,
+      375.3858024691358, 309.30555555555554, 229.69135802469137, 194.94444444444446,
+      144.75, 125.91358024691358, 94.54938271604938, 84.21913580246914, 64.16666666666667,
+      57.98761609907121, 45.557632398753896, 41.990595611285265, 34.287539936102235]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 534.0
+    num_pixel_mask_fit: 534.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.519500382360049
+    mean_fat_percent_mask: 1.519500382360049
+    weight_water: 1335.310131910778
+    weight_fat: 0.02888752056448426
+    T2: 35.30875198133059
+    T2_se: 3.5956370591482667
+    weight_water_se: 85.60244376638343
+    weight_fat_se: 0.021116052573497038
+    fat_fraction_T2: 4.088921880680515
+    number_echo_fit: 15.0
+    fit_r2: 0.9978476400272516
+    fit_diff_residual: -6.936245170408029E-5
+    noise_threshold: 3.7870833655878524
+    signal_mean: [972.5393258426966, 931.7322097378277, 630.6067415730337, 519.6161048689139,
+      375.4625468164794, 308.9700374531835, 227.10299625468164, 191.37265917602997,
+      141.00936329588015, 122.8689138576779, 90.78838951310861, 81.5561797752809,
+      61.597744360902254, 56.346516007532955, 44.05152671755725, 41.217973231357554,
+      33.6205533596838]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 712.0
+    num_pixel_mask_fit: 712.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.7197643243588723
+    mean_fat_percent_mask: 1.7197643243588723
+    weight_water: 1301.5995996015122
+    weight_fat: 0.043072087025789046
+    T2: 34.32271475074874
+    T2_se: 3.191608941783688
+    weight_water_se: 80.5513748633357
+    weight_fat_se: 0.017835332500138718
+    fat_fraction_T2: 6.12201230706173
+    number_echo_fit: 15.0
+    fit_r2: 0.9982246227995818
+    fit_diff_residual: -5.00747859508266E-4
+    noise_threshold: 3.643824521518024
+    signal_mean: [974.126404494382, 911.7935393258427, 625.5337078651686, 513.1432584269663,
+      373.78932584269666, 307.6306179775281, 229.88342696629215, 192.68258426966293,
+      146.28129395218002, 126.74120956399437, 97.65774647887324, 87.14527503526094,
+      69.07254623044096, 62.95170454545455, 51.471014492753625, 48.762390670553934,
+      40.84005979073244]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 687.0
+    num_pixel_mask_fit: 687.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.7787107370968582
+    mean_fat_percent_mask: 1.7787107370968582
+    weight_water: 1317.087436232571
+    weight_fat: 0.046948063722732615
+    T2: 33.941426946506795
+    T2_se: 3.1640272234401543
+    weight_water_se: 83.4816481220364
+    weight_fat_se: 0.017721451823692766
+    fat_fraction_T2: 6.563444476035708
+    number_echo_fit: 15.0
+    fit_r2: 0.9982109687014538
+    fit_diff_residual: -0.001407523067150862
+    noise_threshold: 3.968771906265009
+    signal_mean: [992.1339155749636, 916.0116448326055, 633.4221251819505, 517.9272197962155,
+      377.3085880640466, 311.9446870451237, 231.70596797671033, 196.0131004366812,
+      148.0873362445415, 129.13828238719069, 99.55247813411079, 89.24052478134111,
+      71.4266862170088, 65.06011730205279, 54.44827586206897, 50.02413273001508, 43.024729520865534]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 662.0
+    num_pixel_mask_fit: 662.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.1615193757209084
+    mean_fat_percent_mask: 2.1615193757209084
+    weight_water: 1280.4441099878634
+    weight_fat: 0.05176248378151852
+    T2: 34.50034182075522
+    T2_se: 3.20204036820218
+    weight_water_se: 78.30523029381357
+    weight_fat_se: 0.01768049235693772
+    fat_fraction_T2: 7.37865935063699
+    number_echo_fit: 15.0
+    fit_r2: 0.998291303697612
+    fit_diff_residual: -1.7088147430399658E-7
+    noise_threshold: 3.205099695857723
+    signal_mean: [982.3157099697885, 909.429003021148, 632.9864048338369, 520.1178247734139,
+      382.4682779456193, 316.595166163142, 239.0407854984894, 201.91238670694864,
+      154.93655589123867, 135.70090634441087, 104.86858006042296, 95.41087613293051,
+      75.22103658536585, 70.97103658536585, 57.7442218798151, 54.806501547987615,
+      46.2046875]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: GAS_MED_L
+- slice:
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7346781323355915
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.74360188243101
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 2.7313994986483126
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 88.0
+    num_pixel_mask_fit: 88.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.6642874040466857
+    mean_fat_percent_mask: 1.6642874040466857
+    weight_water: 1487.9660525200284
+    weight_fat: 0.021911589583167825
+    T2: 34.61054613529902
+    T2_se: 2.404715711495804
+    weight_water_se: 67.69853867570623
+    weight_fat_se: 0.015471913850339794
+    fat_fraction_T2: 2.8201297736511757
+    number_echo_fit: 15.0
+    fit_r2: 0.9989437607615528
+    fit_diff_residual: -2.0105207732612485E-4
+    noise_threshold: 3.7870833655878524
+    signal_mean: [1065.4545454545455, 982.125, 679.3863636363636, 546.8068181818181,
+      396.28409090909093, 317.95454545454544, 239.3181818181818, 189.54545454545453,
+      147.47727272727272, 115.3409090909091, 91.92045454545455, 76.95454545454545,
+      57.70454545454545, 52.82954545454545, 37.95348837209303, 35.93181818181818,
+      28.897435897435898]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 347.0
+    num_pixel_mask_fit: 347.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 1.750613092747337
+    mean_fat_percent_mask: 1.750613092747337
+    weight_water: 1441.0448026404167
+    weight_fat: 0.0338250938298077
+    T2: 33.99863141219838
+    T2_se: 2.9206806462233743
+    weight_water_se: 83.90214007944496
+    weight_fat_se: 0.017923898194442015
+    fat_fraction_T2: 4.421149949020225
+    number_echo_fit: 15.0
+    fit_r2: 0.9984080375650833
+    fit_diff_residual: -3.3790123055155163E-6
+    noise_threshold: 3.643824521518024
+    signal_mean: [1054.328530259366, 965.4293948126801, 666.7838616714697, 541.3602305475505,
+      390.34870317002884, 319.31988472622476, 234.95965417867436, 194.5734870317003,
+      146.149855907781, 122.70893371757926, 94.81502890173411, 80.46531791907515,
+      65.69117647058823, 56.339233038348084, 47.038805970149255, 42.90548780487805,
+      35.86196319018405]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 454.0
+    num_pixel_mask_fit: 454.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.1424589145924564
+    mean_fat_percent_mask: 2.1424589145924564
+    weight_water: 1368.0996726214094
+    weight_fat: 0.043311893704364925
+    T2: 33.763273050510605
+    T2_se: 2.837571099121906
+    weight_water_se: 78.96263270965142
+    weight_fat_se: 0.016434224166008423
+    fat_fraction_T2: 5.872434444998833
+    number_echo_fit: 15.0
+    fit_r2: 0.9985133584700059
+    fit_diff_residual: -0.0010330796337711945
+    noise_threshold: 3.968771906265009
+    signal_mean: [1015.3546255506608, 926.1651982378854, 648.5044052863436, 523.6607929515418,
+      383.5704845814978, 314.67180616740086, 233.08149779735683, 196.77753303964758,
+      146.36563876651982, 128.6740088105727, 96.14855875831486, 87.98230088495575,
+      67.35874439461884, 62.75112107623318, 51.64018691588785, 47.53720930232558,
+      42.066502463054185]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 330.0
+    num_pixel_mask_fit: 330.0
+    B1_ratio_mean: 100.0
+    B1_ratio_std: 0.0
+    mean_fat_percent: 2.591700035765018
+    mean_fat_percent_mask: 2.591700035765018
+    weight_water: 1294.3438233681466
+    weight_fat: 0.057199340684034414
+    T2: 34.39410340050525
+    T2_se: 2.1539317669130824
+    weight_water_se: 53.73053874648235
+    weight_fat_se: 0.011990741052671172
+    fat_fraction_T2: 8.011041580270193
+    number_echo_fit: 15.0
+    fit_r2: 0.9992299945424088
+    fit_diff_residual: -7.711594443549075E-5
+    noise_threshold: 3.205099695857723
+    signal_mean: [1000.8848484848485, 910.0666666666667, 648.8212121212122, 525.6848484848484,
+      394.95454545454544, 321.7121212121212, 249.5060606060606, 206.9212121212121,
+      163.4060606060606, 139.96060606060607, 112.07575757575758, 99.85454545454546,
+      80.44545454545455, 73.58181818181818, 61.93617021276596, 56.723404255319146,
+      50.15170278637771]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+      15.0, 16.0, 17.0]
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.522266041167377
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  - num_pixel_initial: 0.0
+    num_pixel_mask_fit: 0.0
+    B1_ratio_mean: .NaN
+    B1_ratio_std: .NaN
+    mean_fat_percent: .NaN
+    mean_fat_percent_mask: .NaN
+    weight_water: .NaN
+    weight_fat: .NaN
+    T2: .NaN
+    T2_se: .NaN
+    weight_water_se: .NaN
+    weight_fat_se: .NaN
+    fat_fraction_T2: .NaN
+    number_echo_fit: .NaN
+    fit_r2: .NaN
+    fit_diff_residual: .NaN
+    noise_threshold: 3.865066211482292
+    signal_mean: [.NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN, .NaN,
+      .NaN, .NaN, .NaN, .NaN, .NaN, .NaN]
+    echo_times: [9.5, 19.0, 28.5, 38.0, 47.5, 57.0, 66.5, 76.0, 85.5, 95.0, 104.5,
+      114.0, 123.5, 133.0, 142.5, 152.0, 161.5]
+    used_echoes: []
+  roiname: GAS_LAT_L

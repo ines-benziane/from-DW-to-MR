@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = False
+TransformMatrix = 1  0  0  0  1  0  0  0  1
+CenterOfRotation = 0  0  0
+AnatomicalOrientation = RAI
+Offset = -216.2044     -95.78344          -520
+ElementSpacing = 1.4          1.4           30
+DimSize = 320  160    9
+ElementNumberOfChannels = 1
+ElementType = MET_DOUBLE
+ElementDataFile = t2_map_roi.raw

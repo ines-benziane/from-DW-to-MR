@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from domain.entities.t2_stats import T2Stats
 from domain.entities.muscle_evolution import MuscleEvolution
-from infrastructure.color_mappers.crameri_color_mapper import get_evolution_color_from_palette
+from infrastructure.color_mappers0.crameri_color_mapper import get_evolution_color_from_palette
 
 def load_json(filepath):
     with open (filepath, 'r', encoding='utf-8') as f:

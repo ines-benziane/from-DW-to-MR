@@ -1,0 +1,56 @@
+csa:
+  inputs: null
+  options:
+    coordinates: 1
+  roi: roi_museg
+  suffix: null
+  variables:
+  - action: CSA
+    name: CSA
+dixon3pt:
+  default:
+    filters:
+    - (ffmap >= 0) & (ffmap <= 1)
+  inputs: dixon3pt
+  options:
+    coordinates: 1
+  roi: roi_museg
+  suffix: _DIX3
+  variables:
+  - action: NPIX
+    name: NPIX
+  - action: mean(ffmap)
+    name: FF
+  - action: mean(ffmap)
+    how: slice
+    name: FF
+t2map_3exp:
+  default:
+    filters:
+    - (t2map > 15) & (t2map < 70)
+    - (t2cint >= 0) & (t2cint <= 10)
+  inputs: t2map_3exp_dict
+  options:
+    coordinates: 1
+  roi: roi_museg
+  suffix: _3EXP
+  variables:
+  - action: NPIX
+    name: NPIX
+  - action: mean(t2map)
+    name: T2
+  - action: mean(t2map)
+    how: slice
+    name: T2
+  - action: std(t2map)
+    name: T2STD
+  - action: std(t2map)
+    how: slice
+    name: T2STD
+  - action: mean(t2cint)
+    name: T2CINT
+  - action: mean(ffmap)
+    filters:
+    - (ffmap >= 0) & (ffmap <= 1)
+    name: FF
+    private: 1

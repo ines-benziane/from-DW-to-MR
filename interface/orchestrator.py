@@ -1,6 +1,9 @@
+"""Orchestrator — loads exam data for each section defined in config.json and triggers PDF generation."""
+
 import json
 from section_generator import generate_pdf
 import sys
+from models import domain
 from pathlib import Path
 from models import request
 from data_reader import json_reader
@@ -45,15 +48,26 @@ def parse_version(version):
     else :
         return "", version
 
+def find_antecedents(patient_id, current_date, section, method, version, path):
+    """Retourne les examens antérieurs triés du plus ancien au plus récent."""
+    files = list(Path(path).glob(f"{patient_id}_*_{section['segment']}_{method}_{version}_{section['acquisition']}.json"))
+    antecedents = []
+    for f in files:
+        date = f.stem.split("_")[1]
+        if date < current_date:
+            antecedents.append((date, f))
+    antecedents.sort(key=lambda x: x[0])
+    return [domain.Exam.model_validate_json(f.read_text()) for _, f in antecedents]
+
+
 def get_exam(patient_id, path) :
     exams = []
     with open(config, "r") as f:
         sections  = json.load(f)
-        print (sections)
+        # print (sections)
     reader = json_reader.JsonReader(patient_id, path)
     for section in sections["section"] :
         available = data_found(patient_id, section, Path(__file__).parent.parent / path)
-        print(f"Section {section['section_name']}: {available}")
         for method, version in section["method"].items() :
             operator, v = parse_version(version)
             versions_available = compatible_versions( patient_id, section, method, v, operator, Path(__file__).parent.parent / path)
@@ -72,13 +86,18 @@ def get_exam(patient_id, path) :
                     acquisition = section["acquisition"]
                 )
             response = reader.fetch_data(req)
-            if response.exam != None :
+            response.section_name = section["section_name"]
+            if response.exam != None:
+                current_date = response.exam.metadata.exam_date
+                response.antecedents = find_antecedents(
+                    patient_id, current_date, section, method, version,
+                    Path(__file__).parent.parent / path
+                )
+                response.template_version = section.get("version")
                 exams.append(response)
                 break
     return exams
 
 
-
 exams = get_exam(sys.argv[1], sys.argv[2])
-print(sys.argv[1], sys.argv[2])
 generate_pdf.create_pdf(exams)

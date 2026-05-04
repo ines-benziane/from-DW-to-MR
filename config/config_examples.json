@@ -1,4 +1,4 @@
-        {
+{        {
             "section_name": "FF",
             "segment": "thighs",
             "method": {"dixon3pts" : ">=1.2", "bdixon3pt" : "<=3.0"},
@@ -13,5 +13,45 @@
             "method": {"t1map-mrf" :">=2.0"},
             "generate": false,
             "date" : null,
+            "acquisition" : "1.0"
+        }
+}
+
+        {
+
+    "section": [
+        {
+            "biomarker" : "T2",
+            "section_name": "5slices",
+            "segment": "thighs",
+            "method": {"t2map" : "1.0", "t2map-2epg" : ">=2.0"}, 
+            "generate": false,
+            "date": null, 
+            "acquisition" : "1.0"
+        }
+    ]
+}
+
+,
+
+        {
+            "biomarker" : "T2",
+            "section_name": "5slices",
+            "segment": "legs",
+            "method": {"t2map" : "1.0", "t2map-2epg" : ">=2.0"}, 
+            "version": "v2",
+            "generate": false,
+            "date": null, 
+            "acquisition" : "1.0"
+        },
+
+        {
+            "biomarker" : "FF",
+            "section_name": "5slices",
+            "segment": "thighs",
+            "method": {"dixon3pt-t2slice" : "1.0"},
+            "version": "v2",
+            "generate": false,
+            "date": null, 
             "acquisition" : "1.0"
         }

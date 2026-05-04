@@ -29,7 +29,7 @@ class VolumeData(BaseModel):
 
 class MuscleData(BaseModel):
     """A single muscle with its volume summary and per-slice Datas."""
-    name: str  
+    name: str
     side: Literal["L", "R"]
     volume: Optional[VolumeData] = None
     slices: list[SliceData] = []
@@ -43,7 +43,7 @@ class ExamMetadata(BaseModel):
     version : str
     acquisition : str
     segmentation: str
-    section_name : str
+    biomarker : str
 
 class Exam(BaseModel):
     """Root domain object — one exam, one biomarker. """

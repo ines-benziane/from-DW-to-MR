@@ -1,0 +1,41 @@
+{% from "T2/macros.html" import anatomical_header, slice_row, colorbar_t2 %}
+
+{% set muscles_list = ['VL', 'VI', 'VM', 'RF', 'SAR', 'GRA', 'SM', 'ST', 'BF', 'AM', 'AL'] %}
+{% set muscles_info = [
+    ('VL', 'Vastus Lateralis'),
+    ('VI', 'Vastus Intermedius'),
+    ('VM', 'Vastus Medialis'),
+    ('RF', 'Rectus Femoris'),
+    ('SAR', 'Sartorius'),
+    ('GRA', 'Gracilis'),
+    ('SM', 'Semimembranosus'),
+    ('ST', 'Semitendinosus'),
+    ('BF', 'Biceps Femoris'),
+    ('AM', 'Adductor Magnus'),
+    ('AL', 'Adductor Longus')
+] %}
+
+<div class="module-t2">
+    {{ anatomical_header('membres inférieurs', 'cuisses', muscles_info, body_image='images/corps_entier_thighs_highlighted_without_slices.png', schema_alt='Schéma cuisse') }}
+
+    {% if summary_slice %}
+        <div class="visualization-module">
+            <div style="text-align: center; font-size: 8pt; font-weight: bold; margin-bottom: 5px;">T2 moyen (données volumétriques)</div>
+                {{ colorbar_t2(report.colorbar) }}
+            {{ slice_row(summary_slice, muscles_list, show_title=false) }}
+        </div>
+    {% else %}
+        <p>Aucune donnée de mesure de cuisse (T2) n'a été trouvée.</p>
+    {% endif %}
+
+    {% if report.antecedent_slice %}
+    <div class="visualization-module" style="margin-top: 40px; background: #fcfcfc; border-radius: 8px; padding: 10px;">
+        <div style="text-align: center; font-size: 11pt; font-weight: bold; margin-bottom: 10px;">
+            Examen précédent — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
+        </div>
+        {{ slice_row(report.antecedent_slice, muscles_list, show_title=false) }}
+    </div>
+{% endif %}
+
+</div>
+

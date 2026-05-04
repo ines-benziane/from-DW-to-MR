@@ -3,6 +3,7 @@ CSV Parser — reads a results CSV and builds domain objects.
 """
 
 import csv
+import json 
 from pathlib import Path
 from typing import Optional
 
@@ -58,8 +59,10 @@ def _build_slice_result(row: dict) -> SliceData:
 def get_slice_number(s):
     return int(''.join(filter(str.isdigit, s.index)) or '0')
 
-def parse_csv(csv_path: Path, patient_id,  exam_date, segment,  method, version, acquisition, section_name) -> Exam:
+def parse_csv(csv_path: Path) -> Exam:
     """Parse a results CSV file and return a muscle-centric Exam."""
+    meta_path = csv_path.parent / "metadata.json"
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
     muscles_map: dict[tuple[str, str], MuscleData] = {}
     with open(csv_path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -84,8 +87,16 @@ def parse_csv(csv_path: Path, patient_id,  exam_date, segment,  method, version,
 
     for muscle in muscles_map.values():
         muscle.slices.sort(key=get_slice_number)
-    return Exam (
+    return Exam(
         muscles=list(muscles_map.values()),
-        metadata = ExamMetadata(patient_id = patient_id, exam_date = exam_date, segment = segment, method = method,  version = version, acquisition = acquisition, segmentation = "seg", section_name="T2")
+        metadata=ExamMetadata(
+            patient_id=meta["patient_id"],
+            exam_date=meta["exam_date"],
+            segment=meta["segment"],
+            method=meta["method"],
+            version=meta["version"],
+            acquisition=meta["acquisition"],
+            segmentation="seg",
+            biomarker=meta["biomarker"],
         )
-
+    )

@@ -1,0 +1,78 @@
+{% set anterior = report.anterior %}
+{% set posterior = report.posterior %}
+
+<style>
+.ff-view-box svg, .ff-view-box-faded svg { width: 300px; height: auto; }
+.ff-view-box { display:flex; border:1px solid #ddd; border-radius:8px; padding:6px; background:#f9f9f9; }
+.ff-view-box-faded { display:flex; border:1px solid #ddd; border-radius:8px; padding:6px; background:#f9f9f9; opacity:0.3; }
+</style>
+
+<div class="module-ff">
+    <h2 style="text-align:center; color:#0056b3; font-size:11pt; margin:6px 0;">Evolution FF - Cuisses</h2>
+
+    <div style="text-align:center; margin: 8px auto; width: 300px;">
+        <div style="position:relative; width:300px; height:20px;">
+            <img src="{{ report.colorbar }}" style="width:300px; height:20px; image-rendering:pixelated; display:block;"/>
+            <div style="position:absolute; left:0%;    top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+            <div style="position:absolute; left:10%;   top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+            <div style="position:absolute; left:21.4%; top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+            <div style="position:absolute; left:32.9%; top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+            <div style="position:absolute; left:44.3%; top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+            <div style="position:absolute; left:55.7%; top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+            <div style="position:absolute; left:67.1%; top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+            <div style="position:absolute; left:78.6%; top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+            <div style="position:absolute; left:90%;   top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+            <div style="position:absolute; left:100%;  top:0; width:1px; height:20px; background:rgba(255,255,255,0.6);"></div>
+        </div>
+        <div style="position:relative; height:12px; font-size:7pt; color:#666; margin-top:1px;">
+            <span style="position:absolute; left:0%;    transform:translateX(-50%);">0%</span>
+            <span style="position:absolute; left:10%;   transform:translateX(-50%);">5%</span>
+            <span style="position:absolute; left:21.4%; transform:translateX(-50%);">10%</span>
+            <span style="position:absolute; left:32.9%; transform:translateX(-50%);">15%</span>
+            <span style="position:absolute; left:44.3%; transform:translateX(-50%);">20%</span>
+            <span style="position:absolute; left:55.7%; transform:translateX(-50%);">25%</span>
+            <span style="position:absolute; left:67.1%; transform:translateX(-50%);">30%</span>
+            <span style="position:absolute; left:78.6%; transform:translateX(-50%);">35%</span>
+            <span style="position:absolute; left:90%;   transform:translateX(-50%);">40%</span>
+            <span style="position:absolute; left:100%;  transform:translateX(-50%);">100%</span>
+        </div>
+    </div>
+
+    <h3 style="text-align:center; color:#0056b3; font-size:9pt; margin:4px 0;">Vue antérieure</h3>
+    <div style="display:flex; justify-content:center; align-items:center; gap:10px;">
+        <div class="ff-view-box">
+            {% if anterior.superficial %}
+                {{ anterior.superficial.L | safe }}
+                {{ anterior.superficial.R | safe }}
+            {% endif %}
+        </div>
+        <div class="ff-view-box-faded">
+            {% if anterior.deep %}
+                {{ anterior.deep.L | safe }}
+                {{ anterior.deep.R | safe }}
+            {% else %}
+                {{ anterior.superficial.L | safe }}
+                {{ anterior.superficial.R | safe }}
+            {% endif %}
+        </div>
+    </div>
+
+    <h3 style="text-align:center; color:#0056b3; font-size:9pt; margin:10px 0 4px 0;">Vue postérieure</h3>
+    <div style="display:flex; justify-content:center; align-items:center; gap:10px;">
+        <div class="ff-view-box">
+            {% if posterior.superficial %}
+                {{ posterior.superficial.L | safe }}
+                {{ posterior.superficial.R | safe }}
+            {% endif %}
+        </div>
+        <div class="ff-view-box-faded">
+            {% if posterior.deep %}
+                {{ posterior.deep.L | safe }}
+                {{ posterior.deep.R | safe }}
+            {% else %}
+                {{ posterior.superficial.L | safe }}
+                {{ posterior.superficial.R | safe }}
+            {% endif %}
+        </div>
+    </div>
+</div>

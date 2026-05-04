@@ -1,0 +1,50 @@
+{# ============================================================
+   Macros partagés entre tous les modules (T2, FF, ...)
+   ============================================================ #}
+
+{# --- Colorbar générique --- #}
+{% macro colorbar(colorbar_src, labels=[], ticks=[], width=400, height=25) %}
+<div style="text-align: center; margin: 8px auto; width: {{ width }}px;">
+    <div style="position: relative; width: {{ width }}px; height: {{ height }}px;">
+        <img src="{{ colorbar_src }}" style="width: {{ width }}px; height: {{ height }}px; image-rendering: pixelated; display: block;"/>
+        {% for tick in ticks %}
+            <div style="position: absolute; left: {{ tick }}%; top: 0; width: 1px; height: {{ height }}px; background: rgba(255,255,255,0.7);"></div>
+        {% endfor %}
+    </div>
+    {% if labels %}
+    <div style="position: relative; height: 12px; width: {{ width }}px; margin: 0 auto; font-size: 7pt; color: #666; white-space: nowrap;">
+        {% for pos, text in labels %}
+            <span style="position: absolute; left: {{ pos }}%; transform: translateX(-50%);">{{ text }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endmacro %}
+
+
+{# --- Barre d'échelle verticale --- #}
+{% macro scale_bar(slices, invert=false) %}
+    {% if invert and slices %}
+        {% set max_d = slices[-1].slices.distance_cm %}
+    {% endif %}
+    <div style="display: flex; flex-direction: column; align-items: flex-end; margin-right: 40px; width: 60px;">
+        <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 10px;">
+            <span style="font-size: 12pt; font-weight: bold; color: #1d4c88; transform: translateX(50%);">Proximal</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; width: 100%; border-right: 2px solid #1d4c88; flex: 1;">
+            {% for slice in slices %}
+                <div style="display: flex; align-items: center; flex: 1;">
+                    {% if invert %}
+                        <span style="font-size: 10pt; font-weight: bold; white-space: nowrap; color: #1d4c88;">{{ "%.1f"|format(max_d - slice.slices.distance_cm) }} cm</span>
+                    {% else %}
+                        <span style="font-size: 10pt; font-weight: bold; white-space: nowrap; color: #1d4c88;">{{ slice.slices.distance_cm }} cm</span>
+                    {% endif %}
+                    <div style="width: 16px; border-top: 2px solid #1d4c88; margin-left: 4px;"></div>
+                </div>
+            {% endfor %}
+        </div>
+        <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 10px;">
+            <span style="font-size: 12pt; font-weight: bold; color: #1d4c88; transform: translateX(50%);">Distal</span>
+        </div>
+    </div>
+{% endmacro %}

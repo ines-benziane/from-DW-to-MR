@@ -1,0 +1,10 @@
+B0: 3
+echo_times:
+- 2.75
+- 3.95
+- 7.55
+field_strength: 3
+imaging_frequency: 123.2
+manufacturer: SIEMENS
+scheme: in-out
+sequence: fl3d3_ns

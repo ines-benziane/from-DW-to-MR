@@ -1,0 +1,6 @@
+Label Id	Label Name	Number Of Voxels	Volume (mm^3)	Image mean (THIGH Fat/water ratio (x1000) )	Image stdev (THIGH Fat/water ratio (x1000) )
+0	Clear Label	6349848	3.17492e+07	189.201	331.917
+34	QUAD_R	24810	124050	120.397	130.638
+35	HSTR_R	12419	62095	101.456	113.696
+36	QUAD_L	24050	120250	152.55	158.479
+37	HSTR_L	11401	57005	91.6375	115.768

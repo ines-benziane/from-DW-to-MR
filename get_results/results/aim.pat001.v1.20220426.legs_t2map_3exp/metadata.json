@@ -1,0 +1,10 @@
+{
+  "patient_id":        "pat001",
+  "patient_name":      "Fa. Je.",
+  "exam_date":         "20220426",
+  "segment":           "legs",
+  "method":            "t2map-3exp",
+  "biomarker":         "T2",
+  "version":           "1.0",
+  "acquisition":       "1.0"
+}

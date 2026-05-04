@@ -10,9 +10,26 @@
 
 body {
     font-family: 'Helvetica', Arial, sans-serif;
-    font-size: 10pt; 
+    font-size: 10pt;
     margin: 0;
     padding: 0;
+    background: white;
+}
+
+@media screen {
+    body {
+        background: #e0e0e0;
+    }
+    .page-wrapper {
+        width: 210mm;
+        min-height: 297mm;
+        padding: 20mm;
+        margin: 10mm auto;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
 }
 
 
@@ -29,7 +46,7 @@ body {
 
 .header-right {
     text-align: right;
-    width: 35%;
+    width: 40%;
 }
 
 .logo {
@@ -134,4 +151,14 @@ body {
 .results-table tr {
     page-break-inside: auto !important;
     page-break-after: auto !important;
+}
+
+.visualization-module {
+    break-inside: avoid;
+}
+
+.slices-container {
+    display: flex;
+    align-items: stretch;
+    break-inside: auto;
 }

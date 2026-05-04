@@ -1,0 +1,91 @@
+{# ============================================================
+   Macros réutilisables pour les modules FF
+   (calqué sur T2/macros.html, adapté pour FF-mean en %)
+   ============================================================ #}
+{% from "shared_macros.html" import colorbar as _colorbar %}
+
+{% macro colorbar_ff(colorbar_src) %}
+    {% set labels = [
+        [0,    "0%"],
+        [10,   "5%"],
+        [21.4, "10%"],
+        [32.9, "15%"],
+        [44.3, "20%"],
+        [55.7, "25%"],
+        [67.1, "30%"],
+        [78.6, "35%"],
+        [90,   "40%"],
+        [100,  "100%"]
+    ] %}
+    {% set ticks = [0, 10, 21.4, 32.9, 44.3, 55.7, 67.1, 78.6, 90, 100] %}
+    {{ _colorbar(colorbar_src, labels, ticks) }}
+{% endmacro %}
+
+{# --- SVG d'un côté (L ou R) avec miroir --- #}
+{% macro muscle_svg(muscles, viewbox, mirror_tx, side_label) %}
+    <div style="text-align: center;">
+        <span style="font-size: 7pt; color: #888;">{{ side_label }}</span><br>
+        <svg width="90" height="90" viewBox="{{ viewbox }}" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2c3e50" stroke-width="0.5" transform="translate({{ mirror_tx }}, 0) scale(-1, 1)">
+                {% for muscle in muscles %}
+                    {% set val = muscle.stats['FF'] %}
+                    <path d="{{ muscle.path }}" fill="{{ muscle.color }}"
+                        {% if val is number and val|float > 0.5 %}stroke-width="0.8" stroke="#000"{% endif %}>
+                        <title>{{ muscle.id }}: {{ "%.1f"|format(val * 100) if val is number else "--" }}%</title>
+                    </path>
+                {% endfor %}
+            </g>
+        </svg>
+    </div>
+{% endmacro %}
+
+{# --- Tableau de valeurs FF pour un côté --- #}
+{% macro muscle_table(muscles_data, muscles_list, side_label) %}
+    <div class="metrics-col" style="flex: 1;">
+        <h5 style="margin: 0 0 8px 0; color: #2c3e50; text-align: center; font-size: 9pt;">{{ side_label }}</h5>
+        <table style="width: 100%; font-size: 7.5pt; border-collapse: collapse; table-layout: fixed;">
+            {% for pair in muscles_list | batch(2) %}
+            <tr>
+                {% for m in pair %}
+                    {% set muscle_data = muscles_data | selectattr("id", "equalto", m) | first %}
+                    <td style="padding: 2px 5px; text-align: left; white-space: nowrap;">
+                        {% if muscle_data and muscle_data.stats['FF'] is number %}
+                            {% set val = muscle_data.stats['FF']|float %}
+                            {% if val > 0.5 %}
+                                <span style="color: {{ muscle_data.color }};"><strong>{{ m }}: {{ "%.1f"|format(val * 100) }}%</strong></span>
+                            {% else %}
+                                <span style="color: {{ muscle_data.color }};">{{ m }}: {{ "%.1f"|format(val * 100) }}%</span>
+                            {% endif %}
+                        {% else %}
+                            <span style="color: #bbb;">{{ m }}: --</span>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endmacro %}
+
+{# --- Ligne complète d'une slice (tableau L + SVG L/R + tableau R) --- #}
+{% macro slice_row(slice, muscles_list, show_title=true) %}
+    {% set muscles_L = slice.muscles | selectattr("side", "equalto", "L") | list %}
+    {% set muscles_R = slice.muscles | selectattr("side", "equalto", "R") | list %}
+
+    <div class="anatomy-container" style="display: flex; flex-direction: column; padding: 0px; background: #f9f9f9; border-radius: 8px;">
+        {% if show_title %}
+            <div style="text-align: center; font-size: 8pt; font-weight: bold; margin-bottom: 5px;">Slice {{ slice.slices.number }}</div>
+        {% endif %}
+        <div style="display: flex; justify-content: space-around; align-items: center;">
+            {{ muscle_table(muscles_L, muscles_list, "Gauche (L)") }}
+
+            <div style="display: flex; gap: 15px; justify-content: center; flex: 1.5;">
+                {{ muscle_svg(muscles_L, slice.viewbox_L, slice.mirror_tx_L, "L") }}
+                {{ muscle_svg(muscles_R, slice.viewbox_R, slice.mirror_tx_R, "R") }}
+            </div>
+
+            {{ muscle_table(muscles_R, muscles_list, "Droite (R)") }}
+        </div>
+    </div>
+{% endmacro %}
+

@@ -1,0 +1,31 @@
+################################################
+# Label Description File
+# File format: 
+# IDX   -R-  -G-  -B-  -A--  VIS MSH  LABEL
+# Fields:
+#    IDX:   Zero-based index 
+#    -R-:   Red color component (0..255)
+#    -G-:   Green color component (0..255)
+#    -B-:   Blue color component (0..255)
+#    -A-:   Label transparency (0.00 .. 1.00)
+#    VIS:   Label visibility (0 or 1)
+#    MSH:   Label mesh visibility (0 or 1)
+#  LABEL:   Label description 
+################################################
+    0     0    0    0       0.0  1  1    "background" 
+    1   230   25   75       1.0  1  1    "TA_R" 
+    2    60  180   75       1.0  1  1    "ED_R" 
+    3   255  225   25       1.0  1  1    "PER_R" 
+    4     0  130  200       1.0  1  1    "DLPC_R" 
+    5   245  130   48       1.0  1  1    "POP_R" 
+    6   145   30  180       1.0  1  1    "SOL_R" 
+    7    70  240  240       1.0  1  1    "GAS_MED_R" 
+    8   250  190  212       1.0  1  1    "GAS_LAT_R" 
+    9   230   25   75       1.0  1  1    "TA_L" 
+   10    60  180   75       1.0  1  1    "ED_L" 
+   11   255  225   25       1.0  1  1    "PER_L" 
+   12     0  130  200       1.0  1  1    "DLPC_L" 
+   13   245  130   48       1.0  1  1    "POP_L" 
+   14   145   30  180       1.0  1  1    "SOL_L" 
+   15    70  240  240       1.0  1  1    "GAS_MED_L" 
+   16   250  190  212       1.0  1  1    "GAS_LAT_L" 

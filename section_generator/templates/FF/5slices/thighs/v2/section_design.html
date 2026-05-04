@@ -1,0 +1,57 @@
+{% from "FF/macros.html" import slice_row, colorbar_ff %}
+{% from "shared_macros.html" import scale_bar %}
+{% set anterior = report.anterior %}
+{% set posterior = report.posterior %}
+{% set module_data = report.results[::2] %}
+
+{% set muscles_list = ['VL', 'VI', 'VM', 'RF', 'SAR', 'GRA', 'SM', 'ST', 'BF', 'BF_SH', 'AM', 'AL', 'AB'] %}
+
+<style>
+.ff-view-box svg { width: 135px; height: 180px; }
+.ff-view-box { display:flex; border:1px solid #ddd; border-radius:6px; padding:4px; background:#fff; }
+.ff-slice-svg svg { width: 80px; height: auto; }
+</style>
+
+<div class="module-ff">
+    <h2 style="text-align:center; color:#0056b3; font-size:10pt; margin:4px 0 6px 0;">Evolution FF - Cuisses</h2>
+
+    {{ colorbar_ff(report.colorbar) }}
+
+    {# Vues antérieure + postérieure côte à côte #}
+    <div style="display:flex; justify-content:center; align-items:flex-start; gap:30px; margin: 3px 0;">
+        <div style="text-align:center;">
+            <h3 style="color:#0056b3; font-size:8pt; margin:0 0 3px 0;">Vue antérieure</h3>
+            <div class="ff-view-box">
+                {% if anterior.superficial %}
+                    {{ anterior.superficial.L | safe }}
+                    {{ anterior.superficial.R | safe }}
+                {% endif %}
+            </div>
+        </div>
+        <div style="text-align:center;">
+            <h3 style="color:#0056b3; font-size:8pt; margin:0 0 3px 0;">Vue postérieure</h3>
+            <div class="ff-view-box">
+                {% if posterior.superficial %}
+                    {{ posterior.superficial.L | safe }}
+                    {{ posterior.superficial.R | safe }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% if module_data %}
+    <h3 style="text-align:center; color:#0056b3; font-size:8pt; margin:8px 0 4px 0;">Détail par coupe</h3>
+   <div style="display: flex; align-items: stretch;">
+    {{ scale_bar(module_data) }}
+    <div style="flex: 1; min-width: 0;">
+        {% for slice in module_data %}
+            <div class="visualization-module" style="margin-bottom: 15px;">
+                {{ slice_row(slice, muscles_list) }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+    {% endif %}
+
+</div>
