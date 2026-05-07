@@ -1,0 +1,10 @@
+{
+  "patient_id":        "pat001",
+  "patient_name":      "Fa. Je.",
+  "exam_date":         "20260204",
+  "segment":           "thighs",
+  "method":            "dixon3pt-t2slice",
+  "biomarker":         "FF",
+  "version":           "1.0",
+  "acquisition":       "1.0"
+}

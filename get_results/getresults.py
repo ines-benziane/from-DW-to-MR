@@ -21,11 +21,12 @@ CONFIG = pathlib.Path('config') / 'results_config.yml'
 
 # examination 
 # INDEX = 'aim.pat001.v1.20161104.legs'
-INDEX = 'aim.pat001.v2.20220426.legs'
+# INDEX = 'aim.pat001.v2.20220426.legs'
+INDEX = 'vol.3'
 
 # METHOD
-# METHOD = 'dixon3pt_t2slice'
-METHOD = 't2map_3exp'
+METHOD = 'dixon3pt_t2slice'
+# METHOD = 't2map_3exp'
 
 
 #
