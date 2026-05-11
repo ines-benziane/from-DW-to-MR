@@ -47,9 +47,9 @@ config = config[METHOD]
 # load data
 print('load data')
 inputs = config['inputs']
-for input in inputs if isinstance(inputs, list) else [inputs]:
+info, volumes = {}, {}
+for input in (inputs if isinstance(inputs, list) else [inputs]) if inputs is not None else []:
     datadir = WORK / INDEX / input
-    info, volumes = {}, {}
     for file in datadir.glob('*'):
         # load volumes
         for suffix in VOL_SUFFIXES:
