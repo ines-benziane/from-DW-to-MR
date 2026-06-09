@@ -6,12 +6,14 @@ from weasyprint import HTML, CSS
 import base64
 import unicodedata
 import mimetypes
-from section_generator.src.infrastructure.color_mappers import get_color, generate_colorbar_image
+from section_generator.src.infrastructure.color_mappers import get_color, generate_colorbar_image, generate_evolution_colorbar_image
 from tools.smooth_outlines import B_spline
 from section_generator.FF_diagram.main_bsplines import generate_ff_svg
-
+from section_generator.src.domain.services.synthesis_builder import build_synthesis_data, build_muscle_evolutions
+from comment_generator import select_comment
 
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "config/report_config.json")
+STAFF_FILE = os.path.join(os.path.dirname(__file__), "..", "config", "staff.json")
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "templates")
 TEMPLATE_FILE = "report_template.html"
 STYLE_FILE = os.path.join(os.path.dirname(__file__), "styles/report_styles.css")
@@ -71,15 +73,16 @@ def save_debug_file(html_content, filename, base_path):
     except Exception as e:
         print(f"Impossible to save debug file : {e}")
 
-def export_to_pdf(html_content, base_path, output_name, css_rel_path):
+def export_to_pdf(html_content, base_path, output_path, css_rel_path):
+    """base_path: used as base_url for resolving images/CSS. output_path: full path for the PDF file."""
     html_doc = HTML(string=html_content, base_url=base_path)
     css_path = os.path.join(base_path, css_rel_path)
     if os.path.exists(css_path):
         css = CSS(filename=css_path)
-        html_doc.write_pdf(os.path.join(base_path, output_name), stylesheets=[css])
+        html_doc.write_pdf(output_path, stylesheets=[css])
     else:
-        print(f'{"File not found at {css_path}."}')
-        html_doc.write_pdf(os.path.join(base_path, output_name))
+        print(f'CSS not found at {css_path}.')
+        html_doc.write_pdf(output_path)
 
 def normalize(text):
     if not text: return ""
@@ -100,7 +103,7 @@ def points_to_line_path(points):
     l = " ".join(f"L {x},{y}" for x, y in points[1:])
     return f"{m} {l} Z"
 
-def transform_by_slice(muscles, biomarker):
+def transform_by_slice(muscles, biomarker, colormap_name="default"):
     """
         Permet la transition entre l'objet "Exam" reçu, qui a une structure "muscle centric" avec ce module le section generator qui a
         une structure par slice 
@@ -125,7 +128,7 @@ def transform_by_slice(muscles, biomarker):
                 "side": muscle["side"],
                 "stats" : s["stats"],
                 "path" : svg_path,
-                "color": get_color(biomarker, s["stats"])}
+                "color": get_color(biomarker, s["stats"], colormap_name)}
             )
     for key, value in slices_map.items() :
         padding = 2
@@ -179,7 +182,7 @@ def build_summary_slice(slices):
     for s in slices:
         for muscle in s["muscles"]:
             key = (muscle["id"], muscle["side"])
-            val = muscle["stats"].get("T2-mean")
+            val = muscle["stats"].get("T2")
             if isinstance(val, (int, float)):
                 t2_sums[key] = t2_sums.get(key, 0) + val
                 t2_counts[key] = t2_counts.get(key, 0) + 1
@@ -191,7 +194,7 @@ def build_summary_slice(slices):
         averaged_muscles.append({
             "id": muscle["id"],
             "side": muscle["side"],
-            "stats": {"T2-mean": avg},
+            "stats": {"T2": avg},
             "path": muscle["path"],
         })
 
@@ -205,7 +208,7 @@ def build_summary_slice(slices):
     }
 
 
-def build_volume_slice(slices, muscles_raw, biomarker):
+def build_volume_slice(slices, muscles_raw, biomarker, colormap_name="default"):
     """Utile pour 1 slice : j'utilise la stat présente dans le volume et pas une moyenne de slices"""
     if not slices:
         return None
@@ -218,7 +221,7 @@ def build_volume_slice(slices, muscles_raw, biomarker):
         if raw is None :
             continue
         volume_stats = raw["volume"]["stats"]
-        color = get_color(biomarker, volume_stats)
+        color = get_color(biomarker, volume_stats, colormap_name)
         result_muscles.append({
             "id": muscle["id"],
             "side": muscle["side"],
@@ -237,8 +240,16 @@ def build_volume_slice(slices, muscles_raw, biomarker):
     }
 
 
-def create_pdf(exams): #exams = list d'examens. 1 examen = 1 section.
+def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthesis_version=None, colormap_name="default"):
+    """
+    output_name: PDF filename (default: Medical_report.pdf).
+    output_dir: directory for output files (default: section_generator/).
+    save_html: whether to write the debug HTML file alongside the PDF.
+    """
     base_path = os.path.abspath(os.path.dirname(__file__))
+    actual_dir = os.path.abspath(output_dir) if output_dir else base_path
+    actual_name = output_name or OUTPUT_FILE
+    os.makedirs(actual_dir, exist_ok=True)
     try:
         config = load_config(os.path.join(base_path, CONFIG_FILE))
         all_sections = []
@@ -258,62 +269,78 @@ def create_pdf(exams): #exams = list d'examens. 1 examen = 1 section.
                     exam.exam.muscles,
                     os.path.join(base_path, "FF_diagram", "hamstring.svg")
                 )
-                results = transform_by_slice(cleaned_exam["muscles"], "FF") 
+                results = transform_by_slice(cleaned_exam["muscles"], "FF", colormap_name)
                 section_name = exam.section_name
-                if section_name == "1slice":
-                    summary = build_volume_slice(results, cleaned_exam["muscles"], "FF")
-                else:
-                    summary = None
+                current_volume_slice = build_volume_slice(results, cleaned_exam["muscles"], "FF", colormap_name)
+                summary = current_volume_slice if section_name == "1slice" else None
                 if exam.antecedents:
                     ant = exam.antecedents[-1]
                     ant_dict = clean_nan_values(ant.model_dump())
-                    ant_results = transform_by_slice(ant_dict["muscles"], "FF")
-                    antecedent_slice = build_volume_slice(ant_results, ant_dict["muscles"], "FF")
+                    ant_results = transform_by_slice(ant_dict["muscles"], "FF", colormap_name)
+                    antecedent_slice = build_volume_slice(ant_results, ant_dict["muscles"], "FF", colormap_name)
                     antecedent_date = ant_dict["metadata"]["exam_date"]
                 else:
                     antecedent_slice = None
                     antecedent_date = None
+                evolutions = (
+                    build_muscle_evolutions(current_volume_slice["muscles"], antecedent_slice["muscles"], "FF")
+                    if section_name == "1slice" and current_volume_slice and antecedent_slice
+                    else None
+                )
                 all_sections.append({
                     "acquisition": cleaned_exam["metadata"],
                     "template_version": exam.template_version,
                     "anterior": {"superficial": svg_anterior, "deep": None},
                     "posterior": {"superficial": svg_posterior, "deep": None},
-                    "colorbar": generate_colorbar_image("FF"),
+                    "colorbar": generate_colorbar_image("FF", colormap_name),
                     "results": results,
                     "summary_slice": summary,
+                    "current_volume_slice": current_volume_slice,
                     "antecedent_slice": antecedent_slice,
                     "antecedent_date": antecedent_date,
-                    "section_name" : exam.section_name                })
+                    "evolutions": evolutions,
+                    "section_name": exam.section_name,
+                })
             else:
-                results = transform_by_slice(cleaned_exam["muscles"], biomarker)
+                results = transform_by_slice(cleaned_exam["muscles"], biomarker, colormap_name)
                 section_name = exam.section_name
-                if section_name == "1slice":
-                    summary = build_volume_slice(results, cleaned_exam["muscles"], biomarker)
-                else:
-                    summary = None
+                current_volume_slice = build_volume_slice(results, cleaned_exam["muscles"], biomarker, colormap_name)
+                summary = current_volume_slice if section_name == "1slice" else None
                 if exam.antecedents:
                     ant = exam.antecedents[-1]
                     ant_dict = clean_nan_values(ant.model_dump())
-                    ant_results = transform_by_slice(ant_dict["muscles"], biomarker)
-                    antecedent_slice = build_volume_slice(ant_results, ant_dict["muscles"], biomarker)
+                    ant_results = transform_by_slice(ant_dict["muscles"], biomarker, colormap_name)
+                    antecedent_slice = build_volume_slice(ant_results, ant_dict["muscles"], biomarker, colormap_name)
                     antecedent_date = ant_dict["metadata"]["exam_date"]
                 else:
                     antecedent_slice = None
                     antecedent_date = None
+                evolutions = (
+                    build_muscle_evolutions(current_volume_slice["muscles"], antecedent_slice["muscles"], biomarker)
+                    if section_name == "1slice" and current_volume_slice and antecedent_slice
+                    else None
+                )
                 all_sections.append({
                     "results": results,
                     "summary_slice": summary,
+                    "current_volume_slice": current_volume_slice,
                     "antecedent_slice": antecedent_slice,
                     "antecedent_date": antecedent_date,
+                    "evolutions": evolutions,
                     "acquisition": cleaned_exam["metadata"],
                     "template_version": exam.template_version,
-                    "colorbar": generate_colorbar_image(biomarker),
-                    "section_name" : exam.section_name
+                    "colorbar": generate_colorbar_image(biomarker, colormap_name),
+                    "section_name": exam.section_name,
+                    "synthesis": build_synthesis_data(all_sections),
+                    "comment": select_comment(cleaned_exam["muscles"]) if biomarker == "T2" else None,
                 })
             patient_metadata = cleaned_exam["metadata"]
 
         template_data = {
             "all_reports": all_sections,
+            "synthesis": build_synthesis_data(all_sections),
+            "synthesis_version": synthesis_version or "v1",
+            "evo_colorbar": generate_evolution_colorbar_image(),
             "header": {
                 "report_title": "Compte-rendu d'examen",
                 "lab_address" : "Institut de Myologie<br> Hôpital Universitaire La Pitié-Salpêtrière<br> Bâtiment Babinski 47/83 Bd de l’hôpital<br> 75013 Paris",
@@ -323,9 +350,18 @@ def create_pdf(exams): #exams = list d'examens. 1 examen = 1 section.
             "acquisition" : patient_metadata
         }
         set_logo(template_data, base_path, get_image_base64)
+        staff_path = os.path.abspath(STAFF_FILE)
+        if os.path.exists(staff_path):
+            with open(staff_path, encoding="utf-8") as f:
+                template_data["staff"] = json.load(f)
+        else:
+            template_data["staff"] = {"technicians": [], "doctors": []}
         html_content = generate_html(template_data)
-        save_debug_file(html_content, DEBUG_HTML_FILE, base_path)
-        export_to_pdf(html_content, base_path, OUTPUT_FILE, 'styles/report_styles.css')
+        if save_html:
+            html_name = os.path.splitext(actual_name)[0] + ".html"
+            save_debug_file(html_content, html_name, actual_dir)
+        output_path = os.path.join(actual_dir, actual_name)
+        export_to_pdf(html_content, base_path, output_path, 'styles/report_styles.css')
 
     except Exception as e:
         print(f'\n--- ERREUR CRITIQUE ---')

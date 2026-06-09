@@ -1,5 +1,5 @@
-{% from "FF/macros.html" import slice_row, colorbar_ff %}
-{% from "shared_macros.html" import scale_bar %}
+{% from "FF/macros.html" import slice_row_svg_only, colorbar_ff %}
+{% from "shared_macros.html" import scale_bar, no_antecedent_message %}
 {% set anterior = report.anterior %}
 {% set posterior = report.posterior %}
 {% set module_data = report.results[::2] %}
@@ -15,43 +15,30 @@
 <div class="module-ff">
     <h2 style="text-align:center; color:#0056b3; font-size:10pt; margin:4px 0 6px 0;">Evolution FF - Cuisses</h2>
 
+    {% if report.antecedent_slice %}
+    <div class="visualization-module" style="margin-top: 10px; background: #fcfcfc; border-radius: 8px; padding: 10px;">
+        <div style="text-align: center; font-size: 11pt; font-weight: bold; margin-bottom: 10px;">
+            Examen précédent — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
+        </div>
+        {{ slice_row_svg_only(report.antecedent_slice) }}
+    </div>
+    {% else %}
+        {{ no_antecedent_message() }}
+    {% endif %}
+
     {{ colorbar_ff(report.colorbar) }}
 
-    {# Vues antérieure + postérieure côte à côte #}
-    <div style="display:flex; justify-content:center; align-items:flex-start; gap:30px; margin: 3px 0;">
-        <div style="text-align:center;">
-            <h3 style="color:#0056b3; font-size:8pt; margin:0 0 3px 0;">Vue antérieure</h3>
-            <div class="ff-view-box">
-                {% if anterior.superficial %}
-                    {{ anterior.superficial.L | safe }}
-                    {{ anterior.superficial.R | safe }}
-                {% endif %}
-            </div>
-        </div>
-        <div style="text-align:center;">
-            <h3 style="color:#0056b3; font-size:8pt; margin:0 0 3px 0;">Vue postérieure</h3>
-            <div class="ff-view-box">
-                {% if posterior.superficial %}
-                    {{ posterior.superficial.L | safe }}
-                    {{ posterior.superficial.R | safe }}
-                {% endif %}
-            </div>
-        </div>
-    </div>
-
     {% if module_data %}
-    <h3 style="text-align:center; color:#0056b3; font-size:8pt; margin:8px 0 4px 0;">Détail par coupe</h3>
-   <div style="display: flex; align-items: stretch;">
-    {{ scale_bar(module_data) }}
-    <div style="flex: 1; min-width: 0;">
-        {% for slice in module_data %}
-            <div class="visualization-module" style="margin-bottom: 15px;">
-                {{ slice_row(slice, muscles_list) }}
-            </div>
-        {% endfor %}
+    <div style="display: flex; align-items: stretch;">
+        {{ scale_bar(module_data, invert=true) }}
+        <div style="flex: 1; min-width: 0;">
+            {% for slice in module_data %}
+                <div class="visualization-module" style="margin-bottom: 15px;">
+                    {{ slice_row_svg_only(slice) }}
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-
     {% endif %}
 
 </div>

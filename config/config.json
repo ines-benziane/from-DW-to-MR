@@ -7,7 +7,7 @@
             "section_name": "5slices",
             "segment": "thighs",
             "method": {"t2map" : "1.4", "t2map-3exp" : ">=1.0"}, 
-            "version": null,
+            "version": "v2",
             "generate": false,
             "date": null, 
             "acquisition" : "1.0"
@@ -17,7 +17,7 @@
             "section_name": "5slices",
             "segment": "legs",
             "method": {"t2map" : "1.0", "t2map-3exp" : ">=1.0"}, 
-            "version": null,
+            "version": "v2",
             "generate": false,
             "date": null, 
             "acquisition" : "1.0"
@@ -27,10 +27,20 @@
             "biomarker" : "FF",
             "section_name": "5slices",
             "segment": "thighs",
-            "method": {"dixon3pt-t2slice" : "1.0"}, 
+            "method": {"dixon3pt-t2slice" : "1.0"},
             "version": "v2",
             "generate": false,
-            "date": null, 
+            "date": null,
+            "acquisition" : "1.0"
+        },
+        {
+            "biomarker" : "FF",
+            "section_name": "5slices",
+            "segment": "legs",
+            "method": {"dixon3pt-t2slice" : "1.0"},
+            "version": "v1",
+            "generate": false,
+            "date": null,
             "acquisition" : "1.0"
         }
     ]

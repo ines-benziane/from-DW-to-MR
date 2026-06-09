@@ -43,7 +43,7 @@ def get_all_muscles_data(svg_file, svg_id, results, all_muscles_data, biomarker)
         val = result.stats.get(stat_key)
         if val is not None:
             values.append(float(val))
-    values_smooth = B_spline_1d(values)
+    values_smooth = [max(0.0, min(1.0, v)) for v in B_spline_1d(values)]
     bands = np.linspace(y_min, y_max, 300)
     for y_value, val in zip(bands, values_smooth):
         ff_color = color.ff_to_color(val)

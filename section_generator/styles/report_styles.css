@@ -1,6 +1,6 @@
 @page {
     size: A4 portrait !important;
-    margin: 1.5cm 2cm 1.5cm 2cm;
+    margin: 0.75cm;
     @bottom-right {
         content: "Page " counter(page) " sur " counter(pages);
         font-size: 9pt;
@@ -37,7 +37,7 @@ body {
     display:flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding-top: 0.5cm;
+    padding-top: 0.15cm;
 }
 
 .header-left {
@@ -64,9 +64,9 @@ body {
 
 .separator {
     border: none;
-    border-top: 2px solid #ccc;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    border-top: 1px solid #ccc;
+    margin-top: 2px;
+    margin-bottom: 6px;
 }
 
 /* ==================================================================== */
@@ -75,7 +75,8 @@ body {
     font-size: 18pt;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 25px;
+    margin-top: 2px;
+    margin-bottom: 4px;
     color: #0056b3;
 }
 
@@ -83,7 +84,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 30px;
+    margin-bottom: 3px;
+}
+
+.metadata-bar p {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 9.5pt;
 }
 
 .metadata-left {

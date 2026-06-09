@@ -14,7 +14,7 @@ class JsonWriter(WriterInterface):
         """Serialize the Exam to JSON and write to destination."""
         if destination.is_dir() or not destination.suffix:
             # filename = f"{exam.metadata.patient_id}.{exam.metadata.segment}.{exam.metadata.method}.{exam.metadata.version}.{exam.metadata.exam_date}.json"
-            filename = f"{exam.metadata.patient_id}_{exam.metadata.exam_date}_{exam.metadata.segment}_{exam.metadata.method}.json"
+            filename = f"{exam.metadata.patient_id}_{exam.metadata.exam_date}_{exam.metadata.segment}_{exam.metadata.method}_{exam.metadata.version}_{exam.metadata.acquisition}.json"
             destination = destination / filename 
         data = exam.model_dump_json(exclude_none=True, indent=2)
         destination.parent.mkdir(parents=True, exist_ok=True)

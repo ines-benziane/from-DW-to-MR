@@ -24,12 +24,20 @@
                     Date de naissance : {{ patient.birth_date }}</p>
                 </div>
                 <div class="metadata-right">
-                    <p>Adressé(e) par {{ patient.referring_doctor }}<br>
+                    <!-- <p>Adressé(e) par {{ patient.referring_doctor }}<br> -->
+                    <p>Adressé(e) par Dr ----- <br>
                     Date d'examen : {{ acquisition.exam_date }}</p>
                 </div>
             </div>
 
             <hr class="separator"/>
+
+            {% if synthesis %}
+            <div class="report-section" style="margin-bottom:8px; break-after: page; page-break-after: page;">
+                {% include "synthesis/" ~ synthesis_version ~ "/section_design.html" %}
+            </div>
+            {% endif %}
+
             <div class="content">
                 {% for report in all_reports %}
                     <div class="report-section" style="margin-bottom: 30px; {% if not loop.first %}break-before: page; page-break-before: page;{% endif %}">
@@ -57,7 +65,35 @@
                     {% endif %}
                 {% endfor %}
             </div>
+
+
         </div>
+
+        {% if staff %}
+        <footer style="margin-top: 40px; padding-top: 12px; border-top: 1px solid #ccc; font-size: 11pt; color: #444;">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    {% if staff.technicians %}
+                        <div>{{ staff.technicians[0] }}</div>
+                        {% if staff.technicians|length > 1 %}
+                        <div style="margin-top: 4px;">
+                            {% for name in staff.technicians[1:] %}
+                                <span style="margin-right: 24px;">{{ name }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div>
+                    {% for name in staff.doctors %}
+                        <span style="margin-right: 24px;">{{ name }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </footer>
+        {% endif %}
+
+    </div>
     </body>
 </html>
 

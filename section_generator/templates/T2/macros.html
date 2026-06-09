@@ -1,32 +1,33 @@
 {# ============================================================
    Macros réutilisables pour les modules T2
    ============================================================ #}
-{% from "shared_macros.html" import colorbar as _colorbar %}
+{% from "shared_macros.html" import colorbar as _colorbar, segmentation_note %}
 
 {% macro colorbar_t2(colorbar_src) %}
     {% set labels = [
         [0,   "10 ms"],
         [28,  "24"],
         [54,  "37"],
-        [58,  "39"],
         [62,  "41"],
         [100, "60 ms"]
     ] %}
     {% set ticks = [58] %}
-    {{ _colorbar(colorbar_src, labels, ticks) }}
+    {% set top_labels = [[58, "39"]] %}
+    {{ _colorbar(colorbar_src, labels, ticks, height=20, font_size="9pt", top_labels=top_labels) }}
+    {{ segmentation_note() }}
 {% endmacro %}
 
 {# --- SVG d'un côté (L ou R) avec miroir --- #}
-{% macro muscle_svg(muscles, viewbox, mirror_tx, side_label, contour="") %}
+{% macro muscle_svg(muscles, viewbox, mirror_tx, side_label, contour="", size=90) %}
     <div style="text-align: center;">
         <span style="font-size: 7pt; color: #888;">{{ side_label }}</span><br>
-        <svg width="90" height="90" viewBox="{{ viewbox }}" xmlns="http://www.w3.org/2000/svg">
+        <svg width="{{ size }}" height="{{ size }}" viewBox="{{ viewbox }}" xmlns="http://www.w3.org/2000/svg">
             <g stroke="#2c3e50" stroke-width="0.5" transform="translate({{ mirror_tx }}, 0) scale(-1, 1)">
                 {% if contour %}
                     <path d="{{ contour }}" fill="none" stroke="#666" stroke-width="1"/>
                 {% endif %}
                 {% for muscle in muscles %}
-                    {% set val = muscle.stats['T2-mean'] %}
+                    {% set val = muscle.stats['T2'] %}
                     <path d="{{ muscle.path }}" fill="{{ muscle.color }}"
                         {% if val is number and val|float > 39 %}stroke-width="0.8" stroke="#000"{% endif %}>
                         <title>{{ muscle.id }}: {{ "%.1f"|format(val) if val is number else "--" }}</title>
@@ -41,14 +42,14 @@
 {% macro muscle_table(muscles_data, muscles_list, side_label, side_suffix="") %}
     <div class="metrics-col" style="flex: 1;">
         <h5 style="margin: 0 0 8px 0; color: #2c3e50; text-align: center; font-size: 9pt;">{{ side_label }}</h5>
-        <table style="width: 100%; font-size: 7.5pt; border-collapse: collapse; table-layout: fixed;">
+        <table style="width: 100%; font-size: 6.5pt; border-collapse: collapse; table-layout: fixed;">
             {% for pair in muscles_list | batch(2) %}
             <tr>
                 {% for m in pair %}
                     {% set muscle_data = muscles_data | selectattr("id", "equalto", m) | first %}
-                    <td style="padding: 2px 5px; text-align: left; white-space: nowrap;">
-                        {% if muscle_data and muscle_data.stats['T2-mean'] is number %}
-                        {% set val = muscle_data.stats['T2-mean']|float %}
+                    <td style="padding: 1px 3px; text-align: left; white-space: nowrap;">
+                        {% if muscle_data and muscle_data.stats['T2'] is number %}
+                        {% set val = muscle_data.stats['T2']|float %}
                         {% if val > 39 %}
                             <span style="color: {{ muscle_data.color }};"><strong>{{ m }}: {{ "%.1f"|format(val) }}</strong></span>
                         {% else %}
@@ -66,7 +67,7 @@
 {% endmacro %}
 
 {# --- Ligne complète d'une slice (tableau L + SVG L/R + tableau R) --- #}
-{% macro slice_row(slice, muscles_list, show_title=false) %}
+{% macro slice_row(slice, muscles_list, show_title=false, size=90) %}
     {% set muscles_L = slice.muscles | selectattr("side", "equalto", "L") | list %}
     {% set muscles_R = slice.muscles | selectattr("side", "equalto", "R") | list %}
 
@@ -78,8 +79,8 @@
             {{ muscle_table(muscles_L, muscles_list, "Gauche (L)") }}
 
             <div style="display: flex; gap: 15px; justify-content: center; flex: 1.5;">
-                {{ muscle_svg(muscles_L, slice.viewbox_L, slice.mirror_tx_L, "L") }}
-                {{ muscle_svg(muscles_R, slice.viewbox_R, slice.mirror_tx_R, "R", slice.slices.contour|default("")) }}
+                {{ muscle_svg(muscles_L, slice.viewbox_L, slice.mirror_tx_L, "L", size=size) }}
+                {{ muscle_svg(muscles_R, slice.viewbox_R, slice.mirror_tx_R, "R", slice.slices.contour|default(""), size=size) }}
             </div>
 
             {{ muscle_table(muscles_R, muscles_list, "Droite (R)") }}
@@ -91,9 +92,12 @@
 {# --- En-tête anatomique --- #}
 {% macro anatomical_header(region, segment, muscles_info, body_image="images/corps_entier_thighs_highlighted.png", schema_image="images/cuisse_schema.png", schema_alt="Schéma") %}
     <div style="display: flex; align-items: flex-start; margin: 8px 0;">
-        <img src="{{ body_image }}"
-            style="width: 120px; height: 220px; object-fit: contain; margin-right: 25px;"
-            alt="Corps entier">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; margin-right: 25px; height: 240px;">
+            <img src="{{ body_image }}"
+                style="width: 120px; height: 220px; object-fit: contain;"
+                alt="Corps entier">
+            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center;">zone anatomique concernée indiquée en bleu</span>
+        </div>
 
         <div style="flex: 0 0 auto; padding-top: 0; width: 280px;">
             <h3 style="margin-top: 0; color: #0056b3; text-align: center;">Repères anatomiques</h3>
@@ -119,10 +123,11 @@
             </div>
         </div>
 
-        <div style="display: flex; align-items: flex-start; margin-left: 10px;">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-left: 10px; height: 240px;">
             <img src="{{ schema_image }}"
                 style="height: 180px; width: auto; object-fit: contain;"
                 alt="{{ schema_alt }}">
+            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center;">schéma d'une coupe de {{ segment }}</span>
         </div>
     </div>
 {% endmacro %}
@@ -137,13 +142,60 @@
             Moyennes antérieures :
             {% for slice in antecedent %}
                 <strong>S{{ loop.index }}:</strong>
-                G: {{ "%.1f"|format(slice.muscles_L[0].stats['T2-mean']|float) if slice.muscles_L else '--' }} /
-                D: {{ "%.1f"|format(slice.muscles_R[0].stats['T2-mean']|float) if slice.muscles_R else '--' }}
+                G: {{ "%.1f"|format(slice.muscles_L[0].stats['T2']|float) if slice.muscles_L else '--' }} /
+                D: {{ "%.1f"|format(slice.muscles_R[0].stats['T2']|float) if slice.muscles_R else '--' }}
                 {% if not loop.last %} | {% endif %}
             {% endfor %}
         </p>
     </div>
     {% endif %}
+{% endmacro %}
+
+{% macro colorbar_t2_large(colorbar_src) %}
+    {% set labels = [
+        [0,   "10 ms"],
+        [28,  "24"],
+        [40,  "30"],
+        [54,  "37"],
+        [62,  "41"],
+        [80,  "50"],
+        [100, "60 ms"]
+    ] %}
+    {% set ticks = [28, 40, 54, 58, 62, 80] %}
+    {% set top_labels = [[58, "39"]] %}
+    {{ _colorbar(colorbar_src, labels, ticks, width=500, height=20, font_size="9pt", top_labels=top_labels) }}
+    {{ segmentation_note() }}
+{% endmacro %}
+
+{# --- SVG seul d'un côté (sans tableau) --- #}
+{% macro muscle_svg_only(muscles, viewbox, mirror_tx, side_label, contour="", size=120) %}
+    <div style="text-align: center;">
+        <span style="font-size: 7pt; color: #888;">{{ side_label }}</span><br>
+        <svg width="{{ size }}" height="{{ size }}" viewBox="{{ viewbox }}" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2c3e50" stroke-width="0.5" transform="translate({{ mirror_tx }}, 0) scale(-1, 1)">
+                {% if contour %}
+                    <path d="{{ contour }}" fill="none" stroke="#666" stroke-width="1"/>
+                {% endif %}
+                {% for muscle in muscles %}
+                    {% set val = muscle.stats['T2'] %}
+                    <path d="{{ muscle.path }}" fill="{{ muscle.color }}"
+                        {% if val is number and val|float > 39 %}stroke-width="0.8" stroke="#000"{% endif %}>
+                        <title>{{ muscle.id }}: {{ "%.1f"|format(val) if val is number else "--" }}</title>
+                    </path>
+                {% endfor %}
+            </g>
+        </svg>
+    </div>
+{% endmacro %}
+
+{# --- Ligne SVG seule (sans tableaux de valeurs) --- #}
+{% macro slice_row_svg_only(slice, size=120) %}
+    {% set muscles_L = slice.muscles | selectattr("side", "equalto", "L") | list %}
+    {% set muscles_R = slice.muscles | selectattr("side", "equalto", "R") | list %}
+    <div style="display: flex; justify-content: center; align-items: center; gap: 20px; padding: 2px; background: #f9f9f9; border-radius: 8px;">
+        {{ muscle_svg_only(muscles_L, slice.viewbox_L, slice.mirror_tx_L, "L", size=size) }}
+        {{ muscle_svg_only(muscles_R, slice.viewbox_R, slice.mirror_tx_R, "R", slice.slices.contour|default(""), size=size) }}
+    </div>
 {% endmacro %}
 
 <!-- position% = (valeur_T2 - T2_min) / (T2_max - T2_min) × 100

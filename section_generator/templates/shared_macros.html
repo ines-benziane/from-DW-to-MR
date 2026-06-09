@@ -3,8 +3,15 @@
    ============================================================ #}
 
 {# --- Colorbar générique --- #}
-{% macro colorbar(colorbar_src, labels=[], ticks=[], width=400, height=25) %}
-<div style="text-align: center; margin: 8px auto; width: {{ width }}px;">
+{% macro colorbar(colorbar_src, labels=[], ticks=[], width=400, height=25, font_size="7pt", top_labels=[], margin="8px auto") %}
+<div style="text-align: center; margin: {{ margin }}; width: {{ width }}px;">
+    {% if top_labels %}
+    <div style="position: relative; height: 12px; width: {{ width }}px; margin: 0 auto; font-size: {{ font_size }}; color: #333; white-space: nowrap;">
+        {% for pos, text in top_labels %}
+            <span style="position: absolute; left: {{ pos }}%; transform: translateX(-50%); font-weight: bold;">{{ text }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
     <div style="position: relative; width: {{ width }}px; height: {{ height }}px;">
         <img src="{{ colorbar_src }}" style="width: {{ width }}px; height: {{ height }}px; image-rendering: pixelated; display: block;"/>
         {% for tick in ticks %}
@@ -12,7 +19,7 @@
         {% endfor %}
     </div>
     {% if labels %}
-    <div style="position: relative; height: 12px; width: {{ width }}px; margin: 0 auto; font-size: 7pt; color: #666; white-space: nowrap;">
+    <div style="position: relative; height: 12px; width: {{ width }}px; margin: 0 auto; font-size: {{ font_size }}; color: #666; white-space: nowrap;">
         {% for pos, text in labels %}
             <span style="position: absolute; left: {{ pos }}%; transform: translateX(-50%);">{{ text }}</span>
         {% endfor %}
@@ -23,8 +30,13 @@
 
 
 {# --- Barre d'échelle verticale --- #}
-{% macro scale_bar(slices, invert=false) %}
-    {% if invert and slices %}
+{# invert=true : distance depuis l'extrémité distale (legs T2)
+   flip=true   : slices passées en ordre inversé (proximal en premier),
+                 distance calculée depuis le premier élément → 0 au proximal (FF) #}
+{% macro scale_bar(slices, invert=false, flip=false) %}
+    {% if flip and slices %}
+        {% set ref_d = slices[0].slices.distance_cm %}
+    {% elif invert and slices %}
         {% set max_d = slices[-1].slices.distance_cm %}
     {% endif %}
     <div style="display: flex; flex-direction: column; align-items: flex-end; margin-right: 40px; width: 60px;">
@@ -34,7 +46,9 @@
         <div style="display: flex; flex-direction: column; align-items: flex-end; width: 100%; border-right: 2px solid #1d4c88; flex: 1;">
             {% for slice in slices %}
                 <div style="display: flex; align-items: center; flex: 1;">
-                    {% if invert %}
+                    {% if flip %}
+                        <span style="font-size: 10pt; font-weight: bold; white-space: nowrap; color: #1d4c88;">{{ "%.1f"|format(ref_d - slice.slices.distance_cm) }} cm</span>
+                    {% elif invert %}
                         <span style="font-size: 10pt; font-weight: bold; white-space: nowrap; color: #1d4c88;">{{ "%.1f"|format(max_d - slice.slices.distance_cm) }} cm</span>
                     {% else %}
                         <span style="font-size: 10pt; font-weight: bold; white-space: nowrap; color: #1d4c88;">{{ slice.slices.distance_cm }} cm</span>
@@ -47,4 +61,30 @@
             <span style="font-size: 12pt; font-weight: bold; color: #1d4c88; transform: translateX(50%);">Distal</span>
         </div>
     </div>
+{% endmacro %}
+
+
+{# --- Bloc de commentaire médical automatique --- #}
+{% macro comment_block(comment) %}
+{% if comment and comment.comment %}
+<div style="margin-top: 16px; padding: 10px 14px;">
+    <span style="font-size: 10pt; font-weight: bold; color: #000000;">Commentaire : </span><span style="font-size: 10pt; color: #111;">{{ comment.comment }}</span>
+    <div style="margin-top: 4px;"><span style="font-size: 7.5pt; color: #888; font-style: italic;">Commentaire généré automatiquement à partir des valeurs de T2 par muscle.</span></div>
+</div>
+{% endif %}
+{% endmacro %}
+
+
+{# --- Note segmentation automatique --- #}
+{% macro segmentation_note() %}
+<div style="text-align: center; margin-top: 3px;">
+    <span style="font-size: 7.5pt; color: #888; font-style: italic;">Les contours musculaires sont issus d'une segmentation automatique.</span>
+</div>
+{% endmacro %}
+
+{# --- Message absence d'antécédent --- #}
+{% macro no_antecedent_message() %}
+<p style="color:#888; font-style:italic; font-size:7.5pt; text-align:center; margin: 8px 0;">
+    Premier examen enregistré — aucun antécédent disponible pour cette séquence.
+</p>
 {% endmacro %}

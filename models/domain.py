@@ -44,6 +44,9 @@ class ExamMetadata(BaseModel):
     acquisition : str
     segmentation: str
     biomarker : str
+    patient_name: Optional[str] = None
+    birth_date: Optional[str] = None
+    referring_doctor: Optional[str] = None
 
 class Exam(BaseModel):
     """Root domain object — one exam, one biomarker. """

@@ -1,0 +1,148 @@
+{% macro fmt_date(d) %}{{ d[6:8] }}/{{ d[4:6] }}/{{ d[0:4] }}{% endmacro %}
+
+{# --- Tableau evolution pour un côté --- #}
+{% macro evolution_muscle_table(evolutions, side, side_label, biomarker) %}
+    {% set muscles = evolutions | selectattr("side", "equalto", side) | list %}
+    {% set unit = 'ms' if biomarker == 'T2' else '%' %}
+    <div class="metrics-col" style="flex: 1;">
+        <table style="width: 100%; font-size: 6.5pt; border-collapse: collapse; table-layout: fixed;">
+            {% for pair in muscles | batch(2) %}
+            <tr>
+                {% for e in pair %}
+                <td style="padding: 1px 3px; text-align: left; white-space: nowrap;">
+                    {% if e.pct is not none %}
+                        {% if e.status == "aggravé" %}
+                            <span style="color: #c0392b;"><strong>{{ e.id }}: {{ "%+.0f"|format(e.pct) }}{{ unit }}</strong></span>
+                        {% elif e.status == "amélioré" %}
+                            <span style="color: #27ae60;"><strong>{{ e.id }}: {{ "%+.0f"|format(e.pct) }}{{ unit }}</strong></span>
+                        {% else %}
+                            <span style="color: #888;">{{ e.id }}: {{ "%+.0f"|format(e.pct) }}{{ unit }}</span>
+                        {% endif %}
+                    {% else %}
+                        <span style="color: #bbb;">{{ e.id }}: --</span>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endmacro %}
+
+{# --- SVG slice colorée par valeur absolue --- #}
+{% macro muscle_svg(slice, side, side_label) %}
+    {% if side == "L" %}
+        {% set muscles = slice.muscles | selectattr("side", "equalto", "L") | list %}
+        {% set viewbox = slice.viewbox_L %}
+        {% set mirror_tx = slice.mirror_tx_L %}
+    {% else %}
+        {% set muscles = slice.muscles | selectattr("side", "equalto", "R") | list %}
+        {% set viewbox = slice.viewbox_R %}
+        {% set mirror_tx = slice.mirror_tx_R %}
+    {% endif %}
+    <div style="text-align:center;">
+        <span style="font-size:6pt; color:#888;">{{ side_label }}</span><br>
+        <svg width="65" height="65" viewBox="{{ viewbox }}" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2c3e50" stroke-width="0.5" transform="translate({{ mirror_tx }},0) scale(-1,1)">
+                {% for muscle in muscles %}
+                    <path d="{{ muscle.path }}" fill="{{ muscle.color }}">
+                        <title>{{ muscle.id }}</title>
+                    </path>
+                {% endfor %}
+            </g>
+        </svg>
+    </div>
+{% endmacro %}
+
+{# --- SVG slice colorée par évolution --- #}
+{% macro muscle_svg_evolution(slice, evolutions, side, side_label, size=65, biomarker="T2") %}
+    {% set unit = 'ms' if biomarker == 'T2' else '%' %}
+    {% if side == "L" %}
+        {% set muscles = slice.muscles | selectattr("side", "equalto", "L") | list %}
+        {% set viewbox = slice.viewbox_L %}
+        {% set mirror_tx = slice.mirror_tx_L %}
+    {% else %}
+        {% set muscles = slice.muscles | selectattr("side", "equalto", "R") | list %}
+        {% set viewbox = slice.viewbox_R %}
+        {% set mirror_tx = slice.mirror_tx_R %}
+    {% endif %}
+    {% set evo_map = {} %}
+    {% for e in evolutions %}
+        {% if e.side == side %}{% set _ = evo_map.update({e.id: e}) %}{% endif %}
+    {% endfor %}
+    <div style="text-align:center;">
+        <span style="font-size:6pt; color:#888;">{{ side_label }}</span><br>
+        <svg width="{{ size }}" height="{{ size }}" viewBox="{{ viewbox }}" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2c3e50" stroke-width="0.5" transform="translate({{ mirror_tx }},0) scale(-1,1)">
+                {% for muscle in muscles %}
+                    {% set evo = evo_map.get(muscle.id) %}
+                    <path d="{{ muscle.path }}" fill="{{ evo.evolution_color if evo else '#ecf0f1' }}">
+                        <title>{{ muscle.id }}: {{ evo.arrow ~ ' ' ~ evo.pct ~ unit if evo and evo.pct is not none else '--' }}</title>
+                    </path>
+                {% endfor %}
+            </g>
+        </svg>
+    </div>
+{% endmacro %}
+
+{# --- Ligne complète : trame identique à T2/FF --- #}
+{% macro synthesis_slice_row(slice, evolutions, size=65, biomarker="T2") %}
+    <div class="anatomy-container" style="display: flex; flex-direction: column; padding: 0px; background: #f9f9f9; border-radius: 8px;">
+        <div style="display: flex; justify-content: space-around; align-items: center;">
+            {{ evolution_muscle_table(evolutions, "L", "L", biomarker) }}
+            <div style="display: flex; gap: 8px; justify-content: center; flex: 1.5;">
+                {{ muscle_svg_evolution(slice, evolutions, "L", "L", size=size, biomarker=biomarker) }}
+                {{ muscle_svg_evolution(slice, evolutions, "R", "R", size=size, biomarker=biomarker) }}
+            </div>
+            {{ evolution_muscle_table(evolutions, "R", "R", biomarker) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{# --- Colorbar biomarqueur (T2 ou FF) avec labels identiques aux sections normales --- #}
+{% macro biomarker_colorbar(colorbar_src, biomarker) %}
+    {% from "shared_macros.html" import colorbar as _colorbar %}
+    {% if biomarker == "T2" %}
+        {% set labels = [
+            [0,   "10 ms"],
+            [28,  "24"],
+            [54,  "37"],
+            [62,  "41"],
+            [100, "60 ms"]
+        ] %}
+        {% set ticks = [58] %}
+        {% set top_labels = [[58, "39"]] %}
+    {% else %}
+        {% set labels = [
+            [0,    "0%"],
+            [10,   "5%"],
+            [21.4, "10%"],
+            [32.9, "15%"],
+            [44.3, "20%"],
+            [55.7, "25%"],
+            [67.1, "30%"],
+            [78.6, "35%"],
+            [90,   "40%"],
+            [100,  "100%"]
+        ] %}
+        {% set ticks = [0, 10, 21.4, 32.9, 44.3, 55.7, 67.1, 78.6, 90, 100] %}
+        {% set top_labels = [] %}
+    {% endif %}
+    {{ _colorbar(colorbar_src, labels, ticks, width=220, height=12, margin="2px auto", top_labels=top_labels) }}
+{% endmacro %}
+
+{# --- Colorbar évolution --- #}
+{# positions = (val - (-30)) / 60 * 100 → -30→0, -15→25, 0→50, +15→75, +30→100 #}
+{% macro evolution_colorbar(colorbar_src, width=220, height=12, font_size="7pt", biomarker="T2") %}
+    {% from "shared_macros.html" import colorbar as _colorbar %}
+    {% set unit = 'ms' if biomarker == 'T2' else '%' %}
+    {% set labels = [
+        [0,   "-30" ~ unit],
+        [25,  "-15" ~ unit],
+        [50,  "0" ~ unit],
+        [75,  "+15" ~ unit],
+        [100, "+30" ~ unit]
+    ] %}
+    {% set ticks = [25, 50, 75] %}
+    {{ _colorbar(colorbar_src, labels, ticks, width=width, height=height, font_size=font_size) }}
+{% endmacro %}

@@ -17,7 +17,7 @@ def get_muscle_t2_average(data, muscle_id, side):
     for result in data['results']:
         for muscle in result['muscles']:
             if muscle['id'] == muscle_id and muscle['side'] == side:
-                t2_values.append(muscle['stats']['T2-mean'])
+                t2_values.append(muscle['stats']['T2'])
     if not t2_values:
         return None
     return sum(t2_values) / len(t2_values)

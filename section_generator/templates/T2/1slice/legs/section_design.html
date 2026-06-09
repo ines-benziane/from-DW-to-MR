@@ -1,4 +1,6 @@
 {% from "T2/macros.html" import anatomical_header, slice_row, colorbar_t2 %}
+{% from "shared_macros.html" import no_antecedent_message, comment_block %}
+{% from "synthesis/macros.html" import synthesis_slice_row, evolution_colorbar %}
 
 {% set muscles_list = ['TA', 'ED', 'PER', 'DLPC', 'POP', 'SOL', 'GAS_MED', 'GAS_LAT'] %}
 {% set muscles_info = [
@@ -13,28 +15,43 @@
 ] %}
 
 <div class="module-t2">
-    {{ anatomical_header('membres inférieurs', 'jambes', muscles_info, 
-    body_image='images/corps_entier_legs_highlighted_without_slices.png', 
+    <h2 style="color:#000; font-size:11pt; font-weight:bold; text-align:left; margin:0 0 10px 0;">T2 — Jambes</h2>
+    {{ anatomical_header('membres inférieurs', 'jambes', muscles_info,
+    body_image='images/corps_entier_legs_highlighted_without_slices.png',
     schema_image='images/jambe_schema.png',
     schema_alt='Schéma jambe') }}
 
     {% if summary_slice %}
-        <div class="visualization-module">
-            <div style="text-align: center; font-size: 8pt; font-weight: bold; margin-bottom: 5px;">T2 moyen (données volumétriques)</div>
-                {{ colorbar_t2(report.colorbar) }}
-            {{ slice_row(summary_slice, muscles_list, show_title=false) }}
+        <div class="visualization-module" style="margin-top:10px; background:#fcfcfc; border-radius:8px; padding:10px;">
+            <div style="font-size:11pt; font-weight:bold; color:#0056b3; text-align:left; margin:0 0 8px 0;">T2 moyen (données volumétriques)</div>
+            {{ colorbar_t2(report.colorbar) }}
+            {{ slice_row(summary_slice, muscles_list, show_title=false, size=70) }}
         </div>
     {% else %}
         <p>Aucune donnée de mesure de jambe (T2) n'a été trouvée.</p>
     {% endif %}
-    
+
     {% if report.antecedent_slice %}
-    <div class="visualization-module" style="margin-top: 40px; background: #fcfcfc; border-radius: 8px; padding: 10px;">
-        <div style="text-align: center; font-size: 11pt; font-weight: bold; margin-bottom: 10px;">
+    <div class="visualization-module" style="margin-top:10px; background:#fcfcfc; border-radius:8px; padding:10px;">
+        <div style="font-size:11pt; font-weight:bold; color:#0056b3; text-align:left; margin:0 0 8px 0;">
             Examen précédent — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
         </div>
-        {{ slice_row(report.antecedent_slice, muscles_list, show_title=false) }}
+        {{ slice_row(report.antecedent_slice, muscles_list, show_title=false, size=70) }}
     </div>
-{% endif %}
-
+    {% if report.evolutions %}
+    <div class="visualization-module" style="margin-top:10px; background:#fcfcfc; border-radius:8px; padding:10px;">
+        <p style="margin:0 0 4px 0;">
+            <span style="font-size:11pt; font-weight:bold; color:#0056b3;">Évolution depuis l'examen précédent</span>
+            <span style="color:#888; font-style:italic; font-size:8pt;"> — La couleur indique la variation du biomarqueur par rapport à l'examen antérieur.</span>
+        </p>
+        <div style="text-align:center; margin-bottom:4px;">
+            {{ evolution_colorbar(evo_colorbar, width=400, height=20, font_size="9pt", biomarker="T2") }}
+        </div>
+        {{ synthesis_slice_row(report.summary_slice, report.evolutions, size=70, biomarker="T2") }}
+    </div>
+    {% endif %}
+    {% else %}
+        {{ no_antecedent_message() }}
+    {% endif %}
+    {{ comment_block(report.comment) }}
 </div>

@@ -1,0 +1,40 @@
+{% from "FF/macros.html" import slice_row_svg_only, colorbar_ff %}
+{% from "shared_macros.html" import scale_bar, no_antecedent_message %}
+{% set module_data = report.results[::2] %}
+
+{% set muscles_list = ['TA', 'ED', 'PER', 'DLPC', 'POP', 'SOL', 'GAS_MED', 'GAS_LAT'] %}
+
+<style>
+.ff-slice-svg svg { width: 80px; height: auto; }
+</style>
+
+<div class="module-ff">
+    <h2 style="text-align:center; color:#0056b3; font-size:10pt; margin:4px 0 6px 0;">Evolution FF - Jambes</h2>
+
+    {% if report.antecedent_slice %}
+    <div class="visualization-module" style="margin-top: 10px; background: #fcfcfc; border-radius: 8px; padding: 10px;">
+        <div style="text-align: center; font-size: 11pt; font-weight: bold; margin-bottom: 10px;">
+            Examen précédent — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
+        </div>
+        {{ slice_row_svg_only(report.antecedent_slice) }}
+    </div>
+    {% else %}
+        {{ no_antecedent_message() }}
+    {% endif %}
+
+    {{ colorbar_ff(report.colorbar) }}
+
+    {% if module_data %}
+    <div style="display: flex; align-items: stretch;">
+        {{ scale_bar(module_data, invert=true) }}
+        <div style="flex: 1; min-width: 0;">
+            {% for slice in module_data %}
+                <div class="visualization-module" style="margin-bottom: 15px;">
+                    {{ slice_row_svg_only(slice) }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>

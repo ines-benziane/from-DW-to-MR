@@ -1,5 +1,5 @@
 {% from "T2/macros.html" import anatomical_header, antecedent_section, slice_row, colorbar_t2 %}
-{% from "shared_macros.html" import scale_bar %}
+{% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block %}
 
 {% set module_data = report.results %}
 {% set muscles_list = ['TA', 'ED', 'PER', 'DLPC', 'POP', 'SOL', 'GAS_MED', 'GAS_LAT'] %}
@@ -7,7 +7,7 @@
     ('TA', 'Tibialis Anterior'),
     ('ED', 'Extensor Digitorum'),
     ('PER', 'Fibularis / Peroneus longus'),
-    ('DLPC', 'Deep Lat. Post. Compartment'),
+    ('DLPC', 'Deep Post. Compartment (TP + fléch. longs orteils/hallux)'),
     ('POP', 'Popliteus'),
     ('SOL', 'Soleus'),
     ('GM', 'Gastrocnemius Medialis'),
@@ -24,18 +24,20 @@
         <div style="text-align: center; font-size: 11pt; font-weight: bold; margin-bottom: 10px;">
             Examen précédent — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
         </div>
-        {{ slice_row(report.antecedent_slice, muscles_list, show_title=false) }}
+        {{ slice_row(report.antecedent_slice, muscles_list, show_title=false, size=80) }}
     </div>
+    {% else %}
+        {{ no_antecedent_message() }}
     {% endif %}
     {{ colorbar_t2(report.colorbar) }}
     {% if module_data %}
         {% set trimmed = module_data[::2] %}
         <div style="display: flex; align-items: stretch;">
-            {{ scale_bar(trimmed) }}
+            {{ scale_bar(trimmed, invert=true) }}
             <div style="flex: 1;">
                 {% for slice in trimmed %}
                     <div class="visualization-module" style="margin-bottom: 15px;">
-                        {{ slice_row(slice, muscles_list) }}
+                        {{ slice_row(slice, muscles_list, size=80) }}
                     </div>
                 {% endfor %}
             </div>
@@ -43,5 +45,6 @@
     {% else %}
         <p>Aucune donnée de mesure de jambes (T2) n'a été trouvée.</p>
     {% endif %}
+    {{ comment_block(report.comment) }}
 </div>
 <!-- <hr class="module-separator"> -->

@@ -10,6 +10,8 @@ from data_reader import json_reader
 
 config = Path(__file__).parent.parent / "config" / "config.json"
 
+DEFAULT_DATA_PATH = "json_output"
+
 def data_found(patient_id, section, path):
     found = {}
     for method, version in section["method"].items():
@@ -60,38 +62,43 @@ def find_antecedents(patient_id, current_date, section, method, version, path):
     return [domain.Exam.model_validate_json(f.read_text()) for _, f in antecedents]
 
 
-def get_exam(patient_id, path) :
+def get_exam(patient_id, path, config_data=None):
+    """
+    config_data: optional config dict to use instead of reading config.json.
+    Enables programmatic config injection (e.g. from batch_compare).
+    """
     exams = []
-    with open(config, "r") as f:
-        sections  = json.load(f)
-        # print (sections)
+    if config_data is not None:
+        sections = config_data
+    else:
+        with open(config, "r") as f:
+            sections = json.load(f)
     reader = json_reader.JsonReader(patient_id, path)
-    for section in sections["section"] :
-        available = data_found(patient_id, section, Path(__file__).parent.parent / path)
-        for method, version in section["method"].items() :
+    for section in sections["section"]:
+        for method, version in section["method"].items():
             operator, v = parse_version(version)
-            versions_available = compatible_versions( patient_id, section, method, v, operator, Path(__file__).parent.parent / path)
-            if versions_available :
+            versions_available = compatible_versions(patient_id, section, method, v, operator, Path(__file__).parent.parent / path)
+            if versions_available:
                 version = sorted(versions_available)[-1]
-            else :
+            else:
                 continue
             req = request.SectionRequest(
-                    section_name = section["section_name"],
-                    segment = section["segment"],
-                    method = method,
-                    version = version,
-                    operator = operator,
-                    generate = section["generate"],
-                    date = section["date"],
-                    acquisition = section["acquisition"]
-                )
+                section_name=section["section_name"],
+                segment=section["segment"],
+                method=method,
+                version=version,
+                operator=operator,
+                generate=section["generate"],
+                date=section["date"],
+                acquisition=section["acquisition"],
+            )
             response = reader.fetch_data(req)
             response.section_name = section["section_name"]
-            if response.exam != None:
+            if response.exam is not None:
                 current_date = response.exam.metadata.exam_date
                 response.antecedents = find_antecedents(
                     patient_id, current_date, section, method, version,
-                    Path(__file__).parent.parent / path
+                    Path(__file__).parent.parent / path,
                 )
                 response.template_version = section.get("version")
                 exams.append(response)
@@ -99,5 +106,6 @@ def get_exam(patient_id, path) :
     return exams
 
 
-exams = get_exam(sys.argv[1], sys.argv[2])
-generate_pdf.create_pdf(exams)
+if __name__ == "__main__":
+    exams = get_exam(sys.argv[1], sys.argv[2])
+    generate_pdf.create_pdf(exams)

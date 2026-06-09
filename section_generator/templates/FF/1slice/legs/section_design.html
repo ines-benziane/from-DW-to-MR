@@ -1,0 +1,43 @@
+{% from "FF/macros.html" import slice_row, colorbar_ff %}
+{% from "shared_macros.html" import no_antecedent_message %}
+{% from "synthesis/macros.html" import synthesis_slice_row, evolution_colorbar %}
+
+{% set muscles_list = ['TA', 'ED', 'PER', 'DLPC', 'POP', 'SOL', 'GAS_MED', 'GAS_LAT'] %}
+
+<div class="module-ff">
+    <h2 style="color:#000; font-size:11pt; font-weight:bold; text-align:left; margin:0 0 10px 0;">FF — Jambes</h2>
+
+    {{ colorbar_ff(report.colorbar) }}
+
+    {% if report.summary_slice %}
+        <div class="visualization-module" style="margin-top:10px; background:#fcfcfc; border-radius:8px; padding:10px;">
+            <div style="font-size:11pt; font-weight:bold; color:#0056b3; text-align:left; margin:0 0 8px 0;">FF moyen (données volumétriques)</div>
+            {{ slice_row(report.summary_slice, muscles_list, show_title=false) }}
+        </div>
+    {% else %}
+        <p>Aucune donnée de mesure FF (jambes) n'a été trouvée.</p>
+    {% endif %}
+
+    {% if report.antecedent_slice %}
+    <div class="visualization-module" style="margin-top:10px; background:#fcfcfc; border-radius:8px; padding:10px;">
+        <div style="font-size:11pt; font-weight:bold; color:#0056b3; text-align:left; margin:0 0 8px 0;">
+            Examen précédent — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
+        </div>
+        {{ slice_row(report.antecedent_slice, muscles_list, show_title=false) }}
+    </div>
+    {% if report.evolutions %}
+    <div class="visualization-module" style="margin-top:10px; background:#fcfcfc; border-radius:8px; padding:10px;">
+        <p style="margin:0 0 4px 0;">
+            <span style="font-size:11pt; font-weight:bold; color:#0056b3;">Évolution depuis l'examen précédent</span>
+            <span style="color:#888; font-style:italic; font-size:8pt;"> — La couleur indique la variation du biomarqueur par rapport à l'examen antérieur.</span>
+        </p>
+        <div style="text-align:center; margin-bottom:4px;">
+            {{ evolution_colorbar(evo_colorbar, width=400, height=20, font_size="9pt", biomarker="FF") }}
+        </div>
+        {{ synthesis_slice_row(report.summary_slice, report.evolutions, size=90, biomarker="FF") }}
+    </div>
+    {% endif %}
+    {% else %}
+        {{ no_antecedent_message() }}
+    {% endif %}
+</div>

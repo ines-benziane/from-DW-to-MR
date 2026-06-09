@@ -1,3 +1,4 @@
+{% from "shared_macros.html" import no_antecedent_message %}
 {% set anterior = report.anterior %}
 {% set posterior = report.posterior %}
 
@@ -9,6 +10,8 @@
 
 <div class="module-ff">
     <h2 style="text-align:center; color:#0056b3; font-size:11pt; margin:6px 0;">Evolution FF - Cuisses</h2>
+
+    {% if not report.antecedent_slice %}{{ no_antecedent_message() }}{% endif %}
 
     <div style="text-align:center; margin: 8px auto; width: 300px;">
         <div style="position:relative; width:300px; height:20px;">

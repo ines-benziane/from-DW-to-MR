@@ -1,0 +1,66 @@
+# Cuisses
+VL:
+  L: "vaste latéral gauche"
+  R: "vaste latéral droit"
+VI:
+  L: "vaste intermédiaire gauche"
+  R: "vaste intermédiaire droit"
+VM:
+  L: "vaste médial gauche"
+  R: "vaste médial droit"
+RF:
+  L: "droit fémoral gauche"
+  R: "droit fémoral droit"
+SAR:
+  L: "sartorius gauche"
+  R: "sartorius droit"
+GRA:
+  L: "gracile gauche"
+  R: "gracile droit"
+SM:
+  L: "semi-membraneux gauche"
+  R: "semi-membraneux droit"
+ST:
+  L: "semi-tendineux gauche"
+  R: "semi-tendineux droit"
+BF:
+  L: "biceps fémoral gauche"
+  R: "biceps fémoral droit"
+BF_SH:
+  L: "biceps fémoral chef court gauche"
+  R: "biceps fémoral chef court droit"
+AM:
+  L: "adducteur magnus gauche"
+  R: "adducteur magnus droit"
+AL:
+  L: "adducteur long gauche"
+  R: "adducteur long droit"
+AB:
+  L: "adducteur brevis gauche"
+  R: "adducteur brevis droit"
+
+# Jambes
+TA:
+  L: "tibial antérieur gauche"
+  R: "tibial antérieur droit"
+ED:
+  L: "extenseur long des orteils gauche"
+  R: "extenseur long des orteils droit"
+PER:
+  L: "muscles péroniers gauches"
+  R: "muscles péroniers droits"
+DLPC:
+  L: "loge postérieure profonde gauche"
+  R: "loge postérieure profonde droite"
+POP:
+  L: "poplité gauche"
+  R: "poplité droit"
+SOL:
+  L: "soléaire gauche"
+  R: "soléaire droit"
+GAS_MED:
+  L: "gastrocnémien médial gauche"
+  R: "gastrocnémien médial droit"
+GAS_LAT:
+  L: "gastrocnémien latéral gauche"
+  R: "gastrocnémien latéral droit"

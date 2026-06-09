@@ -62,7 +62,7 @@ def get_slice_number(s):
 def parse_csv(csv_path: Path) -> Exam:
     """Parse a results CSV file and return a muscle-centric Exam."""
     meta_path = csv_path.parent / "metadata.json"
-    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    meta = json.loads(meta_path.read_text(encoding="utf-8-sig"))
     muscles_map: dict[tuple[str, str], MuscleData] = {}
     with open(csv_path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -98,5 +98,8 @@ def parse_csv(csv_path: Path) -> Exam:
             acquisition=meta["acquisition"],
             segmentation="seg",
             biomarker=meta["biomarker"],
+            patient_name=meta.get("patient_name"),
+            birth_date=meta.get("birth_date"),
+            referring_doctor=meta.get("referring_doctor"),
         )
     )

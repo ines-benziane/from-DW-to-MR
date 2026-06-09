@@ -1,0 +1,59 @@
+GUIDE DE LECTURE — COMPTE-RENDU IRM MUSCULAIRE
+================================================
+Ce guide détaille les choix de représentation et d'interprétation retenus pour les différents comptes-rendus.
+Ces choix sont provisoires : ils ont vocation à évoluer au fil de vos retours et de vos critiques. 
+Toute remarque est la bienvenue.
+
+REPÈRES ANATOMIQUES
+-------------------
+Cette partie sert :
+- À repérer en un coup d'œil la région anatomique concernée par l'examen.
+- À expliciter les abréviations utilisées dans le rapport, grâce à un schéma de coupe de la région anatomique avec légendes.
+
+
+SECTION T2
+----------
+Les coupes sont colorées selon l'échelle ci-dessous :
+
+- Gris                    : T2 < 10 ms          → valeur trop basse : incertitude de mesure, manque de connaissance, pas d'interprétation possible.
+- Bleu franc → bleu clair  : 10 ms < T2 < 37 ms  → plage normale.
+- Jaune                   : 37 ms < T2 < 41 ms   → zone de vigilance autour du seuil.
+- Orange → rouge          : T2 > 41 ms           → valeur élevée.
+
+Le contour des muscles dont le T2 dépasse 39 ms est mis en évidence par un trait plus épais.
+
+
+SECTION FF 
+---------------------------------
+La fraction de graisse est exprimée en proportion (0 – 100 %).
+L'échelle colorimétrique est découpée en trois zones :
+
+- 0 – 5 %   : infiltration très faible — représentée par une couleur uniforme, sans nuance nécessaire.
+- 5 – 40 %  : zone d'intérêt clinique — les nuances de couleur permettent de distinguer les degrés d'infiltration.
+- > 40 %    : infiltration sévère — au-delà de ce seuil, le muscle est considéré comme non récupérable ; une couleur uniforme est utilisée.
+
+
+PAGE DE SYNTHÈSE
+----------------
+La synthèse est générée uniquement si un examen antérieur est disponible. Deux versions sont proposées :
+
+- Avant – après : affiche côte à côte les coupes de l'examen actuel et de l'examen antérieur, colorées selon la valeur absolue du biomarqueur.
+- Évolution par muscle : affiche, pour chaque muscle, la variation entre les deux examens. L'évolution est une simple différence : valeur actuelle − valeur antérieure. T2 en ms (ex. : +6 ms), FF en points de pourcentage (ex. : +7 %).
+
+La couleur d'évolution suit une échelle bleue (amélioration) → blanche (stable) → rouge (aggravation).
+Le seuil de stabilité est fixé à ±5 unités.
+
+
+COMMENTAIRE AUTOMATIQUE
+------------------------
+Un commentaire est proposé automatiquement à la fin de chaque section T2.
+Il est basé sur le nombre de muscles dont le T2 volumétrique dépasse le seuil de 39 ms,
+en tenant également compte du nombre de coupes (slices) présentant un T2 ≥ 39 ms.
+
+- Normal strict  : aucune coupe ≥ 39 ms, valeur maximale nettement en dessous du seuil.
+- Normal limite  : aucun muscle ≥ 39 ms en valeur volumétrique, mais des coupes atteignent ou dépassent 39 ms, avec une valeur maximale proche du seuil.
+- Discret        : 1 muscle ≥ 39 ms.
+- Modéré         : 2 à 3 muscles ≥ 39 ms.
+- Significatif   : 4 muscles ou plus ≥ 39 ms.
+
+Ce commentaire est une aide à la lecture, non un diagnostic.

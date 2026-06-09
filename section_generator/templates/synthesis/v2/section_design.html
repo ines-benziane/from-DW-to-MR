@@ -1,0 +1,147 @@
+{% from "synthesis/macros.html" import fmt_date, muscle_svg, synthesis_slice_row, evolution_colorbar, biomarker_colorbar %}
+
+{# Séparer T2 et FF en conservant l'ordre T2 → FF #}
+{% set ns = namespace(t2=[], ff=[], other=[]) %}
+{% for section in synthesis %}
+    {% if section.biomarker == "T2" %}
+        {% set ns.t2 = ns.t2 + [section] %}
+    {% elif section.biomarker == "FF" %}
+        {% set ns.ff = ns.ff + [section] %}
+    {% else %}
+        {% set ns.other = ns.other + [section] %}
+    {% endif %}
+{% endfor %}
+
+<div style="font-family: sans-serif;">
+    <h2 style="text-align:center; color:#0056b3; font-size:10pt; margin:0 0 2px 0;">
+        Synthèse
+    </h2>
+
+    {% if synthesis %}
+
+        {# ===== BLOC T2 ===== #}
+        {% if ns.t2 %}
+        <div style="padding:4px 6px; border:1px solid #dde; border-radius:5px; background:#fafbff; margin-bottom:4px;">
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+                <strong style="font-size:8.5pt; color:#0056b3;">T2</strong>
+                <span style="font-size:7pt; color:#555;">
+                    {% for s in ns.t2 %}{{ s.segment | capitalize }}{% if not loop.last %} · {% endif %}{% endfor %}
+                </span>
+            </div>
+
+            {# Examen actuel #}
+            <div style="border-top:1px solid #dde; padding-top:2px; margin-bottom:2px;">
+                <p style="margin:0 0 2px 0; font-size:7.5pt;">
+                    <span style="color:#0056b3; font-weight:bold;">Examen actuel : {{ fmt_date(ns.t2[0].current_date) }}</span>
+                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — Valeur agrégée sur l'ensemble du volume musculaire, représentative de l'état global du muscle.</span>
+                </p>
+                <div style="text-align:center; margin-bottom:2px;">
+                    {{ biomarker_colorbar(ns.t2[0].colorbar, "T2") }}
+                </div>
+                <div style="display:flex; justify-content:center; gap:70px;">
+                    {% for section in ns.t2 %}
+                    <div style="text-align:center;">
+                        <span style="font-size:6.5pt; color:#666;">{{ section.segment | capitalize }}</span>
+                        <div style="display:flex; gap:5px;">
+                            {{ muscle_svg(section.current_volume_slice, "L", "L") }}
+                            {{ muscle_svg(section.current_volume_slice, "R", "R") }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {# Lignes 2+ : évolution depuis l'examen précédent #}
+            <div style="border-top:1px solid #dde; padding-top:2px;">
+                <p style="margin:0 0 2px 0; font-size:7.5pt;">
+                    <span style="color:#0056b3; font-weight:bold;">Évolution depuis l'examen précédent</span>
+                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — La couleur indique la variation du biomarqueur par rapport à l'examen antérieur.</span>
+                </p>
+                <div style="text-align:center; margin-bottom:1px;">
+                    {{ evolution_colorbar(evo_colorbar, biomarker="T2") }}
+                </div>
+                {% for section in ns.t2 %}
+                <div style="{% if not loop.first %}margin-top:2px; border-top:1px dashed #eee; padding-top:2px;{% endif %}">
+                    <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:1px;">
+                        <span style="font-size:6.5pt; color:#666; font-style:italic;">{{ section.segment | capitalize }}</span>
+                        <span style="font-size:6.5pt; color:#888;">{{ fmt_date(section.antecedent_date) }} → {{ fmt_date(section.current_date) }}</span>
+                    </div>
+                    {{ synthesis_slice_row(section.current_volume_slice, section.evolutions, biomarker="T2") }}
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        {% endif %}
+
+        {# ===== BLOC FF ===== #}
+        {% if ns.ff %}
+        <div style="padding:4px 6px; border:1px solid #dde; border-radius:5px; background:#fafbff; margin-bottom:4px;">
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+                <strong style="font-size:8.5pt; color:#0056b3;">FF</strong>
+                <span style="font-size:7pt; color:#555;">
+                    {% for s in ns.ff %}{{ s.segment | capitalize }}{% if not loop.last %} · {% endif %}{% endfor %}
+                </span>
+            </div>
+
+            {# Examen actuel #}
+            <div style="border-top:1px solid #dde; padding-top:2px; margin-bottom:2px;">
+                <p style="margin:0 0 2px 0; font-size:7.5pt;">
+                    <span style="color:#0056b3; font-weight:bold;">Examen actuel : {{ fmt_date(ns.ff[0].current_date) }}</span>
+                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — Valeur agrégée sur l'ensemble du volume musculaire, représentative de l'état global du muscle.</span>
+                </p>
+                <div style="text-align:center; margin-bottom:2px;">
+                    {{ biomarker_colorbar(ns.ff[0].colorbar, "FF") }}
+                </div>
+                <div style="display:flex; justify-content:center; gap:70px;">
+                    {% for section in ns.ff %}
+                    <div style="text-align:center;">
+                        <span style="font-size:6.5pt; color:#666;">{{ section.segment | capitalize }}</span>
+                        <div style="display:flex; gap:5px;">
+                            {{ muscle_svg(section.current_volume_slice, "L", "L") }}
+                            {{ muscle_svg(section.current_volume_slice, "R", "R") }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {# Évolution : une seule fois, cuisses puis jambes #}
+            <div style="border-top:1px solid #dde; padding-top:2px;">
+                <p style="margin:0 0 2px 0; font-size:7.5pt;">
+                    <span style="color:#0056b3; font-weight:bold;">Évolution depuis l'examen précédent</span>
+                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — La couleur indique la variation du biomarqueur par rapport à l'examen antérieur.</span>
+                </p>
+                <div style="text-align:center; margin-bottom:1px;">
+                    {{ evolution_colorbar(evo_colorbar, biomarker="FF") }}
+                </div>
+                {% for section in ns.ff %}
+                <div style="{% if not loop.first %}margin-top:2px; border-top:1px dashed #eee; padding-top:2px;{% endif %}">
+                    <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:1px;">
+                        <span style="font-size:6.5pt; color:#666; font-style:italic;">{{ section.segment | capitalize }}</span>
+                        <span style="font-size:6.5pt; color:#888;">{{ fmt_date(section.antecedent_date) }} → {{ fmt_date(section.current_date) }}</span>
+                    </div>
+                    {{ synthesis_slice_row(section.current_volume_slice, section.evolutions, biomarker="FF") }}
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        {% endif %}
+
+        {# Autres biomarqueurs #}
+        {% for section in ns.other %}
+        <div style="padding:4px 6px; border:1px solid #dde; border-radius:5px; background:#fafbff; margin-bottom:4px;">
+            <strong style="font-size:8.5pt; color:#0056b3;">{{ section.biomarker }} — {{ section.segment | capitalize }}</strong>
+            <div style="margin-top:3px;">
+                {{ synthesis_slice_row(section.current_volume_slice, section.evolutions, biomarker=section.biomarker) }}
+            </div>
+        </div>
+        {% endfor %}
+
+    {% else %}
+        <p style="color:#888; font-size:9pt; text-align:center;">Aucune donnée comparative disponible.</p>
+    {% endif %}
+</div>

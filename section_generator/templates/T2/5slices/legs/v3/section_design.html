@@ -1,0 +1,50 @@
+{% from "T2/macros.html" import anatomical_header, antecedent_section, slice_row, colorbar_t2 %}
+{% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block %}
+
+{% set module_data = report.results %}
+{% set muscles_list = ['TA', 'ED', 'PER', 'DLPC', 'POP', 'SOL', 'GAS_MED', 'GAS_LAT'] %}
+{% set muscles_info = [
+    ('TA', 'Tibialis Anterior'),
+    ('ED', 'Extensor Digitorum'),
+    ('PER', 'Fibularis / Peroneus longus'),
+    ('DLPC', 'Deep Post. Compartment (TP + fléch. longs orteils/hallux)'),
+    ('POP', 'Popliteus'),
+    ('SOL', 'Soleus'),
+    ('GM', 'Gastrocnemius Medialis'),
+    ('GL', 'Gastrocnemius Lateralis')
+] %}
+
+<div class="module-t2">
+    <h2 style="color:#0056b3; font-size:11pt; font-weight:bold; text-align:left; margin:0 0 10px 0;">T2 — Jambes</h2>
+    {{ anatomical_header('membres inférieurs', 'jambes', muscles_info, body_image='images/corps_entier_legs_highlighted_without_slices.png', schema_image='images/jambe_schema.png', schema_alt='Schéma Jambe') }}
+
+    {% if report.antecedent_slice %}
+    <div class="visualization-module" style="margin-top: 10px; background: #fcfcfc; border-radius: 8px; padding: 10px;">
+        <div style="text-align: center; font-size: 9pt; font-weight: bold; margin-bottom: 10px;">
+            Examen précédent — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
+        </div>
+        {{ slice_row(report.antecedent_slice, muscles_list, show_title=false, size=58) }}
+    </div>
+    {% else %}
+        {{ no_antecedent_message() }}
+    {% endif %}
+
+    {{ colorbar_t2(report.colorbar) }}
+
+    {% if module_data %}
+        {% set trimmed = module_data[::2] %}
+        <div style="display: flex; align-items: stretch;">
+            {{ scale_bar(trimmed, invert=true) }}
+            <div style="flex: 1;">
+                {% for slice in trimmed %}
+                    <div class="visualization-module" style="margin-bottom: 15px;">
+                        {{ slice_row(slice, muscles_list, size=58) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>Aucune donnée de mesure de jambes (T2) n'a été trouvée.</p>
+    {% endif %}
+    {{ comment_block(report.comment) }}
+</div>
