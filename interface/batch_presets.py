@@ -33,7 +33,7 @@ from section_generator import generate_pdf
 PRESETS_DIR = Path(__file__).parent.parent / "config" / "presets"
 REPORTS_ROOT = Path(__file__).parent.parent / "section_generator" / "reports"
 SYNTHESIS_VERSIONS = ["v1", "v2"]
-COLORMAPS = ["default", "hawaii_r", "roma_r", "bam_r", "lapaz", "davos"]
+COLORMAPS = ["default", "hawaii_r", "roma_r", "bam_r", "lapaz", "davos", "grayscale"]
 
 QUICK_PRESET = "complet"
 QUICK_SYNTH_VERSION = "v1"
@@ -54,7 +54,7 @@ def get_output_name(preset_name: str, synth_version, colormap: str) -> str:
     return f"{version}{cm_suffix}.pdf"
 
 
-def batch_presets(patient_id: str, data_path: str, quick: bool = False, colormap_filter: str = None) -> None:
+def batch_presets(patient_id: str, data_path: str, quick: bool = False, colormap_filter: str = None, lang: str = "fr") -> None:
     output_dir = REPORTS_ROOT / patient_id
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -99,6 +99,7 @@ def batch_presets(patient_id: str, data_path: str, quick: bool = False, colormap
                     synthesis_version=None,
                     save_html=False,
                     colormap_name=colormap,
+                    lang=lang,
                 )
                 print("OK")
                 total += 1
@@ -114,6 +115,7 @@ def batch_presets(patient_id: str, data_path: str, quick: bool = False, colormap
                         synthesis_version=synth_version,
                         save_html=False,
                         colormap_name=colormap,
+                        lang=lang,
                     )
                     print("OK")
                     total += 1
@@ -130,4 +132,5 @@ if __name__ == "__main__":
     _data_path = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else "json_output"
     _quick = "--quick" in sys.argv
     _colormap = next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--colormap" and i + 1 < len(sys.argv)), None)
-    batch_presets(_patient_id, _data_path, quick=_quick, colormap_filter=_colormap)
+    _lang = next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--lang" and i + 1 < len(sys.argv)), "fr")
+    batch_presets(_patient_id, _data_path, quick=_quick, colormap_filter=_colormap, lang=_lang)

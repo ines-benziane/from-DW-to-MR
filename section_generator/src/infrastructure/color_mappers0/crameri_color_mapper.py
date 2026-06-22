@@ -2,15 +2,15 @@
 from cmcrameri import cm
 
 
-def get_evolution_color_from_palette(evolution, palette_name='broc', min_percent=-30, max_percent=30):
+def get_evolution_color_from_palette(evolution, palette_name='broc', min_percent=-15, max_percent=15):
     """
     Map evolution percentage to a color from a scientific palette.
 
     Args:
         evolution: MuscleEvolution object
         palette_name: Name of the palette ('roma', 'broc', 'vik', etc.)
-        min_percent: Minimum percentage for color mapping (default: -30%)
-        max_percent: Maximum percentage for color mapping (default: +30%)
+        min_percent: Minimum percentage for color mapping (default: -15%)
+        max_percent: Maximum percentage for color mapping (default: +15%)
 
     Returns:
         RGB color string in format "rgb(r, g, b)"

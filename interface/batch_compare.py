@@ -55,7 +55,7 @@ def _version_label(version: str | None) -> str:
     return version if version else "default"
 
 
-def batch_compare(patient_id: str, data_path: str) -> None:
+def batch_compare(patient_id: str, data_path: str, lang: str = "fr") -> None:
     with open(DEFAULT_CONFIG) as f:
         base_config = json.load(f)
 
@@ -92,6 +92,7 @@ def batch_compare(patient_id: str, data_path: str) -> None:
                 output_name=output_name,
                 output_dir=str(output_dir),
                 save_html=False,
+                lang=lang,
             )
             print("OK")
             total += 1
@@ -105,5 +106,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     _patient_id = sys.argv[1]
-    _data_path = sys.argv[2] if len(sys.argv) > 2 else "json_output"
-    batch_compare(_patient_id, _data_path)
+    _data_path = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else "json_output"
+    _lang = next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--lang" and i + 1 < len(sys.argv)), "fr")
+    batch_compare(_patient_id, _data_path, lang=_lang)

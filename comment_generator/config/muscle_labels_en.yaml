@@ -1,0 +1,66 @@
+# Thighs
+VL:
+  L: "left vastus lateralis"
+  R: "right vastus lateralis"
+VI:
+  L: "left vastus intermedius"
+  R: "right vastus intermedius"
+VM:
+  L: "left vastus medialis"
+  R: "right vastus medialis"
+RF:
+  L: "left rectus femoris"
+  R: "right rectus femoris"
+SAR:
+  L: "left sartorius"
+  R: "right sartorius"
+GRA:
+  L: "left gracilis"
+  R: "right gracilis"
+SM:
+  L: "left semimembranosus"
+  R: "right semimembranosus"
+ST:
+  L: "left semitendinosus"
+  R: "right semitendinosus"
+BF:
+  L: "left biceps femoris"
+  R: "right biceps femoris"
+BF_SH:
+  L: "left biceps femoris short head"
+  R: "right biceps femoris short head"
+AM:
+  L: "left adductor magnus"
+  R: "right adductor magnus"
+AL:
+  L: "left adductor longus"
+  R: "right adductor longus"
+AB:
+  L: "left adductor brevis"
+  R: "right adductor brevis"
+
+# Legs
+TA:
+  L: "left tibialis anterior"
+  R: "right tibialis anterior"
+ED:
+  L: "left extensor digitorum longus"
+  R: "right extensor digitorum longus"
+PER:
+  L: "left peroneal muscles"
+  R: "right peroneal muscles"
+DLPC:
+  L: "left deep posterior compartment"
+  R: "right deep posterior compartment"
+POP:
+  L: "left popliteus"
+  R: "right popliteus"
+SOL:
+  L: "left soleus"
+  R: "right soleus"
+GAS_MED:
+  L: "left medial gastrocnemius"
+  R: "right medial gastrocnemius"
+GAS_LAT:
+  L: "left lateral gastrocnemius"
+  R: "right lateral gastrocnemius"

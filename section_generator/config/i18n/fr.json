@@ -1,0 +1,59 @@
+{
+  "report_title": "Compte-rendu d'examen",
+  "lab_address": "Institut de Myologie<br> Hôpital Universitaire La Pitié-Salpêtrière<br> Bâtiment Babinski 47/83 Bd de l'hôpital<br> 75013 Paris",
+  "patient_label": "Patient(e) :",
+  "birth_date_label": "Date de naissance :",
+  "referred_by": "Adressé(e) par Dr -----",
+  "exam_date_label": "Date d'examen :",
+
+  "ff_thighs_title": "FF — Cuisses",
+  "ff_legs_title": "FF — Jambes",
+  "t2_thighs_title": "T2 — Cuisses",
+  "t2_legs_title": "T2 — Jambes",
+  "ff_thighs_evolution_title": "Evolution FF - Cuisses",
+  "ff_legs_evolution_title": "Evolution FF - Jambes",
+
+  "anterior_view": "Vue antérieure",
+  "posterior_view": "Vue postérieure",
+
+  "ff_mean_volumetric": "FF moyen (données volumétriques)",
+  "t2_mean_volumetric": "T2 moyen (données volumétriques)",
+
+  "previous_exam_prefix": "Examen précédent",
+  "evolution_since_previous": "Évolution depuis l'examen précédent",
+  "evolution_color_note": "La couleur indique la variation du biomarqueur par rapport à l'examen antérieur.",
+
+  "no_t2_thighs_data": "Aucune donnée de mesure de cuisses (T2) n'a été trouvée.",
+  "no_t2_legs_data": "Aucune donnée de mesure de jambes (T2) n'a été trouvée.",
+  "no_ff_thighs_data": "Aucune donnée de mesure FF (cuisses) n'a été trouvée.",
+  "no_ff_legs_data": "Aucune donnée de mesure FF (jambes) n'a été trouvée.",
+
+  "proximal": "Proximal",
+  "distal": "Distal",
+  "comment_label": "Commentaire :",
+  "comment_auto_note": "Commentaire généré automatiquement à partir des valeurs de T2 par muscle.",
+  "segmentation_note": "Les contours musculaires sont issus d'une segmentation automatique.",
+  "no_antecedent_message": "Premier examen enregistré — aucun antécédent disponible pour cette séquence.",
+
+  "anatomical_zone_note": "zone anatomique concernée indiquée en bleu",
+  "anatomical_landmarks": "Repères anatomiques",
+  "region_label": "Région :",
+  "segments_label": "Segments :",
+  "muscles_label": "Muscles :",
+  "schema_note_prefix": "schéma d'une coupe de",
+
+  "left_label": "Gauche (L)",
+  "right_label": "Droite (R)",
+
+  "synthesis_title": "Synthèse",
+  "current_exam_label": "Examen actuel",
+  "previous_label": "Précédent :",
+  "current_label": "Actuel :",
+  "volume_aggregate_note": "valeur agrégée sur l'ensemble du volume musculaire, représentative de l'état global du muscle.",
+  "global_comparison": "Comparaison globale par muscle",
+  "no_comparative_data": "Aucune donnée comparative disponible.",
+
+  "lower_limbs": "membres inférieurs",
+  "thighs": "cuisses",
+  "legs": "jambes"
+}

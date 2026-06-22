@@ -1,7 +1,7 @@
 from section_generator.src.infrastructure.color_mappers import get_color_from_evolution
 
 T2_THRESHOLD = 39.0
-EVOLUTION_THRESHOLD_PCT = 5.0
+EVOLUTION_THRESHOLD = {"T2": 1.0, "FF": 5.0}
 
 def compute_evolution(current_val, previous_val, biomarker):
     if current_val is None or previous_val is None:
@@ -10,9 +10,10 @@ def compute_evolution(current_val, previous_val, biomarker):
         pct = round((current_val - previous_val) * 100)
     else:
         pct = round(current_val - previous_val)
-    if pct > EVOLUTION_THRESHOLD_PCT:
+    threshold = EVOLUTION_THRESHOLD.get(biomarker, 5.0)
+    if pct > threshold:
         return pct, "aggravé", "↑"
-    elif pct < -EVOLUTION_THRESHOLD_PCT:
+    elif pct < -threshold:
         return pct, "amélioré", "↓"
     else:
         return pct, "stable", "→"
@@ -48,7 +49,7 @@ def build_muscle_evolutions(current_muscles, antecedent_muscles, biomarker):
             "arrow": arrow,
             "threshold_crossed": threshold_crossed,
             "color": m.get("color", "rgb(150,150,150)"),
-            "evolution_color": get_color_from_evolution(pct),
+            "evolution_color": get_color_from_evolution(pct, biomarker),
             "path": m.get("path", ""),
         })
 

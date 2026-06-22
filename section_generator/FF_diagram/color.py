@@ -35,3 +35,10 @@ def ff_to_color_lapaz(ff: float, _palette_name=None) -> str:
 
 def ff_to_color_davos(ff: float, _palette_name=None) -> str:
     return _ff_to_color_with(ff, cm.davos, max_pos=1.0)
+
+
+def ff_to_color_grayscale(ff: float, _palette_name=None) -> str:
+    if ff < 0 or ff > 1:
+        return '#000000'
+    v = int(ff * 255)
+    return f"#{v:02x}{v:02x}{v:02x}"

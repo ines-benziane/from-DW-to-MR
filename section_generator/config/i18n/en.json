@@ -1,0 +1,59 @@
+{
+  "report_title": "MRI Muscle Examination Report",
+  "lab_address": "Institut de Myologie<br> Hôpital Universitaire La Pitié-Salpêtrière<br> Bâtiment Babinski 47/83 Bd de l'hôpital<br> 75013 Paris",
+  "patient_label": "Patient:",
+  "birth_date_label": "Date of birth:",
+  "referred_by": "Referred by Dr -----",
+  "exam_date_label": "Exam date:",
+
+  "ff_thighs_title": "FF — Thighs",
+  "ff_legs_title": "FF — Legs",
+  "t2_thighs_title": "T2 — Thighs",
+  "t2_legs_title": "T2 — Legs",
+  "ff_thighs_evolution_title": "FF Evolution - Thighs",
+  "ff_legs_evolution_title": "FF Evolution - Legs",
+
+  "anterior_view": "Anterior view",
+  "posterior_view": "Posterior view",
+
+  "ff_mean_volumetric": "Mean FF (volumetric data)",
+  "t2_mean_volumetric": "Mean T2 (volumetric data)",
+
+  "previous_exam_prefix": "Previous exam",
+  "evolution_since_previous": "Evolution since previous exam",
+  "evolution_color_note": "Color indicates the biomarker variation relative to the previous exam.",
+
+  "no_t2_thighs_data": "No T2 thigh measurements found.",
+  "no_t2_legs_data": "No T2 leg measurements found.",
+  "no_ff_thighs_data": "No FF thigh measurements found.",
+  "no_ff_legs_data": "No FF leg measurements found.",
+
+  "proximal": "Proximal",
+  "distal": "Distal",
+  "comment_label": "Comment:",
+  "comment_auto_note": "Automatically generated comment from per-muscle T2 values.",
+  "segmentation_note": "Muscle outlines are from automatic segmentation.",
+  "no_antecedent_message": "First recorded exam — no prior data available for this sequence.",
+
+  "anatomical_zone_note": "highlighted anatomical region in blue",
+  "anatomical_landmarks": "Anatomical landmarks",
+  "region_label": "Region:",
+  "segments_label": "Segments:",
+  "muscles_label": "Muscles:",
+  "schema_note_prefix": "cross-section of the",
+
+  "left_label": "Left (L)",
+  "right_label": "Right (R)",
+
+  "synthesis_title": "Summary",
+  "current_exam_label": "Current exam",
+  "previous_label": "Previous:",
+  "current_label": "Current:",
+  "volume_aggregate_note": "aggregated value over the entire muscle volume, representative of the overall muscle status.",
+  "global_comparison": "Global muscle comparison",
+  "no_comparative_data": "No comparative data available.",
+
+  "lower_limbs": "lower limbs",
+  "thighs": "thighs",
+  "legs": "legs"
+}

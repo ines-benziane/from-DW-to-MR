@@ -1,0 +1,22 @@
+elevated_threshold_ms: 39
+
+categories:
+  normal_strict:
+    condition: "nb_elevated == 0 and max_T2 < 39"
+    template: "Muscular T2 mean values within normal range."
+
+  normal_borderline:
+    condition: "nb_elevated == 0 and max_T2 >= 39"
+    template: "T2 values within normal range, suggesting that pathological processes are minimally active."
+
+  discrete:
+    condition: "nb_elevated == 1"
+    template: "Mild increase in muscular T2 mean value at {muscles}, suggesting the presence of active pathological processes."
+
+  moderate:
+    condition: "nb_elevated >= 2 and nb_elevated <= 3"
+    template: "Moderate and significant increase in muscular T2 mean values across several muscle territories, suggesting the presence of active pathological processes."
+
+  significant:
+    condition: "nb_elevated >= 4"
+    template: "Significant increase in muscular T2 mean values across several muscle territories, suggesting the presence of active pathological processes."

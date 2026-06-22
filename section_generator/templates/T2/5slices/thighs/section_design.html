@@ -1,31 +1,15 @@
-{% from "T2/macros.html" import anatomical_header, antecedent_section, slice_row, colorbar_t2 %}
+{% from "T2/macros.html" import antecedent_section, slice_row, colorbar_t2 %}
 {% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block %}
 
 {% set module_data = report.results %}
 {% set muscles_list = ['VL', 'VI', 'VM', 'RF', 'SAR', 'GRA', 'SM', 'ST', 'BF', 'AM', 'AL'] %}
-{% set muscles_info = [
-    ('VL', 'Vastus Lateralis'),
-    ('VI', 'Vastus Intermedius'),
-    ('VM', 'Vastus Medialis'),
-    ('RF', 'Rectus Femoris'),
-    ('SAR', 'Sartorius'),
-    ('GRA', 'Gracilis'),
-    ('SM', 'Semimembranosus'),
-    ('ST', 'Semitendinosus'),
-    ('BF', 'Biceps Femoris'),
-    ('AM', 'Adductor Magnus'),
-    ('AL', 'Adductor Longus')
-] %}
-
-
 
 <div class="module-t2">
-    {{ anatomical_header('membres inférieurs', 'cuisses', muscles_info, body_image='images/corps_entier_thighs_highlighted_without_slices.png', schema_alt='Schéma Cuisse') }}
 
     {% if report.antecedent_slice %}
     <div class="visualization-module" style="margin-top: 5px; background: #fcfcfc; border-radius: 8px; padding: 6px;">
         <div style="text-align: center; font-size: 9pt; font-weight: bold; margin-bottom: 5px;">
-            Examen précédent — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
+            {{ t.previous_exam_prefix }} — {{ report.antecedent_date[6:8] }}/{{ report.antecedent_date[4:6] }}/{{ report.antecedent_date[0:4] }}
         </div>
         {{ slice_row(report.antecedent_slice, muscles_list, show_title=false, size=80) }}
     </div>
@@ -46,7 +30,7 @@
             </div>
         </div>
     {% else %}
-        <p>Aucune donnée de mesure de jambes (T2) n'a été trouvée.</p>
+        <p>{{ t.no_t2_thighs_data }}</p>
     {% endif %}
     {{ comment_block(report.comment) }}
 </div>

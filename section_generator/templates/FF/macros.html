@@ -124,14 +124,14 @@
             <div style="text-align: center; font-size: 8pt; font-weight: bold; margin-bottom: 5px;">Slice {{ slice.slices.number }}</div>
         {% endif %} -->
         <div style="display: flex; justify-content: space-around; align-items: center;">
-            {{ muscle_table(muscles_L, muscles_list, "Gauche (L)") }}
+            {{ muscle_table(muscles_L, muscles_list, t.left_label) }}
 
             <div style="display: flex; gap: 15px; justify-content: center; flex: 1.5;">
                 {{ muscle_svg(muscles_L, slice.viewbox_L, slice.mirror_tx_L, "L") }}
                 {{ muscle_svg(muscles_R, slice.viewbox_R, slice.mirror_tx_R, "R") }}
             </div>
 
-            {{ muscle_table(muscles_R, muscles_list, "Droite (R)") }}
+            {{ muscle_table(muscles_R, muscles_list, t.right_label) }}
         </div>
     </div>
 {% endmacro %}

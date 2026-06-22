@@ -7,3 +7,7 @@ venv/
 dist/
 build/
 .env
+tests/
+get_results/raw_data
+.pdf
+.pptx

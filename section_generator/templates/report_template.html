@@ -20,13 +20,12 @@
             <h1 class="main-title">{{ header.report_title }}</h1>
             <div class="metadata-bar">
                 <div class="metadata-left">
-                    <p>Patient(e) : {{ patient.patient_name }}<br>
-                    Date de naissance : {{ patient.birth_date }}</p>
+                    <p>{{ t.patient_label }} {{ patient.patient_name }}<br>
+                    {{ t.birth_date_label }} {{ patient.birth_date }}</p>
                 </div>
                 <div class="metadata-right">
-                    <!-- <p>Adressé(e) par {{ patient.referring_doctor }}<br> -->
-                    <p>Adressé(e) par Dr ----- <br>
-                    Date d'examen : {{ acquisition.exam_date }}</p>
+                    <p>{{ t.referred_by }}<br>
+                    {{ t.exam_date_label }} {{ acquisition.exam_date }}</p>
                 </div>
             </div>
 
@@ -39,6 +38,21 @@
             {% endif %}
 
             <div class="content">
+                {% from "T2/macros.html" import anatomical_header %}
+                {% set _muscles_info_thighs = [
+                    ('VL', 'Vastus Lateralis'), ('VI', 'Vastus Intermedius'), ('VM', 'Vastus Medialis'),
+                    ('RF', 'Rectus Femoris'), ('SAR', 'Sartorius'), ('GRA', 'Gracilis'),
+                    ('SM', 'Semimembranosus'), ('ST', 'Semitendinosus'), ('BF', 'Biceps Femoris'),
+                    ('AM', 'Adductor Magnus'), ('AL', 'Adductor Longus')
+                ] %}
+                {% set _muscles_info_legs = [
+                    ('TA', 'Tibialis Anterior'), ('ED', 'Extensor Digitorum'),
+                    ('PER', 'Fibularis / Peroneus longus'),
+                    ('DPC', 'Deep Posterior Compartment (TP + long toe & hallux flexors)'),
+                    ('POP', 'Popliteus'), ('SOL', 'Soleus'),
+                    ('GAS_MED', 'Gastrocnemius Medialis'), ('GAS_LAT', 'Gastrocnemius Lateralis')
+                ] %}
+                {% set ns = namespace(seen_segments=[]) %}
                 {% for report in all_reports %}
                     <div class="report-section" style="margin-bottom: 30px; {% if not loop.first %}break-before: page; page-break-before: page;{% endif %}">
                         {% set acquisition = report.acquisition %}
@@ -55,6 +69,14 @@
                             {% set module_path = biomarker ~ '/' ~ section_name ~ '/' ~ region ~ '/' ~ template_version ~ '/section_design.html' %}
                         {% else %}
                             {% set module_path = biomarker ~ '/' ~ section_name ~ '/' ~ region ~ '/section_design.html' %}
+                        {% endif %}
+                        {% if region not in ns.seen_segments %}
+                            {% set ns.seen_segments = ns.seen_segments + [region] %}
+                            {% if region == 'thighs' %}
+                                {{ anatomical_header(t.lower_limbs, t.thighs, _muscles_info_thighs, body_image='images/corps_entier_thighs_highlighted_without_slices.png', schema_alt='Schéma Cuisse') }}
+                            {% elif region == 'legs' %}
+                                {{ anatomical_header(t.lower_limbs, t.legs, _muscles_info_legs, body_image='images/corps_entier_legs_highlighted_without_slices.png', schema_image='images/jambe_schema.png', schema_alt='Schéma Jambe') }}
+                            {% endif %}
                         {% endif %}
                         {% include module_path ignore missing with context %}
 

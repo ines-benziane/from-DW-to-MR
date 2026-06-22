@@ -1,7 +1,7 @@
 from . import load_svg_data
 from . import color
 from . import render_bsplines
-from section_generator.src.infrastructure.color_mappers import BIOMARKER_STAT
+from section_generator.src.infrastructure.color_mappers import BIOMARKER_STAT, COLORMAP_REGISTRY
 import numpy as np
 import bsplines
 
@@ -32,11 +32,12 @@ def B_spline_1d(values):
 
 
 
-def get_all_muscles_data(svg_file, svg_id, results, all_muscles_data, biomarker):
+def get_all_muscles_data(svg_file, svg_id, results, all_muscles_data, biomarker, colormap_name="default"):
     """Store of needed data to generates the final svg (svg id, path)"""
     path_data = load_svg_data.load_svg_path(svg_file, svg_id)
     y_min, y_max = load_svg_data.extract_coord(path_data)
     stat_key = BIOMARKER_STAT.get(biomarker)
+    mapper = COLORMAP_REGISTRY.get(colormap_name, COLORMAP_REGISTRY["default"]).get(biomarker)
     values = []
     slice_data = []
     for result in results:
@@ -46,7 +47,7 @@ def get_all_muscles_data(svg_file, svg_id, results, all_muscles_data, biomarker)
     values_smooth = [max(0.0, min(1.0, v)) for v in B_spline_1d(values)]
     bands = np.linspace(y_min, y_max, 300)
     for y_value, val in zip(bands, values_smooth):
-        ff_color = color.ff_to_color(val)
+        ff_color = mapper["function"](val, mapper["palette_name"])
         slice_data.append({'Y': y_value, 'color': ff_color})
     all_muscles_data.append({
         'svg_id': svg_id,
@@ -58,7 +59,7 @@ def get_all_muscles_data(svg_file, svg_id, results, all_muscles_data, biomarker)
     return all_muscles_data
 
 
-def generate_ff_svg(muscles, svg_file, biomarker='FF'):
+def generate_ff_svg(muscles, svg_file, biomarker='FF', colormap_name="default"):
     """
     muscles : liste de MuscleData (depuis Exam.muscles)
     svg_file : chemin absolu vers le SVG anatomique source
@@ -76,7 +77,7 @@ def generate_ff_svg(muscles, svg_file, biomarker='FF'):
             svg_id = 'muscle_' + muscle.name
             if svg_id not in svg_ids:
                 continue
-            all_muscles_data = get_all_muscles_data(svg_file, svg_id, muscle.slices, all_muscles_data, biomarker)
+            all_muscles_data = get_all_muscles_data(svg_file, svg_id, muscle.slices, all_muscles_data, biomarker, colormap_name)
         tree = render_bsplines.generate_svg(svg_file, all_muscles_data)
         root = tree.getroot()
         if side == 'L':

@@ -30,7 +30,7 @@
                     {% set val = muscle.stats['T2'] %}
                     <path d="{{ muscle.path }}" fill="{{ muscle.color }}"
                         {% if val is number and val|float > 39 %}stroke-width="0.8" stroke="#000"{% endif %}>
-                        <title>{{ muscle.id }}: {{ "%.1f"|format(val) if val is number else "--" }}</title>
+                        <title>{{ muscle.id }}: {{ "%.1f"|format(val) ~ " ms" if val is number else "--" }}</title>
                     </path>
                 {% endfor %}
             </g>
@@ -51,9 +51,13 @@
                         {% if muscle_data and muscle_data.stats['T2'] is number %}
                         {% set val = muscle_data.stats['T2']|float %}
                         {% if val > 39 %}
-                            <span style="color: {{ muscle_data.color }};"><strong>{{ m }}: {{ "%.1f"|format(val) }}</strong></span>
+                            <span style="color: {{ muscle_data.color }};"><strong>{{ m }}: {{ "%.1f"|format(val) }} ms</strong></span>
+                        {% elif val >= 37 and val < 38 %}
+                            {# fond couleur du muscle, texte noir pour lisibilité sur jaune clair #}
+                            {# ancienne tentative : background-color: #aaa (gris clair) #}
+                            <span style="color: #000; background-color: {{ muscle_data.color }}; padding: 0 2px; border-radius: 2px;">{{ m }}: {{ "%.1f"|format(val) }} ms</span>
                         {% else %}
-                            <span style="color: {{ muscle_data.color }};">{{ m }}: {{ "%.1f"|format(val) }}</span>
+                            <span style="color: {{ muscle_data.color }};">{{ m }}: {{ "%.1f"|format(val) }} ms</span>
                         {% endif %}
                         {% else %}
                             <span style="color: #bbb;">{{ m }}: --</span>
@@ -76,14 +80,14 @@
             <div style="text-align: center; font-size: 8pt; font-weight: bold; margin-bottom: 5px;">Slice {{ slice.slices.number }}</div>
         {% endif %}
         <div style="display: flex; justify-content: space-around; align-items: center;">
-            {{ muscle_table(muscles_L, muscles_list, "Gauche (L)") }}
+            {{ muscle_table(muscles_L, muscles_list, t.left_label) }}
 
             <div style="display: flex; gap: 15px; justify-content: center; flex: 1.5;">
                 {{ muscle_svg(muscles_L, slice.viewbox_L, slice.mirror_tx_L, "L", size=size) }}
                 {{ muscle_svg(muscles_R, slice.viewbox_R, slice.mirror_tx_R, "R", slice.slices.contour|default(""), size=size) }}
             </div>
 
-            {{ muscle_table(muscles_R, muscles_list, "Droite (R)") }}
+            {{ muscle_table(muscles_R, muscles_list, t.right_label) }}
         </div>
     </div>
 {% endmacro %}
@@ -96,17 +100,17 @@
             <img src="{{ body_image }}"
                 style="width: 120px; height: 220px; object-fit: contain;"
                 alt="Corps entier">
-            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center;">zone anatomique concernée indiquée en bleu</span>
+            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center;">{{ t.anatomical_zone_note }}</span>
         </div>
 
         <div style="flex: 0 0 auto; padding-top: 0; width: 280px;">
-            <h3 style="margin-top: 0; color: #0056b3; text-align: center;">Repères anatomiques</h3>
+            <h3 style="margin-top: 0; color: #0056b3; text-align: center;">{{ t.anatomical_landmarks }}</h3>
             <p style="margin-top: 3px;">
-                <strong>Région :</strong> {{ region }}<br>
-                <strong>Segments :</strong> {{ segment }}<br>
+                <strong>{{ t.region_label }}</strong> {{ region }}<br>
+                <strong>{{ t.segments_label }}</strong> {{ segment }}<br>
             </p>
             <div style="font-size: 10px; line-height: 1.4; margin-top: 8px;">
-                <strong style="display:block; margin-bottom:4px;">Muscles :</strong>
+                <strong style="display:block; margin-bottom:4px;">{{ t.muscles_label }}</strong>
                 <ul style="
                     margin: 0;
                     padding-left: 0;
@@ -127,7 +131,7 @@
             <img src="{{ schema_image }}"
                 style="height: 180px; width: auto; object-fit: contain;"
                 alt="{{ schema_alt }}">
-            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center;">schéma d'une coupe de {{ segment }}</span>
+            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center;">{{ t.schema_note_prefix }} {{ segment }}</span>
         </div>
     </div>
 {% endmacro %}
@@ -180,7 +184,7 @@
                     {% set val = muscle.stats['T2'] %}
                     <path d="{{ muscle.path }}" fill="{{ muscle.color }}"
                         {% if val is number and val|float > 39 %}stroke-width="0.8" stroke="#000"{% endif %}>
-                        <title>{{ muscle.id }}: {{ "%.1f"|format(val) if val is number else "--" }}</title>
+                        <title>{{ muscle.id }}: {{ "%.1f"|format(val) ~ " ms" if val is number else "--" }}</title>
                     </path>
                 {% endfor %}
             </g>

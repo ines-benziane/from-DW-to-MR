@@ -9,7 +9,7 @@
 </style>
 
 <div class="module-ff">
-    <h2 style="text-align:center; color:#0056b3; font-size:11pt; margin:6px 0;">Evolution FF - Cuisses</h2>
+    <h2 style="text-align:center; color:#0056b3; font-size:11pt; margin:6px 0;">{{ t.ff_thighs_evolution_title }}</h2>
 
     {% if not report.antecedent_slice %}{{ no_antecedent_message() }}{% endif %}
 
@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <h3 style="text-align:center; color:#0056b3; font-size:9pt; margin:4px 0;">Vue antérieure</h3>
+    <h3 style="text-align:center; color:#0056b3; font-size:9pt; margin:4px 0;">{{ t.anterior_view }}</h3>
     <div style="display:flex; justify-content:center; align-items:center; gap:10px;">
         <div class="ff-view-box">
             {% if anterior.superficial %}
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <h3 style="text-align:center; color:#0056b3; font-size:9pt; margin:10px 0 4px 0;">Vue postérieure</h3>
+    <h3 style="text-align:center; color:#0056b3; font-size:9pt; margin:10px 0 4px 0;">{{ t.posterior_view }}</h3>
     <div style="display:flex; justify-content:center; align-items:center; gap:10px;">
         <div class="ff-view-box">
             {% if posterior.superficial %}

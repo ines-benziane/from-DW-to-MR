@@ -1,4 +1,4 @@
-{% from "T2/macros.html" import anatomical_header, slice_row_svg_only, colorbar_t2_large %}
+{% from "T2/macros.html" import slice_row_svg_only, colorbar_t2_large %}
 {% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block %}
 
 {% set module_data = report.results %}
@@ -6,7 +6,7 @@
     ('TA', 'Tibialis Anterior'),
     ('ED', 'Extensor Digitorum'),
     ('PER', 'Fibularis / Peroneus longus'),
-    ('DLPC', 'Deep Post. Compartment (TP + fléch. longs orteils/hallux)'),
+    ('DLPC', 'Deep Posterior Compartment'),
     ('POP', 'Popliteus'),
     ('SOL', 'Soleus'),
     ('GM', 'Gastrocnemius Medialis'),
@@ -14,8 +14,7 @@
 ] %}
 
 <div class="module-t2">
-    <h2 style="color:#0056b3; font-size:11pt; font-weight:bold; text-align:left; margin:0 0 10px 0;">T2 — Jambes</h2>
-    {{ anatomical_header('membres inférieurs', 'jambes', muscles_info, body_image='images/corps_entier_legs_highlighted_without_slices.png', schema_image='images/jambe_schema.png', schema_alt='Schéma Jambe') }}
+    <h2 style="color:#0056b3; font-size:11pt; font-weight:bold; text-align:left; margin:0 0 10px 0;">{{ t.t2_legs_title }}</h2>
 
     {% if not report.antecedent_slice %}{{ no_antecedent_message() }}{% endif %}
 
@@ -34,7 +33,7 @@
             </div>
         </div>
     {% else %}
-        <p>Aucune donnée de mesure de jambes (T2) n'a été trouvée.</p>
+        <p>{{ t.no_t2_legs_data }}</p>
     {% endif %}
     {{ comment_block(report.comment) }}
 </div>

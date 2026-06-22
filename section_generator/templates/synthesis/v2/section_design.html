@@ -14,7 +14,7 @@
 
 <div style="font-family: sans-serif;">
     <h2 style="text-align:center; color:#0056b3; font-size:10pt; margin:0 0 2px 0;">
-        Synthèse
+        {{ t.synthesis_title }}
     </h2>
 
     {% if synthesis %}
@@ -33,8 +33,8 @@
             {# Examen actuel #}
             <div style="border-top:1px solid #dde; padding-top:2px; margin-bottom:2px;">
                 <p style="margin:0 0 2px 0; font-size:7.5pt;">
-                    <span style="color:#0056b3; font-weight:bold;">Examen actuel : {{ fmt_date(ns.t2[0].current_date) }}</span>
-                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — Valeur agrégée sur l'ensemble du volume musculaire, représentative de l'état global du muscle.</span>
+                    <span style="color:#0056b3; font-weight:bold;">{{ t.current_exam_label }} : {{ fmt_date(ns.t2[0].current_date) }}</span>
+                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — {{ t.volume_aggregate_note }}</span>
                 </p>
                 <div style="text-align:center; margin-bottom:2px;">
                     {{ biomarker_colorbar(ns.t2[0].colorbar, "T2") }}
@@ -55,8 +55,8 @@
             {# Lignes 2+ : évolution depuis l'examen précédent #}
             <div style="border-top:1px solid #dde; padding-top:2px;">
                 <p style="margin:0 0 2px 0; font-size:7.5pt;">
-                    <span style="color:#0056b3; font-weight:bold;">Évolution depuis l'examen précédent</span>
-                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — La couleur indique la variation du biomarqueur par rapport à l'examen antérieur.</span>
+                    <span style="color:#0056b3; font-weight:bold;">{{ t.evolution_since_previous }}</span>
+                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — {{ t.evolution_color_note }}</span>
                 </p>
                 <div style="text-align:center; margin-bottom:1px;">
                     {{ evolution_colorbar(evo_colorbar, biomarker="T2") }}
@@ -89,8 +89,8 @@
             {# Examen actuel #}
             <div style="border-top:1px solid #dde; padding-top:2px; margin-bottom:2px;">
                 <p style="margin:0 0 2px 0; font-size:7.5pt;">
-                    <span style="color:#0056b3; font-weight:bold;">Examen actuel : {{ fmt_date(ns.ff[0].current_date) }}</span>
-                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — Valeur agrégée sur l'ensemble du volume musculaire, représentative de l'état global du muscle.</span>
+                    <span style="color:#0056b3; font-weight:bold;">{{ t.current_exam_label }} : {{ fmt_date(ns.ff[0].current_date) }}</span>
+                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — {{ t.volume_aggregate_note }}</span>
                 </p>
                 <div style="text-align:center; margin-bottom:2px;">
                     {{ biomarker_colorbar(ns.ff[0].colorbar, "FF") }}
@@ -111,8 +111,8 @@
             {# Évolution : une seule fois, cuisses puis jambes #}
             <div style="border-top:1px solid #dde; padding-top:2px;">
                 <p style="margin:0 0 2px 0; font-size:7.5pt;">
-                    <span style="color:#0056b3; font-weight:bold;">Évolution depuis l'examen précédent</span>
-                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — La couleur indique la variation du biomarqueur par rapport à l'examen antérieur.</span>
+                    <span style="color:#0056b3; font-weight:bold;">{{ t.evolution_since_previous }}</span>
+                    <span style="color:#888; font-style:italic; font-size:6.5pt;"> — {{ t.evolution_color_note }}</span>
                 </p>
                 <div style="text-align:center; margin-bottom:1px;">
                     {{ evolution_colorbar(evo_colorbar, biomarker="FF") }}
@@ -142,6 +142,6 @@
         {% endfor %}
 
     {% else %}
-        <p style="color:#888; font-size:9pt; text-align:center;">Aucune donnée comparative disponible.</p>
+        <p style="color:#888; font-size:9pt; text-align:center;">{{ t.no_comparative_data }}</p>
     {% endif %}
 </div>

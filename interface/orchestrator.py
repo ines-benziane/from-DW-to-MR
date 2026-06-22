@@ -107,5 +107,8 @@ def get_exam(patient_id, path, config_data=None):
 
 
 if __name__ == "__main__":
-    exams = get_exam(sys.argv[1], sys.argv[2])
-    generate_pdf.create_pdf(exams)
+    _patient_id = sys.argv[1]
+    _data_path = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else "json_output"
+    _lang = next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--lang" and i + 1 < len(sys.argv)), "fr")
+    exams = get_exam(_patient_id, _data_path)
+    generate_pdf.create_pdf(exams, lang=_lang)

@@ -7,7 +7,7 @@ from cmcrameri import cm
 from PIL import Image
 import io
 import base64
-from section_generator.FF_diagram.color import ff_to_color as ff_to_color_raw, ff_to_color_lapaz, ff_to_color_davos, FF_ZONES
+from section_generator.FF_diagram.color import ff_to_color as ff_to_color_raw, ff_to_color_lapaz, ff_to_color_davos, ff_to_color_grayscale, FF_ZONES
 
 T2_MEAN_MIN = 10
 T2_MEAN_MAX = 60
@@ -28,31 +28,33 @@ def get_color_from_FF(FF_mean: float, palette_name=None) -> str:
     return ff_to_color_raw(FF_mean)
 
 
-EVOLUTION_MAX_PCT = 30.0
+EVOLUTION_MAX = {"T2": 15.0, "FF": 30.0}
 _VIK_CUT = 0.07  # skip vik[0.43–0.57] (white center) → direct bleu/rouge
 
-def get_color_from_evolution(pct: float) -> str:
+def get_color_from_evolution(pct: float, biomarker: str = "T2") -> str:
     """vik sans centre blanc : bleu pour négatif, rouge pour positif, blanc pur pour 0."""
+    max_val = EVOLUTION_MAX.get(biomarker, 30.0)
     if pct is None:
         return "rgb(200, 200, 200)"
     if pct == 0:
         normalized = 0.5
     elif pct > 0:
-        t = min(pct / EVOLUTION_MAX_PCT, 1.0)
+        t = min(pct / max_val, 1.0)
         normalized = (0.5 + _VIK_CUT) + t * (0.5 - _VIK_CUT)  # [0.62 → 1.0]
     else:
-        t = min(abs(pct) / EVOLUTION_MAX_PCT, 1.0)
+        t = min(abs(pct) / max_val, 1.0)
         normalized = (0.5 - _VIK_CUT) - t * (0.5 - _VIK_CUT)  # [0.38 → 0.0]
     r, g, b, _ = cm.vik(normalized)
     return f"rgb({int(r*255)}, {int(g*255)}, {int(b*255)})"
 
 
 def generate_evolution_colorbar_image(width=500) -> str:
-    """Colorbar for evolution: vik centered on 0%, from -EVOLUTION_MAX_PCT to +EVOLUTION_MAX_PCT."""
+    """Colorbar for evolution: vik centered on 0%, spanning the full color range."""
     img = Image.new("RGB", (width, 1))
+    _max = 30.0
     for x in range(width):
-        pct = -EVOLUTION_MAX_PCT + (x / (width - 1)) * 2 * EVOLUTION_MAX_PCT
-        color_str = get_color_from_evolution(pct)
+        pct = -_max + (x / (width - 1)) * 2 * _max
+        color_str = get_color_from_evolution(pct, "FF")
         nums = color_str.replace("rgb(", "").replace(")", "").split(",")
         img.putpixel((x, 0), (int(nums[0].strip()), int(nums[1].strip()), int(nums[2].strip())))
     buffer = io.BytesIO()
@@ -199,9 +201,10 @@ if __name__ == "__main__":
         print(f"T2={t2} → {get_color_from_T2_mean(t2, 'vikO')}")
 
 
-_FF_MAPPER       = {"function": get_color_from_FF,          "palette_name": None, "zones": FF_ZONES}
-_FF_LAPAZ_MAPPER = {"function": ff_to_color_lapaz,          "palette_name": None, "zones": FF_ZONES}
-_FF_DAVOS_MAPPER = {"function": ff_to_color_davos,          "palette_name": None, "zones": FF_ZONES}
+_FF_MAPPER          = {"function": get_color_from_FF,        "palette_name": None, "zones": FF_ZONES}
+_FF_LAPAZ_MAPPER    = {"function": ff_to_color_lapaz,        "palette_name": None, "zones": FF_ZONES}
+_FF_DAVOS_MAPPER    = {"function": ff_to_color_davos,        "palette_name": None, "zones": FF_ZONES}
+_FF_GRAYSCALE_MAPPER = {"function": ff_to_color_grayscale,   "palette_name": None, "zones": None}
 _T2_DEFAULT      = {"function": get_color_from_T2_mean_lajolla, "palette_name": "vikO"}
 
 COLORMAP_REGISTRY = {
@@ -211,8 +214,9 @@ COLORMAP_REGISTRY = {
     "roma_r":   {"T2": {"function": get_color_from_T2_mean_roma_r,   "palette_name": None}, "FF": _FF_MAPPER},
     "bam_r":    {"T2": {"function": get_color_from_T2_mean_bam_r,    "palette_name": None}, "FF": _FF_MAPPER},
     # FF variants (T2 inchangé)
-    "lapaz":    {"T2": _T2_DEFAULT, "FF": _FF_LAPAZ_MAPPER},
-    "davos":    {"T2": _T2_DEFAULT, "FF": _FF_DAVOS_MAPPER},
+    "lapaz":     {"T2": _T2_DEFAULT, "FF": _FF_LAPAZ_MAPPER},
+    "davos":     {"T2": _T2_DEFAULT, "FF": _FF_DAVOS_MAPPER},
+    "grayscale": {"T2": _T2_DEFAULT, "FF": _FF_GRAYSCALE_MAPPER},
 }
 
 BIOMARKER_MAPPER = COLORMAP_REGISTRY["default"]

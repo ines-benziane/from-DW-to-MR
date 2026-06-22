@@ -49,8 +49,9 @@ def load_config(config_path):
         return {"sequences_to_include": []}
 
 
-def generate_html(data):
+def generate_html(data, t):
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
+    env.globals['t'] = t
     template = env.get_template(TEMPLATE_FILE)
 
     html_output = template.render(data=data, **data)
@@ -240,7 +241,7 @@ def build_volume_slice(slices, muscles_raw, biomarker, colormap_name="default"):
     }
 
 
-def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthesis_version=None, colormap_name="default"):
+def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthesis_version=None, colormap_name="default", lang="fr"):
     """
     output_name: PDF filename (default: Medical_report.pdf).
     output_dir: directory for output files (default: section_generator/).
@@ -250,6 +251,9 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthes
     actual_dir = os.path.abspath(output_dir) if output_dir else base_path
     actual_name = output_name or OUTPUT_FILE
     os.makedirs(actual_dir, exist_ok=True)
+    i18n_path = os.path.join(base_path, "config", "i18n", f"{lang}.json")
+    with open(i18n_path, encoding="utf-8") as _f:
+        t = json.load(_f)
     try:
         config = load_config(os.path.join(base_path, CONFIG_FILE))
         all_sections = []
@@ -263,11 +267,13 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthes
             if biomarker == "FF":
                 svg_anterior = generate_ff_svg(
                     exam.exam.muscles,
-                    os.path.join(base_path, "FF_diagram", "thighs_quadriceps.svg")
+                    os.path.join(base_path, "FF_diagram", "thighs_quadriceps.svg"),
+                    colormap_name=colormap_name,
                 )
                 svg_posterior = generate_ff_svg(
                     exam.exam.muscles,
-                    os.path.join(base_path, "FF_diagram", "hamstring.svg")
+                    os.path.join(base_path, "FF_diagram", "hamstring.svg"),
+                    colormap_name=colormap_name,
                 )
                 results = transform_by_slice(cleaned_exam["muscles"], "FF", colormap_name)
                 section_name = exam.section_name
@@ -332,9 +338,12 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthes
                     "colorbar": generate_colorbar_image(biomarker, colormap_name),
                     "section_name": exam.section_name,
                     "synthesis": build_synthesis_data(all_sections),
-                    "comment": select_comment(cleaned_exam["muscles"]) if biomarker == "T2" else None,
+                    "comment": select_comment(cleaned_exam["muscles"], lang=lang) if biomarker == "T2" else None,
                 })
             patient_metadata = cleaned_exam["metadata"]
+
+        section_order = {s["stat"]: i for i, s in enumerate(config.get("report_sections", []))}
+        all_sections.sort(key=lambda s: section_order.get(s["acquisition"]["biomarker"], 999))
 
         template_data = {
             "all_reports": all_sections,
@@ -342,8 +351,8 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthes
             "synthesis_version": synthesis_version or "v1",
             "evo_colorbar": generate_evolution_colorbar_image(),
             "header": {
-                "report_title": "Compte-rendu d'examen",
-                "lab_address" : "Institut de Myologie<br> Hôpital Universitaire La Pitié-Salpêtrière<br> Bâtiment Babinski 47/83 Bd de l’hôpital<br> 75013 Paris",
+                "report_title": t["report_title"],
+                "lab_address" : t["lab_address"],
                 "logo_base64_uri" : ""
                 },
             "patient": patient_metadata,
@@ -356,7 +365,7 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthes
                 template_data["staff"] = json.load(f)
         else:
             template_data["staff"] = {"technicians": [], "doctors": []}
-        html_content = generate_html(template_data)
+        html_content = generate_html(template_data, t)
         if save_html:
             html_name = os.path.splitext(actual_name)[0] + ".html"
             save_debug_file(html_content, html_name, actual_dir)

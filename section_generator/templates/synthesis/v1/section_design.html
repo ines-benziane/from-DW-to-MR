@@ -2,7 +2,7 @@
 
 <div style="font-family: sans-serif;">
     <h2 style="text-align:center; color:#0056b3; font-size:9pt; margin:0 0 6px 0;">
-        Synthèse
+        {{ t.synthesis_title }}
     </h2>
 
     {% if synthesis %}
@@ -14,15 +14,15 @@
                     {{ section.biomarker }} — {{ section.segment | capitalize }}
                 </h3>
                 <span style="font-size:8pt; color:#555;">
-                    Précédent : <strong>{{ fmt_date(section.antecedent_date) }}</strong>
+                    {{ t.previous_label }} <strong>{{ fmt_date(section.antecedent_date) }}</strong>
                     &nbsp;→&nbsp;
-                    Actuel : <strong>{{ fmt_date(section.current_date) }}</strong>
+                    {{ t.current_label }} <strong>{{ fmt_date(section.current_date) }}</strong>
                 </span>
             </div>
 
             <p style="margin:0 0 6px 0; font-size:8pt;">
-                <span style="color:#0056b3; font-weight:bold;">Comparaison globale par muscle</span>
-                <span style="color:#888; font-style:italic; font-size:7pt;"> — valeur agrégée sur l'ensemble du volume musculaire, représentative de l'état global du muscle.</span>
+                <span style="color:#0056b3; font-weight:bold;">{{ t.global_comparison }}</span>
+                <span style="color:#888; font-style:italic; font-size:7pt;"> — {{ t.volume_aggregate_note }}</span>
             </p>
 
             <div style="text-align:center; margin-bottom:6px;">
@@ -31,7 +31,7 @@
 
             <div style="display:flex; justify-content:center; gap:20px; align-items:center;">
                 <div style="text-align:center;">
-                    <div style="font-size:7pt; color:#888; margin-bottom:2px;">Précédent — {{ fmt_date(section.antecedent_date) }}</div>
+                    <div style="font-size:7pt; color:#888; margin-bottom:2px;">{{ t.previous_exam_prefix }} — {{ fmt_date(section.antecedent_date) }}</div>
                     <div style="display:flex; gap:4px; justify-content:center;">
                         {{ muscle_svg(section.antecedent_slice, "L", "G") }}
                         {{ muscle_svg(section.antecedent_slice, "R", "D") }}
@@ -39,7 +39,7 @@
                 </div>
                 <div style="font-size:16pt; color:#555;">→</div>
                 <div style="text-align:center;">
-                    <div style="font-size:7pt; color:#0056b3; margin-bottom:2px;">Actuel — {{ fmt_date(section.current_date) }}</div>
+                    <div style="font-size:7pt; color:#0056b3; margin-bottom:2px;">{{ t.current_exam_label }} — {{ fmt_date(section.current_date) }}</div>
                     <div style="display:flex; gap:4px; justify-content:center;">
                         {{ muscle_svg(section.current_volume_slice, "L", "G") }}
                         {{ muscle_svg(section.current_volume_slice, "R", "D") }}
@@ -50,6 +50,6 @@
         </div>
         {% endfor %}
     {% else %}
-        <p style="color:#888; font-size:9pt; text-align:center;">Aucune donnée comparative disponible.</p>
+        <p style="color:#888; font-size:9pt; text-align:center;">{{ t.no_comparative_data }}</p>
     {% endif %}
 </div>

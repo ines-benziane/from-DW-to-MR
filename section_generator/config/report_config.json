@@ -1,7 +1,9 @@
 {
     "template_file": "report_template.html",
     "report_sections": [
-        {"stat": "T2", "title": "T2 Results"},
-        {"stat": "FF", "title": "FF Results"}
+        {"stat": "FF", "title": "FF Results"},
+        {"stat": "T2", "title": "T2 Results"}
+        
+
     ]
 }

@@ -1,5 +1,6 @@
 import os
 import yaml
+from functools import lru_cache
 
 _CONFIG_DIR = os.path.join(os.path.dirname(__file__), "config")
 
@@ -9,33 +10,37 @@ def _load_yaml(filename: str) -> dict:
         return yaml.safe_load(f)
 
 
-_config = _load_yaml("t2_comments.yaml")
-_labels = _load_yaml("muscle_labels_fr.yaml")
-
-_THRESHOLD = _config["elevated_threshold_ms"]
-_CATEGORIES = _config["categories"]
+@lru_cache
+def _config(lang: str) -> dict:
+    return _load_yaml(f"t2_comments_{lang}.yaml")
 
 
-def _get_label(muscle_id: str, side: str) -> str:
-    try:
-        return _labels[muscle_id][side]
-    except KeyError:
-        return f"{muscle_id} {side}"
+@lru_cache
+def _labels(lang: str) -> dict:
+    return _load_yaml(f"muscle_labels_{lang}.yaml")
 
 
-def _format_comment(template: str, elevated: list[dict]) -> str:
+def _get_label(lang: str, muscle_id: str, side: str) -> str:
+    return _labels(lang).get(muscle_id, {}).get(side, f"{muscle_id} {side}")
+
+
+def _format_comment(template: str, elevated: list[dict], lang: str) -> str:
     if "{muscles}" not in template:
         return template
-    muscle_label = _get_label(elevated[0]["name"], elevated[0]["side"])
-    return template.format(muscles=muscle_label)
+    m = elevated[0]
+    return template.format(muscles=_get_label(lang, m["name"], m["side"]))
 
 
-def select_comment(muscles: list[dict]) -> dict:
+def select_comment(muscles: list[dict], lang: str = "fr") -> dict:
     """
     muscles: list from JSON, each entry has 'name', 'side', volume.stats.T2
+    lang: language code ("fr" or "en")
 
     Returns: {"category": str, "comment": str}
     """
+    cfg = _config(lang)
+    threshold = cfg["elevated_threshold_ms"]
+
     t2_values = [
         (m, m["volume"]["stats"]["T2"])
         for m in muscles
@@ -46,12 +51,10 @@ def select_comment(muscles: list[dict]) -> dict:
         return {"category": "unknown", "comment": ""}
 
     max_T2 = max(v for _, v in t2_values)
-    elevated = [m for m, v in t2_values if v >= _THRESHOLD]
+    elevated = [m for m, v in t2_values if v >= threshold]
     nb_elevated = len(elevated)
 
-    elevated_sorted = sorted(elevated, key=lambda m: m["volume"]["stats"]["T2"], reverse=True)
-
-    if nb_elevated == 0 and max_T2 < _THRESHOLD:
+    if nb_elevated == 0 and max_T2 < threshold:
         category = "normal_strict"
     elif nb_elevated == 0:
         category = "normal_borderline"
@@ -62,7 +65,7 @@ def select_comment(muscles: list[dict]) -> dict:
     else:
         category = "significant"
 
-    template = _CATEGORIES[category]["template"]
-    comment = _format_comment(template, elevated_sorted)
+    elevated_sorted = sorted(elevated, key=lambda m: m["volume"]["stats"]["T2"], reverse=True)
+    template = cfg["categories"][category]["template"]
 
-    return {"category": category, "comment": comment}
+    return {"category": category, "comment": _format_comment(template, elevated_sorted, lang)}

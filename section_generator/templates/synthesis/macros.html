@@ -132,17 +132,25 @@
 {% endmacro %}
 
 {# --- Colorbar évolution --- #}
-{# positions = (val - (-30)) / 60 * 100 → -30→0, -15→25, 0→50, +15→75, +30→100 #}
+{# T2 : ±15ms — FF : ±30% #}
 {% macro evolution_colorbar(colorbar_src, width=220, height=12, font_size="7pt", biomarker="T2") %}
     {% from "shared_macros.html" import colorbar as _colorbar %}
-    {% set unit = 'ms' if biomarker == 'T2' else '%' %}
-    {% set labels = [
-        [0,   "-30" ~ unit],
-        [25,  "-15" ~ unit],
-        [50,  "0" ~ unit],
-        [75,  "+15" ~ unit],
-        [100, "+30" ~ unit]
-    ] %}
-    {% set ticks = [25, 50, 75] %}
+    {% if biomarker == "T2" %}
+        {% set labels = [
+            [0,   "-15ms"],
+            [50,  "0ms"],
+            [100, "+15ms"]
+        ] %}
+        {% set ticks = [50] %}
+    {% else %}
+        {% set labels = [
+            [0,   "-30%"],
+            [25,  "-15%"],
+            [50,  "0%"],
+            [75,  "+15%"],
+            [100, "+30%"]
+        ] %}
+        {% set ticks = [25, 50, 75] %}
+    {% endif %}
     {{ _colorbar(colorbar_src, labels, ticks, width=width, height=height, font_size=font_size) }}
 {% endmacro %}
