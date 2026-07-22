@@ -1,8 +1,7 @@
-import sys, json
+import json
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent))
-from data_reader import json_reader
-from models import domain
+from medical_report.data_reader import json_reader
+from medical_report.models import domain
 
 config_path = Path("config/config.json")
 sections = json.loads(config_path.read_text())["section"]

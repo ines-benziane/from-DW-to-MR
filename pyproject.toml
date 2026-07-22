@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "myo-medical-report"
+version = "0.1.0"
+description = "Génération du rapport médical PDF à partir des JSON produits par get_result"
+requires-python = ">=3.11"
+authors = [
+    { name = "Inès Benziane", email = "i.benziane@institut-myologie.org" },
+]
+classifiers = ["Private :: Do Not Upload"]
+dependencies = [
+    "jinja2",
+    "weasyprint",
+    "cmcrameri",
+    "pydantic",
+    "pyyaml",
+    "numpy",
+    "pillow",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.6.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["medical_report*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
