@@ -83948,7 +83948,6 @@
     }
   ],
   "metadata": {
-    "patient_id": "pat002",
     "exam_date": "20210504",
     "segment": "thighs",
     "method": "t2map-3exp",
@@ -83958,6 +83957,7 @@
     "biomarker": "T2",
     "patient_name": "nom du pat002",
     "birth_date": "--/--/----",
-    "referring_doctor": ""
+    "referring_doctor": "",
+    "exam_id": "pat002"
   }
 }

@@ -5,10 +5,10 @@ For each section defined in config.json, discovers all template versions availab
 and generates an independent PDF for each (section × version) combination.
 
 Usage:
-    python -m interface.batch_compare <patient_id> [data_path]
+    python -m interface.batch_compare <exam_id> [data_path]
 
 Output:
-    section_generator/reports/<patient_id>/
+    section_generator/reports/<exam_id>/
         T2_5slices_thighs_default.pdf   ← template without version folder
         T2_5slices_thighs_v2.pdf
         T2_5slices_thighs_v3.pdf
@@ -55,11 +55,11 @@ def _version_label(version: str | None) -> str:
     return version if version else "default"
 
 
-def batch_compare(patient_id: str, data_path: str, lang: str = "fr") -> None:
+def batch_compare(exam_id: str, data_path: str, lang: str = "en") -> None:
     with open(DEFAULT_CONFIG) as f:
         base_config = json.load(f)
 
-    output_dir = REPORTS_ROOT / patient_id
+    output_dir = REPORTS_ROOT / exam_id
     output_dir.mkdir(parents=True, exist_ok=True)
 
     total = 0
@@ -81,7 +81,7 @@ def batch_compare(patient_id: str, data_path: str, lang: str = "fr") -> None:
             section_override = {**section, "version": version}
             config_data = {"section": [section_override]}
 
-            exams = get_exam(patient_id, data_path, config_data=config_data)
+            exams = get_exam(exam_id, data_path, config_data=config_data)
             if not exams:
                 print(f"  [{biomarker}/{section_name}/{segment}] No data for {label}, skipping.")
                 continue
@@ -102,10 +102,10 @@ def batch_compare(patient_id: str, data_path: str, lang: str = "fr") -> None:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python -m interface.batch_compare <patient_id> [data_path]")
+        print("Usage: python -m interface.batch_compare <exam_id> [data_path]")
         sys.exit(1)
 
-    _patient_id = sys.argv[1]
+    _exam_id = sys.argv[1]
     _data_path = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else "json_output"
     _lang = next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--lang" and i + 1 < len(sys.argv)), "fr")
-    batch_compare(_patient_id, _data_path, lang=_lang)
+    batch_compare(_exam_id, _data_path, lang=_lang)

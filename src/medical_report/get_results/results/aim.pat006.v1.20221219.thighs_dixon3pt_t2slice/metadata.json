@@ -1,12 +1,12 @@
-﻿{
-    "patient_id":  "pat006",
-    "exam_date":  "20221219",
-    "segment":  "thighs",
-    "method":  "dixon3pt-t2slice",
-    "biomarker":  "FF",
-    "version":  "1.0",
-    "acquisition":  "1.0",
-    "patient_name":  "nom du pat006",
-    "birth_date":  "--/--/----",
-    "referring_doctor":  ""
+{
+  "exam_date": "20221219",
+  "segment": "thighs",
+  "method": "dixon3pt-t2slice",
+  "biomarker": "FF",
+  "version": "1.0",
+  "acquisition": "1.0",
+  "patient_name": "nom du pat006",
+  "birth_date": "--/--/----",
+  "referring_doctor": "",
+  "exam_id": "pat006"
 }

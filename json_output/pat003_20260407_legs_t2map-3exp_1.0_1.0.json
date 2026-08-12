@@ -59454,7 +59454,6 @@
     }
   ],
   "metadata": {
-    "patient_id": "pat003",
     "exam_date": "20260407",
     "segment": "legs",
     "method": "t2map-3exp",
@@ -59464,6 +59463,7 @@
     "biomarker": "T2",
     "patient_name": "nom du pat003",
     "birth_date": "--/--/----",
-    "referring_doctor": ""
+    "referring_doctor": "",
+    "exam_id": "pat003"
   }
 }

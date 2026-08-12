@@ -90,7 +90,7 @@ def parse_csv(csv_path: Path) -> Exam:
     return Exam(
         muscles=list(muscles_map.values()),
         metadata=ExamMetadata(
-            patient_id=meta["patient_id"],
+            exam_id=meta["exam_id"],
             exam_date=meta["exam_date"],
             segment=meta["segment"],
             method=meta["method"],

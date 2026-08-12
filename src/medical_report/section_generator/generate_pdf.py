@@ -241,7 +241,7 @@ def build_volume_slice(slices, muscles_raw, biomarker, colormap_name="default"):
     }
 
 
-def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthesis_version=None, colormap_name="default", lang="fr"):
+def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthesis_version=None, colormap_name="default", lang="en"):
     """
     output_name: PDF filename (default: Medical_report.pdf).
     output_dir: directory for output files (default: section_generator/).

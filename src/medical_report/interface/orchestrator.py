@@ -12,17 +12,17 @@ config = Path(__file__).parent.parent / "config" / "config.json"
 
 DEFAULT_DATA_PATH = "json_output"
 
-def data_found(patient_id, section, path):
+def data_found(exam_id, section, path):
     found = {}
     for method, version in section["method"].items():
         operator, v = parse_version(version)
-        versions = compatible_versions(patient_id, section, method, v, operator, path)
+        versions = compatible_versions(exam_id, section, method, v, operator, path)
         if versions:
             found[method] = versions
     return found
 
-def compatible_versions(patient_id, section, method, version,  operator, path):
-    files = list(Path(path).glob(f"{patient_id}_*_{section['segment']}_{method}_*_{section['acquisition']}.json"))
+def compatible_versions(exam_id, section, method, version,  operator, path):
+    files = list(Path(path).glob(f"{exam_id}_*_{section['segment']}_{method}_*_{section['acquisition']}.json"))
     final = []
     versions = []
     for f in files :
@@ -50,9 +50,9 @@ def parse_version(version):
     else :
         return "", version
 
-def find_antecedents(patient_id, current_date, section, method, version, path):
+def find_antecedents(exam_id, current_date, section, method, version, path):
     """Retourne les examens antérieurs triés du plus ancien au plus récent."""
-    files = list(Path(path).glob(f"{patient_id}_*_{section['segment']}_{method}_{version}_{section['acquisition']}.json"))
+    files = list(Path(path).glob(f"{exam_id}_*_{section['segment']}_{method}_{version}_{section['acquisition']}.json"))
     antecedents = []
     for f in files:
         date = f.stem.split("_")[1]
@@ -62,7 +62,7 @@ def find_antecedents(patient_id, current_date, section, method, version, path):
     return [domain.Exam.model_validate_json(f.read_text()) for _, f in antecedents]
 
 
-def get_exam(patient_id, path, config_data=None):
+def get_exam(exam_id, path, config_data=None, reader_cls=json_reader.JsonReader, antecedent_id = None):
     """
     config_data: optional config dict to use instead of reading config.json.
     Enables programmatic config injection (e.g. from batch_compare).
@@ -73,11 +73,13 @@ def get_exam(patient_id, path, config_data=None):
     else:
         with open(config, "r") as f:
             sections = json.load(f)
-    reader = json_reader.JsonReader(patient_id, path)
+    reader = reader_cls(exam_id, path)
+    if antecedent_id:
+        reader_ant = reader_cls(antecedent_id, path)
     for section in sections["section"]:
         for method, version in section["method"].items():
             operator, v = parse_version(version)
-            versions_available = compatible_versions(patient_id, section, method, v, operator, path)
+            versions_available = compatible_versions(exam_id, section, method, v, operator, path)
             if versions_available:
                 version = sorted(versions_available)[-1]
             else:
@@ -97,9 +99,13 @@ def get_exam(patient_id, path, config_data=None):
             if response.exam is not None:
                 current_date = response.exam.metadata.exam_date
                 response.antecedents = find_antecedents(
-                    patient_id, current_date, section, method, version,
+                    exam_id, current_date, section, method, version,
                     path,
                 )
+                if antecedent_id:
+                    ant_response = reader_ant.fetch_data(req)
+                    if ant_response.exam is not None:
+                        response.antecedents.append(ant_response.exam)
                 response.template_version = section.get("version")
                 exams.append(response)
                 break
@@ -107,8 +113,8 @@ def get_exam(patient_id, path, config_data=None):
 
 
 if __name__ == "__main__":
-    _patient_id = sys.argv[1]
+    _exam_id = sys.argv[1]
     _data_path = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else "json_output"
     _lang = next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--lang" and i + 1 < len(sys.argv)), "fr")
-    exams = get_exam(_patient_id, _data_path)
+    exams = get_exam(_exam_id, _data_path)
     generate_pdf.create_pdf(exams, lang=_lang)

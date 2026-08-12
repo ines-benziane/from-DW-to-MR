@@ -9,8 +9,8 @@ from medical_report.models.response import DataResponse
 class ReaderInterface(ABC):
     """Abstract Reader"""
 
-    def __init__(self, patient_id,path_to_data):
-        self.patient_id = patient_id
+    def __init__(self, exam_id,path_to_data):
+        self.exam_id = exam_id
         self.path_to_data = path_to_data
 
     @abstractmethod

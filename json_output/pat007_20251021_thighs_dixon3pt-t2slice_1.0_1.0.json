@@ -93510,7 +93510,6 @@
     }
   ],
   "metadata": {
-    "patient_id": "pat007",
     "exam_date": "20251021",
     "segment": "thighs",
     "method": "dixon3pt-t2slice",
@@ -93520,6 +93519,7 @@
     "biomarker": "FF",
     "patient_name": "nom du pat007",
     "birth_date": "--/--/----",
-    "referring_doctor": ""
+    "referring_doctor": "",
+    "exam_id": "pat007"
   }
 }

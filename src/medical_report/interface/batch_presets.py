@@ -6,16 +6,16 @@ for each preset. Presets with "synthesis": false generate a single PDF without s
 version looping.
 
 Usage:
-    python -m interface.batch_presets <patient_id> [data_path]
-    python -m interface.batch_presets <patient_id> [data_path] --quick
-    python -m interface.batch_presets <patient_id> [data_path] --colormap default
+    python -m interface.batch_presets <exam_id> [data_path]
+    python -m interface.batch_presets <exam_id> [data_path] --quick
+    python -m interface.batch_presets <exam_id> [data_path] --colormap default
 
 Options:
     --quick              Only generate complet_synth-v1 for each colormap (fast colormap review mode)
     --colormap <name>    Only generate reports for this colormap (e.g. default, hawaii_r, lapaz)
 
 Output:
-    section_generator/reports/<patient_id>/
+    section_generator/reports/<exam_id>/
         1slice.pdf
         compact_synth-v1.pdf
         compact_synth-v2.pdf
@@ -54,8 +54,8 @@ def get_output_name(preset_name: str, synth_version, colormap: str) -> str:
     return f"{version}{cm_suffix}.pdf"
 
 
-def batch_presets(patient_id: str, data_path: str, quick: bool = False, colormap_filter: str = None, lang: str = "fr") -> None:
-    output_dir = REPORTS_ROOT / patient_id
+def batch_presets(exam_id: str, data_path: str, quick: bool = False, colormap_filter: str = None, lang: str = "en") -> None:
+    output_dir = REPORTS_ROOT / exam_id
     output_dir.mkdir(parents=True, exist_ok=True)
 
     preset_files = sorted(PRESETS_DIR.glob("*.json"))
@@ -81,7 +81,7 @@ def batch_presets(patient_id: str, data_path: str, quick: bool = False, colormap
         with open(preset_path) as f:
             config_data = json.load(f)
 
-        exams = get_exam(patient_id, data_path, config_data=config_data)
+        exams = get_exam(exam_id, data_path, config_data=config_data)
         if not exams:
             print(f"[{preset_name}] No data found, skipping.")
             continue
@@ -125,12 +125,12 @@ def batch_presets(patient_id: str, data_path: str, quick: bool = False, colormap
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python -m interface.batch_presets <patient_id> [data_path] [--quick]")
+        print("Usage: python -m interface.batch_presets <exam_id> [data_path] [--quick]")
         sys.exit(1)
 
-    _patient_id = sys.argv[1]
+    _exam_id = sys.argv[1]
     _data_path = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else "json_output"
     _quick = "--quick" in sys.argv
     _colormap = next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--colormap" and i + 1 < len(sys.argv)), None)
     _lang = next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--lang" and i + 1 < len(sys.argv)), "fr")
-    batch_presets(_patient_id, _data_path, quick=_quick, colormap_filter=_colormap, lang=_lang)
+    batch_presets(_exam_id, _data_path, quick=_quick, colormap_filter=_colormap, lang=_lang)

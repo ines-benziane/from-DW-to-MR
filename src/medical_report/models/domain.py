@@ -36,7 +36,7 @@ class MuscleData(BaseModel):
 
 class ExamMetadata(BaseModel):
     """Have to determine where the metadata are coming from """
-    patient_id: str
+    exam_id: str
     exam_date : str
     segment : str
     method: str

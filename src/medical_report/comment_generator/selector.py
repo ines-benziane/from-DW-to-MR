@@ -31,7 +31,7 @@ def _format_comment(template: str, elevated: list[dict], lang: str) -> str:
     return template.format(muscles=_get_label(lang, m["name"], m["side"]))
 
 
-def select_comment(muscles: list[dict], lang: str = "fr") -> dict:
+def select_comment(muscles: list[dict], lang: str = "en") -> dict:
     """
     muscles: list from JSON, each entry has 'name', 'side', volume.stats.T2
     lang: language code ("fr" or "en")

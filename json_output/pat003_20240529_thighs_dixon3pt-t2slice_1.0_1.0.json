@@ -106002,7 +106002,6 @@
     }
   ],
   "metadata": {
-    "patient_id": "pat003",
     "exam_date": "20240529",
     "segment": "thighs",
     "method": "dixon3pt-t2slice",
@@ -106012,6 +106011,7 @@
     "biomarker": "FF",
     "patient_name": "nom du pat003",
     "birth_date": "--/--/----",
-    "referring_doctor": ""
+    "referring_doctor": "",
+    "exam_id": "pat003"
   }
 }

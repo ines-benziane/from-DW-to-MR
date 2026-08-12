@@ -10,7 +10,7 @@ class JsonReader(ReaderInterface):
 
     def fetch_data(self, request):
         if request.date == None :
-            files = list(Path(self.path_to_data).glob(f"{self.patient_id}_*_{request.segment}_{request.method}_{request.version}_{request.acquisition}.json"))
+            files = list(Path(self.path_to_data).glob(f"{self.exam_id}_*_{request.segment}_{request.method}_{request.version}_{request.acquisition}.json"))
             if len(files) > 0 :
                 sorted_files = sorted(files, key=lambda f: f.stem.split("_")[1])
                 file = sorted_files[-1]
@@ -18,7 +18,7 @@ class JsonReader(ReaderInterface):
             else :
                 return (response.DataResponse(exam=None))
         else :
-            files = list(Path(self.path_to_data).glob(f"{self.patient_id}_{request.date}_{request.segment}_{request.method}_{request.version}_{request.acquisition}.json"))
+            files = list(Path(self.path_to_data).glob(f"{self.exam_id}_{request.date}_{request.segment}_{request.method}_{request.version}_{request.acquisition}.json"))
             if len(files)>0 :
                 file = files[0]
                 content = file.read_text()
