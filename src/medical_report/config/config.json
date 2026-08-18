@@ -3,41 +3,10 @@
     "section": [
 
         {
-            "biomarker" : "T2",
-            "section_name": "1slice",
-            "segment": "thighs",
-            "method": {"t2map" : "1.4", "t2map-3exp" : ">=1.0"},
-            "version": null,
-            "generate": false,
-            "date": null,
-            "acquisition" : "1.0"
-        },
-        {
-            "biomarker" : "T2",
-            "section_name": "1slice",
-            "segment": "legs",
-            "method": {"t2map" : "1.0", "t2map-3exp" : ">=1.0"},
-            "version": null,
-            "generate": false,
-            "date": null,
-            "acquisition" : "1.0"
-        },
-
-        {
-            "biomarker" : "FF",
-            "section_name": "1slice",
-            "segment": "thighs",
-            "method": {"dixon3pt-t2slice" : "1.0"},
-            "version": null,
-            "generate": false,
-            "date": null,
-            "acquisition" : "1.0"
-        },
-        {
             "biomarker" : "FF",
             "section_name": "1slice",
             "segment": "legs",
-            "method": {"dixon3pt-t2slice" : "1.0"},
+            "method": {"dixon3pt" : "1.0"},
             "version": null,
             "generate": false,
             "date": null,
