@@ -22,6 +22,17 @@
             "generate": false,
             "date": null,
             "acquisition" : "1.0"
+        },
+        
+        {
+            "biomarker" : "FF",
+            "section_name": "1slice",
+            "segment": "thighs",
+            "method": {"dixon3pt" : "1.0"},
+            "version": null,
+            "generate": false,
+            "date": null,
+            "acquisition" : "1.0"
         }
     ]
 }
