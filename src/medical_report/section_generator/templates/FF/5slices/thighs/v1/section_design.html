@@ -1,4 +1,4 @@
-{% from "shared_macros.html" import no_antecedent_message %}
+{% from "shared_macros.html" import no_antecedent_message, comment_block, qc_block %}
 {% set anterior = report.anterior %}
 {% set posterior = report.posterior %}
 
@@ -78,4 +78,6 @@
             {% endif %}
         </div>
     </div>
+    {{ comment_block(report.comment) }}
+    {{ qc_block(report.acquisition) }}
 </div>

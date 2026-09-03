@@ -1,5 +1,5 @@
 {% from "T2/macros.html" import antecedent_section, slice_row, colorbar_t2 %}
-{% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block %}
+{% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block, qc_block %}
 
 {% set module_data = report.results %}
 {% set muscles_list = ['TA', 'ED', 'PER', 'DLPC', 'POP', 'SOL', 'GAS_MED', 'GAS_LAT'] %}
@@ -33,5 +33,6 @@
         <p>{{ t.no_t2_legs_data }}</p>
     {% endif %}
     {{ comment_block(report.comment) }}
+    {{ qc_block(report.acquisition) }}
 </div>
 <!-- <hr class="module-separator"> -->

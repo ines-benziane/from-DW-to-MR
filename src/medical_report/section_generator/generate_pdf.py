@@ -306,6 +306,7 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthes
                     "antecedent_date": antecedent_date,
                     "evolutions": evolutions,
                     "section_name": exam.section_name,
+                    "comment": select_comment(cleaned_exam["muscles"], lang=lang) if biomarker == "T2" else None,
                 })
             else:
                 results = transform_by_slice(cleaned_exam["muscles"], biomarker, colormap_name)

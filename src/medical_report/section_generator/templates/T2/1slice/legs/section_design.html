@@ -1,5 +1,5 @@
 {% from "T2/macros.html" import slice_row, colorbar_t2 %}
-{% from "shared_macros.html" import no_antecedent_message, comment_block %}
+{% from "shared_macros.html" import no_antecedent_message, comment_block, qc_block %}
 {% from "synthesis/macros.html" import synthesis_slice_row, evolution_colorbar %}
 
 {% set muscles_list = ['TA', 'ED', 'PER', 'DLPC', 'POP', 'SOL', 'GAS_MED', 'GAS_LAT'] %}
@@ -30,4 +30,5 @@
     </div>
     {% endif %}
     {{ comment_block(report.comment) }}
+    {{ qc_block(report.acquisition) }}
 </div>

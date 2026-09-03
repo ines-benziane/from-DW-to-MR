@@ -1,5 +1,5 @@
 {% from "FF/macros.html" import slice_row, colorbar_ff %}
-{% from "shared_macros.html" import no_antecedent_message %}
+{% from "shared_macros.html" import no_antecedent_message, comment_block, qc_block %}
 {% from "synthesis/macros.html" import synthesis_slice_row, evolution_colorbar %}
 
 {% set anterior = report.anterior %}
@@ -68,4 +68,6 @@
     {% else %}
         {{ no_antecedent_message() }}
     {% endif %}
+    {{ comment_block(report.comment) }}
+    {{ qc_block(report.acquisition) }}
 </div>

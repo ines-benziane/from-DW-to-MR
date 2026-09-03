@@ -32,6 +32,8 @@
   "distal": "Distal",
   "comment_label": "Commentaire :",
   "comment_auto_note": "Commentaire généré automatiquement à partir des valeurs de T2 par muscle.",
+  "qc_validated": "Compte-rendu validé au contrôle qualité.",
+  "qc_pending": "En attente de validation du contrôle qualité.",
   "segmentation_note": "Les contours musculaires sont issus d'une segmentation automatique.",
   "no_antecedent_message": "Premier examen enregistré — aucun antécédent disponible pour cette séquence.",
 

@@ -1,5 +1,5 @@
 {% from "FF/macros.html" import slice_row, colorbar_ff%}
-{% from "shared_macros.html" import no_antecedent_message %}
+{% from "shared_macros.html" import no_antecedent_message, comment_block, qc_block %}
 {% from "synthesis/macros.html" import synthesis_slice_row, evolution_colorbar %}
 
 {% set muscles_list = ['VL', 'VI', 'VM', 'RF', 'SAR', 'GRA', 'SM', 'ST', 'BF', 'AM', 'AL'] %}
@@ -30,4 +30,6 @@
         {{ synthesis_slice_row(report.summary_slice, report.evolutions, size=90, biomarker="FF") }}
     </div>
     {% endif %}
+    {{ comment_block(report.comment) }}
+    {{ qc_block(report.acquisition) }}
 </div>

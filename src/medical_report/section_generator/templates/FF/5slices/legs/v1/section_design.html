@@ -1,5 +1,5 @@
 {% from "FF/macros.html" import slice_row_svg_only, colorbar_ff %}
-{% from "shared_macros.html" import scale_bar, no_antecedent_message %}
+{% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block, qc_block %}
 {% set module_data = report.results[::2] %}
 
 {% set muscles_list = ['TA', 'ED', 'PER', 'DLPC', 'POP', 'SOL', 'GAS_MED', 'GAS_LAT'] %}
@@ -37,4 +37,6 @@
     </div>
     {% endif %}
 
+    {{ comment_block(report.comment) }}
+    {{ qc_block(report.acquisition) }}
 </div>

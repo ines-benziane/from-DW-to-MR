@@ -35,7 +35,7 @@ class MuscleData(BaseModel):
     slices: list[SliceData] = []
 
 class ExamMetadata(BaseModel):
-    """Have to determine where the metadata are coming from """
+    """Have to determine where the metadata are coming from."""
     exam_id: str
     exam_date : str
     segment : str
@@ -47,8 +47,16 @@ class ExamMetadata(BaseModel):
     patient_name: Optional[str] = None
     birth_date: Optional[str] = None
     referring_doctor: Optional[str] = None
+    qc_comment: Optional[str] = None
+    qc_decision: Optional[Literal["yes", "no", "pending"]] = None
+
+# class QualityCheck(BaseModel):
+#     """Include comments and decision about the quality check."""
+#     decision_status: Literal["yes", "no", "pending"]
+#     comment: str | None = None
 
 class Exam(BaseModel):
     """Root domain object — one exam, one biomarker. """
     muscles: list[MuscleData]
     metadata: ExamMetadata
+    # qc_decision: QualityCheck | None = None 

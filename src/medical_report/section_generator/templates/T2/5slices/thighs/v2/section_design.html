@@ -1,5 +1,5 @@
 {% from "T2/macros.html" import slice_row_svg_only, colorbar_t2_large %}
-{% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block %}
+{% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block, qc_block %}
 
 {% set module_data = report.results %}
 
@@ -26,4 +26,5 @@
         <p>{{ t.no_t2_thighs_data }}</p>
     {% endif %}
     {{ comment_block(report.comment) }}
+    {{ qc_block(report.acquisition) }}
 </div>

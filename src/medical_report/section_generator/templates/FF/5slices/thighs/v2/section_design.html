@@ -1,5 +1,5 @@
 {% from "FF/macros.html" import slice_row_svg_only, colorbar_ff %}
-{% from "shared_macros.html" import scale_bar, no_antecedent_message %}
+{% from "shared_macros.html" import scale_bar, no_antecedent_message, comment_block, qc_block %}
 {% set anterior = report.anterior %}
 {% set posterior = report.posterior %}
 {% set module_data = report.results[::2] %}
@@ -41,4 +41,6 @@
     </div>
     {% endif %}
 
+    {{ comment_block(report.comment) }}
+    {{ qc_block(report.acquisition) }}
 </div>

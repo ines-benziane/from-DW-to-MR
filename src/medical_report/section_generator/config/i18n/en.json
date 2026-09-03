@@ -32,6 +32,8 @@
   "distal": "Distal",
   "comment_label": "Comment:",
   "comment_auto_note": "Automatically generated comment from per-muscle T2 values.",
+  "qc_validated": "Report validated at quality control.",
+  "qc_pending": "Awaiting quality control validation.",
   "segmentation_note": "Muscle outlines are from automatic segmentation.",
   "no_antecedent_message": "First recorded exam — no prior data available for this sequence.",
 
