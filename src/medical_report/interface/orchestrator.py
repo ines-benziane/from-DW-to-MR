@@ -26,7 +26,16 @@ def compatible_versions(exam_id, section, method, version,  operator, path):
     final = []
     versions = []
     for f in files :
-        versions.append(f.stem.split("_")[4])
+        # Filename convention: {exam_id}_{date}_{segment}_{method}_{version}_{acquisition}.json
+        # f.stem.split("_")[4] used to grab the version by position, assuming `method` is a
+        # single token. That breaks for methods whose own name contains "_" (e.g. t2map_3exp:
+        # the split shifts and [4] lands on a fragment of the method name, not the version).
+        # Fix: split around the known "_{segment}_{method}_" marker instead of counting tokens,
+        # so the method name can contain underscores safely.
+        marker = f"_{section['segment']}_{method}_"
+        tail = f.stem.split(marker, 1)[1]                 # "{version}_{acquisition}"
+        v = tail.rsplit(f"_{section['acquisition']}", 1)[0]
+        versions.append(v)
     if operator == ">=" :
         for v in versions :
             if float(v) >= float(version) :
