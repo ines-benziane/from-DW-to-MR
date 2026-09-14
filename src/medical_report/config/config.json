@@ -33,6 +33,17 @@
             "generate": false,
             "date": null,
             "acquisition" : "1.0"
+        },
+
+        {
+            "biomarker": "T2",
+            "section_name": "1slice",
+            "segment": "legs",
+            "method": {"t2map_3exp": "1.0"},
+            "version": null,
+            "generate": false,
+            "date": null,
+            "acquisition": "1.0"
         }
     ]
 }
