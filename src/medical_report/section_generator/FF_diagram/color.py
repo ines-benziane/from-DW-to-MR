@@ -6,7 +6,8 @@ FF_ZONES = [
     (0.40, 1.0,  0.10),
 ]
 
-FF_PALETTE = cm.lajolla_r
+# FF_PALETTE = cm.lajolla_r
+FF_PALETTE = cm.bamako_r
 
 
 def _ff_to_color_with(ff: float, palette, max_pos=0.6) -> str:
