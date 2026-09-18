@@ -3,7 +3,7 @@
   "lab_address": "Institut de Myologie<br> Hôpital Universitaire La Pitié-Salpêtrière<br> Bâtiment Babinski 47/83 Bd de l'hôpital<br> 75013 Paris",
   "patient_label": "Patient:",
   "birth_date_label": "Date of birth:",
-  "referred_by": "Referred by Dr -----",
+  "referred_by": "Referred by Dr ",
   "exam_date_label": "Exam date:",
 
   "ff_thighs_title": "FF — Thighs",
