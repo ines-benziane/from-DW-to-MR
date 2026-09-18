@@ -10,7 +10,7 @@ FF_ZONES = [
 FF_PALETTE = cm.bamako
 
 
-def _ff_to_color_with(ff: float, palette, max_pos=0.6) -> str:
+def _ff_to_color_with(ff: float, palette, max_pos=1) -> str:
     if ff < 0 or ff > 1:
         return '#000000'
     if ff <= 0.05:
@@ -27,7 +27,7 @@ def ff_to_color(ff: float) -> str:
     if ff < 0 or ff > 1:
         print('Warning: FF value should be between 0 and 1.')
         return '#000000'
-    return _ff_to_color_with(ff, FF_PALETTE)
+    return _ff_to_color_with(ff, FF_PALETTE, max_pos=1.0)
 
 
 def ff_to_color_lapaz(ff: float, _palette_name=None) -> str:
