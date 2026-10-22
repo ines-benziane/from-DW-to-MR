@@ -1,66 +1,74 @@
+"""JsonReader: picks the result file of a section (exam, segment, method, version, acquisition)."""
+
 from medical_report.data_reader.json_reader import JsonReader
-from medical_report.models import request, response
-import pytest
-# python -m pytest tests/test_data_reader.py
-
-_DESYNC_REASON = "désynchronisé du code courant — SectionRequest n'a plus les champs 'flexibility'/'compatible_methods'/'compatible_versions', voir #<à créer>"
-
-@pytest.fixture
-def Data_Reader():
-    return JsonReader("pat001", "json_output")
-
-@pytest.mark.skip(reason=_DESYNC_REASON)
-def test_strict_sans_date(Data_Reader):
-    req = request.SectionRequest(section_name="FF", segment="thighs", method="meth01", version="1.1",  flexibility="strict", generate=False)
-    my_exam = Data_Reader.fetch_data(req)
-    assert my_exam.exam is not None
-    assert my_exam.exam.metadata.exam_date == "20220101"
+from medical_report.models.request import SectionRequest
 
 
-@pytest.mark.skip(reason=_DESYNC_REASON)
-def test_strict_avec_date(Data_Reader):
-    req = request.SectionRequest(section_name="FF", segment="thighs", method="meth01", version="1.1",  flexibility="strict", generate=False, date = "20220101")
-    my_exam = Data_Reader.fetch_data(req)
-    assert my_exam.exam is not None
-    assert my_exam.exam.metadata.exam_date == "20220101"
+def _request(date=None, **overrides):
+    kwargs = dict(section_name="FF", segment="thighs", method="dixon3pt", version="1.0",
+                  operator="", generate=True, date=date, acquisition="1.0")
+    kwargs.update(overrides)
+    return SectionRequest(**kwargs)
 
 
-@pytest.mark.skip(reason=_DESYNC_REASON)
-def test_version_sans_date(Data_Reader):
-    req = request.SectionRequest(section_name="FF", segment="thighs", method="meth01", version="1.4",  flexibility="version", generate=False, compatible_versions=["1.4", "1.1"])
-    my_exam = Data_Reader.fetch_data(req)
-    assert my_exam.exam is not None
+def test_without_date_returns_the_most_recent_exam(write_exam, tmp_path):
+    write_exam(exam_date="20220101")
+    write_exam(exam_date="20250101")
 
-@pytest.mark.skip(reason=_DESYNC_REASON)
-def test_version_avec_date(Data_Reader):
-    req = request.SectionRequest(section_name="FF", segment="thighs", method="meth01", version="1.4",  flexibility="version", generate=False,date = "20220101", compatible_versions=["1.4", "1.1"])
-    my_exam = Data_Reader.fetch_data(req)
-    assert my_exam.exam is not None
-    assert my_exam.exam.metadata.exam_date == "20220101"
+    exam = JsonReader("PAT001", tmp_path).fetch_data(_request()).exam
+
+    assert exam.metadata.exam_date == "20250101"
 
 
-@pytest.mark.skip(reason=_DESYNC_REASON)
-def test_method_sans_date(Data_Reader):
-    req = request.SectionRequest(section_name="FF", segment="thighs", method="meth01", version="1.1",  flexibility="method", generate=False, compatible_methods=["meth01", "meth02"])
-    my_exam = Data_Reader.fetch_data(req)
-    assert my_exam.exam is not None
+def test_with_date_returns_that_exam(write_exam, tmp_path):
+    write_exam(exam_date="20220101")
+    write_exam(exam_date="20250101")
 
-@pytest.mark.skip(reason=_DESYNC_REASON)
-def test_method_avec_date(Data_Reader):
-    req = request.SectionRequest(section_name="FF", segment="thighs", method="meth01", version="1.1",  flexibility="method", generate=False, date = "20220101", compatible_methods=["meth01", "meth02"])
-    my_exam = Data_Reader.fetch_data(req)
-    assert my_exam.exam is not None
-    assert my_exam.exam.metadata.exam_date == "20220101"
+    exam = JsonReader("PAT001", tmp_path).fetch_data(_request(date="20220101")).exam
+
+    assert exam.metadata.exam_date == "20220101"
 
 
-@pytest.mark.skip(reason=_DESYNC_REASON)
-def test_no_compatible_method(Data_Reader):
-    req = request.SectionRequest(section_name="FF", segment="thighs", method="meth01", version="1.1",  flexibility="method", generate=False, date = "20220101", compatible_methods=["meth10", "meth11"])
-    my_exam = Data_Reader.fetch_data(req)
-    assert my_exam.exam  == None
+def test_values_are_read_unchanged(write_exam, tmp_path):
+    """RES-004 (code side): the value in the result file is the value handed to the report."""
+    write_exam(muscles=[{"name": "VL", "side": "L", "volume": {"stats": {"FF": 0.4321}}, "slices": []}])
 
-@pytest.mark.skip(reason=_DESYNC_REASON)
-def test_corrupted_file(Data_Reader):
-    req = request.SectionRequest(section_name="FF", segment="legs", method="meth01", version="1.1",  flexibility="method", generate=False, date = "20220101", compatible_methods=["meth10", "meth11"])
-    my_exam = Data_Reader.fetch_data(req)
-    assert my_exam.exam  == None
+    exam = JsonReader("PAT001", tmp_path).fetch_data(_request()).exam
+
+    assert exam.muscles[0].volume.stats["FF"] == 0.4321
+
+
+def test_patient_identity_is_read_unchanged(write_exam, tmp_path):
+    """FONC-005 (code side): exam id and date come from the result file, not from elsewhere."""
+    write_exam(exam_id="PAT001", exam_date="20250101")
+
+    meta = JsonReader("PAT001", tmp_path).fetch_data(_request()).exam.metadata
+
+    assert (meta.exam_id, meta.exam_date) == ("PAT001", "20250101")
+
+
+def test_other_patient_is_never_returned(write_exam, tmp_path):
+    write_exam(exam_id="PAT002")
+
+    assert JsonReader("PAT001", tmp_path).fetch_data(_request()).exam is None
+
+
+def test_other_segment_method_or_version_not_returned(write_exam, tmp_path):
+    write_exam(segment="legs")
+    write_exam(method="t2map_3exp")
+    write_exam(version="2.0")
+
+    assert JsonReader("PAT001", tmp_path).fetch_data(_request()).exam is None
+
+
+def test_missing_date_returns_no_exam(write_exam, tmp_path):
+    write_exam(exam_date="20250101")
+
+    assert JsonReader("PAT001", tmp_path).fetch_data(_request(date="19990101")).exam is None
+
+
+def test_corrupted_file_returns_no_exam(write_exam, tmp_path):
+    """FONC-002 (code side): an unreadable result file never produces a report section."""
+    write_exam(content="{ not json")
+
+    assert JsonReader("PAT001", tmp_path).fetch_data(_request()).exam is None

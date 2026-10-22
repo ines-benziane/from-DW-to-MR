@@ -90,7 +90,8 @@ def get_exam(exam_id, path, config_data=None, reader_cls=json_reader.JsonReader,
             operator, v = parse_version(version)
             versions_available = compatible_versions(exam_id, section, method, v, operator, path)
             if versions_available:
-                version = sorted(versions_available)[-1]
+                # numeric sort: "1.10" is newer than "1.9" (a plain string sort says the opposite)
+                version = max(versions_available, key=lambda v: [int(x) for x in v.split(".")])
             else:
                 continue
             req = request.SectionRequest(
