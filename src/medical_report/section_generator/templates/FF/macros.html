@@ -52,10 +52,15 @@
                     <td style="padding: 2px 5px; text-align: left; white-space: nowrap;">
                         {% if muscle_data and muscle_data.stats['FF'] is number %}
                             {% set val = muscle_data.stats['FF']|float %}
+                            {# from 24 % FF the colour is too light to be read as text on white (contrast < 4.5):
+                               black text on the muscle colour instead, as for T2 #}
+                            {% set light = val >= 0.24 %}
+                            {% set style = "color: #000; background-color: " ~ muscle_data.color ~ "; padding: 0 2px; border-radius: 2px;"
+                                           if light else "color: " ~ muscle_data.color ~ ";" %}
                             {% if val > 0.5 %}
-                                <span style="color: {{ muscle_data.color }};"><strong>{{ m }}: {{ "%.1f"|format(val * 100) }}%</strong></span>
+                                <span style="{{ style }}"><strong>{{ m }}: {{ "%.1f"|format(val * 100) }}%</strong></span>
                             {% else %}
-                                <span style="color: {{ muscle_data.color }};">{{ m }}: {{ "%.1f"|format(val * 100) }}%</span>
+                                <span style="{{ style }}">{{ m }}: {{ "%.1f"|format(val * 100) }}%</span>
                             {% endif %}
                         {% else %}
                             <span style="color: #bbb;">{{ m }}: --</span>
