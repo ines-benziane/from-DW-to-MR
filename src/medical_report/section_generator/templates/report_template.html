@@ -54,7 +54,7 @@
                 ] %}
                 {% set ns = namespace(seen_segments=[]) %}
                 {% for report in all_reports %}
-                    <div class="report-section" style="margin-bottom: 30px; {% if not loop.first %}break-before: page; page-break-before: page;{% endif %}">
+                    <div class="report-section" style="margin-bottom: 30px; break-inside: avoid; page-break-inside: avoid;">
                         {% set acquisition = report.acquisition %}
 
                         {% set results = report.results %}

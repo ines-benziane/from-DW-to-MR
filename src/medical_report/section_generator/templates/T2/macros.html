@@ -20,7 +20,7 @@
 {# --- SVG d'un côté (L ou R) avec miroir --- #}
 {% macro muscle_svg(muscles, viewbox, mirror_tx, side_label, contour="", size=90) %}
     <div style="text-align: center;">
-        <span style="font-size: 7pt; color: #888;">{{ side_label }}</span><br>
+        <span style="font-size: 10pt; color: #888;">{{ side_label }}</span><br>
         <svg width="{{ size }}" height="{{ size }}" viewBox="{{ viewbox }}" xmlns="http://www.w3.org/2000/svg">
             <g stroke="#2c3e50" stroke-width="0.5" transform="translate({{ mirror_tx }}, 0) scale(-1, 1)">
                 {% if contour %}
@@ -42,7 +42,7 @@
 {% macro muscle_table(muscles_data, muscles_list, side_label, side_suffix="") %}
     <div class="metrics-col" style="flex: 1;">
         <h5 style="margin: 0 0 8px 0; color: #2c3e50; text-align: center; font-size: 9pt;">{{ side_label }}</h5>
-        <table style="width: 100%; font-size: 6.5pt; border-collapse: collapse; table-layout: fixed;">
+        <table style="width: 100%; font-size: 7.5pt; border-collapse: collapse; table-layout: fixed;">
             {% for pair in muscles_list | batch(2) %}
             <tr>
                 {% for m in pair %}

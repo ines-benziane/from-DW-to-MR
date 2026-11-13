@@ -11,7 +11,7 @@
         <div class="visualization-module" style="margin-top:10px; background:#fcfcfc; border-radius:8px; padding:10px;">
             <div style="font-size:11pt; font-weight:bold; color:#0056b3; text-align:left; margin:0 0 8px 0;">{{ t.t2_mean_volumetric }}</div>
             {{ colorbar_t2(report.colorbar) }}
-            {{ slice_row(summary_slice, muscles_list, show_title=false, size=70) }}
+            {{ slice_row(summary_slice, muscles_list, show_title=false, size=90) }}
         </div>
     {% else %}
         <p>{{ t.no_t2_legs_data }}</p>
@@ -26,7 +26,7 @@
         <div style="text-align:center; margin-bottom:4px;">
             {{ evolution_colorbar(evo_colorbar, width=400, height=20, font_size="9pt", biomarker="T2") }}
         </div>
-        {{ synthesis_slice_row(report.summary_slice, report.evolutions, size=70, biomarker="T2") }}
+        {{ synthesis_slice_row(report.summary_slice, report.evolutions, size=90, biomarker="T2") }}
     </div>
     {% endif %}
     {{ comment_block(report.comment) }}

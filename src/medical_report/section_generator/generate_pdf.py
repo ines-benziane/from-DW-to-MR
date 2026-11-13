@@ -344,7 +344,10 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthes
             patient_metadata = cleaned_exam["metadata"]
 
         section_order = {s["stat"]: i for i, s in enumerate(config.get("report_sections", []))}
-        all_sections.sort(key=lambda s: section_order.get(s["acquisition"]["biomarker"], 999))
+        # grouped by segment (one anatomical header, then FF and T2 of that segment), then by biomarker
+        segment_order = {"legs": 0, "thighs": 1}
+        all_sections.sort(key=lambda s: (segment_order.get(s["acquisition"]["segment"], 999),
+                                         section_order.get(s["acquisition"]["biomarker"], 999)))
 
         template_data = {
             "all_reports": all_sections,
