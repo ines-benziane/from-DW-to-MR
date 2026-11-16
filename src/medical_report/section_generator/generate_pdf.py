@@ -241,7 +241,9 @@ def build_volume_slice(slices, muscles_raw, biomarker, colormap_name="default"):
     }
 
 
-def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthesis_version=None, colormap_name="default", lang="en"):
+def create_pdf(exams, output_name=None, output_dir=None, save_html=True,
+               synthesis_version=None, colormap_name="default", lang="en",
+               patient_identity=None):
     """
     output_name: PDF filename (default: Medical_report.pdf).
     output_dir: directory for output files (default: section_generator/).
@@ -359,7 +361,7 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True, synthes
                 "lab_address" : t["lab_address"],
                 "logo_base64_uri" : ""
                 },
-            "patient": patient_metadata,
+            "patient": {**patient_metadata, **(patient_identity or {})},
             "acquisition" : patient_metadata
         }
         set_logo(template_data, base_path, get_image_base64)
