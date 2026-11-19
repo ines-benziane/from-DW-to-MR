@@ -1,9 +1,9 @@
 {# ============================================================
    Macros réutilisables pour les modules T2
    ============================================================ #}
-{% from "shared_macros.html" import colorbar as _colorbar, segmentation_note %}
+{% from "shared_macros.html" import colorbar as _colorbar, segmentation_note, muscle_notes, value_span %}
 
-{% macro colorbar_t2(colorbar_src) %}
+{% macro colorbar_t2(colorbar_src, with_segmentation_note=true) %}
     {% set labels = [
         [0,   "10 ms"],
         [28,  "24"],
@@ -14,7 +14,7 @@
     {% set ticks = [58] %}
     {% set top_labels = [[58, "39"]] %}
     {{ _colorbar(colorbar_src, labels, ticks, height=20, font_size="9pt", top_labels=top_labels) }}
-    {{ segmentation_note() }}
+    {% if with_segmentation_note %}{{ segmentation_note() }}{% endif %}
 {% endmacro %}
 
 {# --- SVG d'un côté (L ou R) avec miroir --- #}
@@ -48,20 +48,7 @@
                 {% for m in pair %}
                     {% set muscle_data = muscles_data | selectattr("id", "equalto", m) | first %}
                     <td style="padding: 1px 3px; text-align: left; white-space: nowrap;">
-                        {% if muscle_data and muscle_data.stats['T2'] is number %}
-                        {% set val = muscle_data.stats['T2']|float %}
-                        {% if val > 39 %}
-                            <span style="color: {{ muscle_data.color }};"><strong>{{ m }}: {{ "%.1f"|format(val) }} ms</strong></span>
-                        {% elif val >= 37 and val < 38 %}
-                            {# fond couleur du muscle, texte noir pour lisibilité sur jaune clair #}
-                            {# ancienne tentative : background-color: #aaa (gris clair) #}
-                            <span style="color: #000; background-color: {{ muscle_data.color }}; padding: 0 2px; border-radius: 2px;">{{ m }}: {{ "%.1f"|format(val) }} ms</span>
-                        {% else %}
-                            <span style="color: {{ muscle_data.color }};">{{ m }}: {{ "%.1f"|format(val) }} ms</span>
-                        {% endif %}
-                        {% else %}
-                            <span style="color: #bbb;">{{ m }}: --</span>
-                        {% endif %}
+                        {% if muscle_data %}{{ value_span(muscle_data, "T2", m ~ ": ") }}{% else %}<span style="color: #bbb;">{{ m }}: --</span>{% endif %}
                     </td>
                 {% endfor %}
             </tr>
@@ -74,64 +61,80 @@
 {% macro slice_row(slice, muscles_list, show_title=false, size=90) %}
     {% set muscles_L = slice.muscles | selectattr("side", "equalto", "L") | list %}
     {% set muscles_R = slice.muscles | selectattr("side", "equalto", "R") | list %}
+    {# tables: also the muscles segmented in the volume only (no outline on this slice, marked "*") #}
+    {% set all_muscles = slice.muscles + (slice.off_slice_muscles | default([])) %}
+    {% set table_L = all_muscles | selectattr("side", "equalto", "L") | list %}
+    {% set table_R = all_muscles | selectattr("side", "equalto", "R") | list %}
 
     <div class="anatomy-container" style="display: flex; flex-direction: column; padding: 0px; background: #f9f9f9; border-radius: 8px;">
         {% if show_title %}
             <div style="text-align: center; font-size: 8pt; font-weight: bold; margin-bottom: 5px;">Slice {{ slice.slices.number }}</div>
         {% endif %}
         <div style="display: flex; justify-content: space-around; align-items: center;">
-            {{ muscle_table(muscles_L, muscles_list, t.left_label) }}
+            {{ muscle_table(table_L, muscles_list, t.left_label) }}
 
             <div style="display: flex; gap: 15px; justify-content: center; flex: 1.5;">
                 {{ muscle_svg(muscles_L, slice.viewbox_L, slice.mirror_tx_L, "L", size=size) }}
                 {{ muscle_svg(muscles_R, slice.viewbox_R, slice.mirror_tx_R, "R", slice.slices.contour|default(""), size=size) }}
             </div>
 
-            {{ muscle_table(muscles_R, muscles_list, t.right_label) }}
+            {{ muscle_table(table_R, muscles_list, t.right_label) }}
         </div>
+        {{ muscle_notes(all_muscles, muscles_list, "T2") }}
     </div>
 {% endmacro %}
 
 
 {# --- En-tête anatomique --- #}
-{% macro anatomical_header(region, segment, muscles_info, body_image="images/corps_entier_thighs_highlighted.png", schema_image="images/cuisse_schema.png", schema_alt="Schéma") %}
-    <div style="display: flex; align-items: flex-start; margin: 8px 0;">
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; margin-right: 25px; height: 240px;">
+{# muscles: entries of report_muscles (id, name, diagram), see src/domain/report_muscles.py #}
+{# space_before: room before a segment that follows another one on the same page (cut at a page break) #}
+{% macro anatomical_header(region, segment, muscles, body_image="images/corps_entier_thighs_highlighted.png", schema_image="images/cuisse_schema.png", schema_alt="Schéma", space_before=false) %}
+    <div style="display: flex; align-items: flex-start; margin: {{ '40px' if space_before else '8px' }} 0 8px 0;">
+        {# body lower than the title on its right, its note right under it #}
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; margin-right: 25px; height: 240px;">
             <img src="{{ body_image }}"
-                style="width: 120px; height: 220px; object-fit: contain;"
+                style="width: 120px; height: 205px; object-fit: contain;"
                 alt="Corps entier">
-            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center;">{{ t.anatomical_zone_note }}</span>
+            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center; margin-top: 2px;">{{ t.anatomical_zone_note }}</span>
         </div>
 
         <div style="flex: 0 0 auto; padding-top: 0; width: 280px;">
-            <h3 style="margin-top: 0; color: #0056b3; text-align: center;">{{ t.anatomical_landmarks }}</h3>
+            <h3 style="margin-top: 0; color: #0056b3; text-align: center;">{{ t.anatomical_landmarks }}, {{ segment }}</h3>
             <p style="margin-top: 3px;">
                 <strong>{{ t.region_label }}</strong> {{ region }}<br>
                 <strong>{{ t.segments_label }}</strong> {{ segment }}<br>
             </p>
-            <div style="font-size: 10px; line-height: 1.4; margin-top: 8px;">
+            <div style="font-size: 8.5pt; line-height: 1.4; margin-top: 8px;">
                 <strong style="display:block; margin-bottom:4px;">{{ t.muscles_label }}</strong>
-                <ul style="
-                    margin: 0;
-                    padding-left: 0;
-                    list-style: none;
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    column-gap: 16px;
-                    row-gap: 2px;
-                ">
-                    {% for abbr, full_name in muscles_info %}
-                        <li><strong>{{ abbr }}</strong> – {{ full_name }}</li>
+                {# only the muscles drawn on the diagram (the others are listed under the value tables),
+                   in two independent columns filled top to bottom: unlike a grid, a long name does not leave
+                   blank space beside a short one (CSS column-count is avoided: WeasyPrint hangs on it) #}
+                <div style="display: flex; gap: 16px;">
+                    {# one more muscle on the left: long names wrap on the right, so both columns end at the same height #}
+                {% set listed = muscles | selectattr("diagram") | list %}
+                {% set split = (listed | length + 2) // 2 %}
+                {% for column in [listed[:split], listed[split:]] %}
+                    <ul style="flex: 1; margin: 0; padding-left: 0; list-style: none;">
+                        {% for m in column %}
+                        <li style="margin-bottom: 2px;"><strong>{{ m.id }}</strong>&nbsp; {{ m.name }}
+                            {#- diagram label only when the reader cannot guess it from the name (DLPC: "TP" already in it) #}
+                            {%- if m.diagram != m.id and m.diagram not in m.name %} <em style="color:#888;">({{ t.on_diagram_as }} {{ m.diagram }})</em>{% endif %}</li>
+                        {% endfor %}
+                    </ul>
                     {% endfor %}
-                </ul>
+                </div>
             </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-left: 10px; height: 240px;">
-            <img src="{{ schema_image }}"
-                style="height: 180px; width: auto; object-fit: contain;"
-                alt="{{ schema_alt }}">
-            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center;">{{ t.schema_note_prefix }} {{ segment }}</span>
+        {# same box as the body image (205 px, bottom of a 240 px column): both pictures share their centre
+           and both notes sit on the same line #}
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; margin-left: 10px; height: 240px;">
+            <div style="height: 205px; display: flex; align-items: center; justify-content: center;">
+                <img src="{{ schema_image }}"
+                    style="height: 180px; width: auto; object-fit: contain;"
+                    alt="{{ schema_alt }}">
+            </div>
+            <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center; margin-top: 2px;">{{ t.schema_note_prefix }} {{ segment }}</span>
         </div>
     </div>
 {% endmacro %}

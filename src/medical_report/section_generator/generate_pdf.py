@@ -10,6 +10,7 @@ from medical_report.section_generator.src.infrastructure.color_mappers import ge
 from medical_report.tools.smooth_outlines import B_spline
 from medical_report.section_generator.FF_diagram.main_bsplines import generate_ff_svg
 from medical_report.section_generator.src.domain.services.synthesis_builder import build_synthesis_data, build_muscle_evolutions
+from medical_report.section_generator.src.domain.report_muscles import REPORT_MUSCLES, MUSCLE_NAMES, diagram_muscle_ids
 from medical_report.comment_generator import select_comment
 
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "config/report_config.json")
@@ -52,6 +53,10 @@ def load_config(config_path):
 def generate_html(data, t):
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     env.globals['t'] = t
+    # muscles of the report (src/domain/report_muscles.py): legend, table rows, notes under the tables
+    env.globals['report_muscles'] = REPORT_MUSCLES
+    env.globals['diagram_muscle_ids'] = diagram_muscle_ids
+    env.globals['muscle_names'] = MUSCLE_NAMES
     template = env.get_template(TEMPLATE_FILE)
 
     html_output = template.render(data=data, **data)
@@ -230,15 +235,50 @@ def build_volume_slice(slices, muscles_raw, biomarker, colormap_name="default"):
             "path": muscle["path"],
             "color": color,
         })
-    
+
+    # muscles segmented in the volume but absent from the slice shown: no outline to draw,
+    # but their volumetric value is still printed in the tables (marked "*")
+    on_slice = {(m["id"], m["side"]) for m in result_muscles}
+    off_slice_muscles = [
+        {"id": raw["name"], "side": raw["side"], "stats": raw["volume"]["stats"], "path": None,
+         "color": get_color(biomarker, raw["volume"]["stats"], colormap_name)}
+        for raw in muscles_raw if (raw["name"], raw["side"]) not in on_slice
+    ]
+
     return {
         "muscles": result_muscles,
+        "off_slice_muscles": off_slice_muscles,
         "slices": middle["slices"],
         "viewbox_L": middle["viewbox_L"],
         "viewbox_R": middle["viewbox_R"],
         "mirror_tx_L": middle["mirror_tx_L"],
         "mirror_tx_R": middle["mirror_tx_R"],
     }
+
+
+def all_muscles(volume_slice):
+    """Muscles on the slice shown + muscles segmented in the volume only (no outline on that slice)."""
+    return volume_slice["muscles"] + volume_slice.get("off_slice_muscles", [])
+
+
+REPORT_BIOMARKERS = ("FF", "T2")
+
+
+def missing_sections(sections):
+    """{segment: biomarkers of the report without a result}, for each segment of the report.
+    E.g. thighs FF but no thighs T2 -> {"thighs": ["T2"]}: the report says so instead of leaving it out."""
+    present = {(s["acquisition"]["segment"], s["acquisition"]["biomarker"]) for s in sections}
+    return {segment: [b for b in REPORT_BIOMARKERS if (segment, b) not in present] for segment, _ in present}
+
+
+def exam_interval(current_date, previous_date):
+    """(years, months) elapsed between two exam dates "YYYY-MM-DD"; None if a date is missing."""
+    if not current_date or not previous_date:
+        return None
+    y1, m1, d1 = (int(x) for x in previous_date.split("-"))
+    y2, m2, d2 = (int(x) for x in current_date.split("-"))
+    months = (y2 - y1) * 12 + (m2 - m1) - (1 if d2 < d1 else 0)
+    return divmod(max(months, 0), 12)
 
 
 def create_pdf(exams, output_name=None, output_dir=None, save_html=True,
@@ -291,7 +331,7 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True,
                     antecedent_slice = None
                     antecedent_date = None
                 evolutions = (
-                    build_muscle_evolutions(current_volume_slice["muscles"], antecedent_slice["muscles"], "FF")
+                    build_muscle_evolutions(all_muscles(current_volume_slice), all_muscles(antecedent_slice), "FF")
                     if section_name == "1slice" and current_volume_slice and antecedent_slice
                     else None
                 )
@@ -306,6 +346,7 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True,
                     "current_volume_slice": current_volume_slice,
                     "antecedent_slice": antecedent_slice,
                     "antecedent_date": antecedent_date,
+                    "antecedent_interval": exam_interval(cleaned_exam["metadata"]["exam_date"], antecedent_date),
                     "evolutions": evolutions,
                     "section_name": exam.section_name,
                     "comment": select_comment(cleaned_exam["muscles"], lang=lang) if biomarker == "T2" else None,
@@ -325,7 +366,7 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True,
                     antecedent_slice = None
                     antecedent_date = None
                 evolutions = (
-                    build_muscle_evolutions(current_volume_slice["muscles"], antecedent_slice["muscles"], biomarker)
+                    build_muscle_evolutions(all_muscles(current_volume_slice), all_muscles(antecedent_slice), biomarker)
                     if section_name == "1slice" and current_volume_slice and antecedent_slice
                     else None
                 )
@@ -335,6 +376,7 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True,
                     "current_volume_slice": current_volume_slice,
                     "antecedent_slice": antecedent_slice,
                     "antecedent_date": antecedent_date,
+                    "antecedent_interval": exam_interval(cleaned_exam["metadata"]["exam_date"], antecedent_date),
                     "evolutions": evolutions,
                     "acquisition": cleaned_exam["metadata"],
                     "template_version": exam.template_version,
@@ -347,12 +389,13 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True,
 
         section_order = {s["stat"]: i for i, s in enumerate(config.get("report_sections", []))}
         # grouped by segment (one anatomical header, then FF and T2 of that segment), then by biomarker
-        segment_order = {"legs": 0, "thighs": 1}
+        segment_order = {"thighs": 0, "legs": 1}
         all_sections.sort(key=lambda s: (segment_order.get(s["acquisition"]["segment"], 999),
                                          section_order.get(s["acquisition"]["biomarker"], 999)))
 
         template_data = {
             "all_reports": all_sections,
+            "missing_sections": missing_sections(all_sections),
             "synthesis": build_synthesis_data(all_sections),
             "synthesis_version": synthesis_version or "v1",
             "evo_colorbar": generate_evolution_colorbar_image(),

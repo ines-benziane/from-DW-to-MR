@@ -1,17 +1,20 @@
 {% from "FF/macros.html" import slice_row, colorbar_ff%}
-{% from "shared_macros.html" import no_antecedent_message, comment_block, qc_block %}
-{% from "synthesis/macros.html" import synthesis_slice_row, evolution_colorbar %}
+{% from "shared_macros.html" import no_antecedent_message, comment_block, qc_block, section_header, block_note, segmentation_note %}
+{% from "synthesis/macros.html" import synthesis_slice_row, evolution_colorbar, evolution_title %}
 
-{% set muscles_list = ['VL', 'VI', 'VM', 'RF', 'SAR', 'GRA', 'SM', 'ST', 'BF', 'AM', 'AL'] %}
+{% set muscles_list = diagram_muscle_ids("thighs") %}{# table rows = muscles of the diagram; the others: muscle_notes #}
 
 <div class="module-ff">
-    <h2 style="color:#000; font-size:11pt; font-weight:bold; text-align:left; margin:0 0 10px 0;">{{ t.ff_thighs_title }}</h2>
+    {{ section_header(t.ff_thighs_title, t.ff_intro) }}
 
-    {{ colorbar_ff(report.colorbar) }}
+    {{ colorbar_ff(report.colorbar, with_segmentation_note=false) }}
+    {{ block_note(t.ff_scale_note) }}
+    {{ segmentation_note() }}
 
     {% if report.summary_slice %}
         <div class="visualization-module" style="margin-top:10px; background:#fcfcfc; border-radius:8px; padding:10px;">
-            <div style="font-size:11pt; font-weight:bold; color:#0056b3; text-align:left; margin:0 0 8px 0;">{{ t.ff_mean_volumetric }}</div>
+            <div style="font-size:11pt; font-weight:normal; color:#0056b3; text-align:left; margin:0 0 8px 0;">{{ t.ff_mean_volumetric }}</div>
+            {{ block_note(t.mean_volumetric_note) }}
             {{ slice_row(report.summary_slice, muscles_list, show_title=false) }}
         </div>
     {% else %}
@@ -19,15 +22,15 @@
     {% endif %}
 
     {% if report.evolutions %}
-    <div class="visualization-module" style="margin-top:10px; background:#fcfcfc; border-radius:8px; padding:10px;">
+    <div class="visualization-module" style="margin-top:20px; background:#eef2f7; border-radius:8px; padding:10px;">
         <p style="margin:0 0 4px 0;">
-            <span style="font-size:11pt; font-weight:bold; color:#0056b3;">{{ t.evolution_since_previous }}</span>
-            <span style="color:#888; font-style:italic; font-size:8pt;"> — {{ t.evolution_color_note }}</span>
+            <span style="font-size:11pt; font-weight:normal; color:#0056b3;">{{ evolution_title(t, report.antecedent_date, report.antecedent_interval) }}</span>
         </p>
+        {{ block_note(t.evolution_note_ff) }}
         <div style="text-align:center; margin-bottom:4px;">
             {{ evolution_colorbar(evo_colorbar, width=400, height=20, font_size="9pt", biomarker="FF") }}
         </div>
-        {{ synthesis_slice_row(report.summary_slice, report.evolutions, size=90, biomarker="FF") }}
+        {{ synthesis_slice_row(report.summary_slice, report.evolutions, size=90, biomarker="FF", muscles_list=muscles_list) }}
     </div>
     {% endif %}
     {{ comment_block(report.comment) }}

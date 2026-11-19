@@ -1,26 +1,31 @@
-{% macro fmt_date(d) %}{{ d[6:8] }}/{{ d[4:6] }}/{{ d[0:4] }}{% endmacro %}
+{% from "shared_macros.html" import muscle_notes, value_span %}
+
+{# accepts "20230220" (DICOM) and "2023-02-20" (JSON results) #}
+{% macro fmt_date(d) %}{% set d = d | replace("-", "") %}{{ d[6:8] }}/{{ d[4:6] }}/{{ d[0:4] }}{% endmacro %}
+
+{# "Évolution depuis l'examen du 20/02/2023 (3 ans 8 mois)"; interval = (years, months) from generate_pdf #}
+{% macro evolution_title(t, date, interval) -%}
+    {{ t.evolution_since_exam }} {{ fmt_date(date) }}
+    {%- if interval %} (
+        {%- if interval[0] %}{{ interval[0] }} {{ t.year if interval[0] == 1 else t.years }}{% endif %}
+        {%- if interval[0] and interval[1] %} {% endif %}
+        {%- if interval[1] %}{{ interval[1] }} {{ t.month if interval[1] == 1 else t.months }}{% endif %}
+        {%- if not interval[0] and not interval[1] %}{{ t.less_than_a_month }}{% endif %})
+    {%- endif %}
+{%- endmacro %}
 
 {# --- Tableau evolution pour un côté --- #}
-{% macro evolution_muscle_table(evolutions, side, side_label, biomarker) %}
+{% macro evolution_muscle_table(evolutions, side, side_label, biomarker, muscles_list=none) %}
     {% set muscles = evolutions | selectattr("side", "equalto", side) | list %}
-    {% set unit = 'ms' if biomarker == 'T2' else '%' %}
+    {# same muscles as the value table above (muscles_list); without it, every segmented muscle #}
+    {% if muscles_list %}{% set muscles = muscles | selectattr("id", "in", muscles_list) | list %}{% endif %}
     <div class="metrics-col" style="flex: 1;">
-        <table style="width: 100%; font-size: 6.5pt; border-collapse: collapse; table-layout: fixed;">
+        <table style="width: 100%; font-size: 7.5pt; border-collapse: collapse; table-layout: fixed;">
             {% for pair in muscles | batch(2) %}
             <tr>
                 {% for e in pair %}
                 <td style="padding: 1px 3px; text-align: left; white-space: nowrap;">
-                    {% if e.pct is not none %}
-                        {% if e.status == "aggravé" %}
-                            <span style="color: #c0392b;"><strong>{{ e.id }}: {{ "%+.0f"|format(e.pct) }}{{ unit }}</strong></span>
-                        {% elif e.status == "amélioré" %}
-                            <span style="color: #27ae60;"><strong>{{ e.id }}: {{ "%+.0f"|format(e.pct) }}{{ unit }}</strong></span>
-                        {% else %}
-                            <span style="color: #888;">{{ e.id }}: {{ "%+.0f"|format(e.pct) }}{{ unit }}</span>
-                        {% endif %}
-                    {% else %}
-                        <span style="color: #bbb;">{{ e.id }}: --</span>
-                    {% endif %}
+                    {{ value_span(e, biomarker, e.id ~ ": ", evolution=true) }}
                 </td>
                 {% endfor %}
             </tr>
@@ -41,7 +46,7 @@
         {% set mirror_tx = slice.mirror_tx_R %}
     {% endif %}
     <div style="text-align:center;">
-        <span style="font-size:6pt; color:#888;">{{ side_label }}</span><br>
+        <span style="font-size: 10pt; color: #888;">{{ side_label }}</span><br>{# same as the value slices #}
         <svg width="65" height="65" viewBox="{{ viewbox }}" xmlns="http://www.w3.org/2000/svg">
             <g stroke="#2c3e50" stroke-width="0.5" transform="translate({{ mirror_tx }},0) scale(-1,1)">
                 {% for muscle in muscles %}
@@ -56,7 +61,7 @@
 
 {# --- SVG slice colorée par évolution --- #}
 {% macro muscle_svg_evolution(slice, evolutions, side, side_label, size=65, biomarker="T2") %}
-    {% set unit = 'ms' if biomarker == 'T2' else '%' %}
+    {% set unit = 'ms' if biomarker == 'T2' else ' pt' %}{# FF evolution: percentage points #}
     {% if side == "L" %}
         {% set muscles = slice.muscles | selectattr("side", "equalto", "L") | list %}
         {% set viewbox = slice.viewbox_L %}
@@ -71,7 +76,7 @@
         {% if e.side == side %}{% set _ = evo_map.update({e.id: e}) %}{% endif %}
     {% endfor %}
     <div style="text-align:center;">
-        <span style="font-size:6pt; color:#888;">{{ side_label }}</span><br>
+        <span style="font-size: 10pt; color: #888;">{{ side_label }}</span><br>{# same as the value slices #}
         <svg width="{{ size }}" height="{{ size }}" viewBox="{{ viewbox }}" xmlns="http://www.w3.org/2000/svg">
             <g stroke="#2c3e50" stroke-width="0.5" transform="translate({{ mirror_tx }},0) scale(-1,1)">
                 {% for muscle in muscles %}
@@ -86,16 +91,17 @@
 {% endmacro %}
 
 {# --- Ligne complète : trame identique à T2/FF --- #}
-{% macro synthesis_slice_row(slice, evolutions, size=65, biomarker="T2") %}
-    <div class="anatomy-container" style="display: flex; flex-direction: column; padding: 0px; background: #f9f9f9; border-radius: 8px;">
+{% macro synthesis_slice_row(slice, evolutions, size=65, biomarker="T2", muscles_list=none) %}
+    <div class="anatomy-container" style="display: flex; flex-direction: column; padding: 0px; border-radius: 8px;">
         <div style="display: flex; justify-content: space-around; align-items: center;">
-            {{ evolution_muscle_table(evolutions, "L", "L", biomarker) }}
+            {{ evolution_muscle_table(evolutions, "L", "L", biomarker, muscles_list) }}
             <div style="display: flex; gap: 8px; justify-content: center; flex: 1.5;">
                 {{ muscle_svg_evolution(slice, evolutions, "L", "L", size=size, biomarker=biomarker) }}
                 {{ muscle_svg_evolution(slice, evolutions, "R", "R", size=size, biomarker=biomarker) }}
             </div>
-            {{ evolution_muscle_table(evolutions, "R", "R", biomarker) }}
+            {{ evolution_muscle_table(evolutions, "R", "R", biomarker, muscles_list) }}
         </div>
+        {% if muscles_list %}{{ muscle_notes(evolutions, muscles_list, biomarker, evolution=true) }}{% endif %}
     </div>
 {% endmacro %}
 
@@ -137,18 +143,18 @@
     {% from "shared_macros.html" import colorbar as _colorbar %}
     {% if biomarker == "T2" %}
         {% set labels = [
-            [0,   "-15ms"],
-            [50,  "0ms"],
-            [100, "+15ms"]
+            [0,   "-15 ms"],
+            [50,  "0 ms"],
+            [100, "+15 ms"]
         ] %}
         {% set ticks = [50] %}
     {% else %}
         {% set labels = [
-            [0,   "-30%"],
-            [25,  "-15%"],
-            [50,  "0%"],
-            [75,  "+15%"],
-            [100, "+30%"]
+            [0,   "-30 pt"],
+            [25,  "-15 pt"],
+            [50,  "0 pt"],
+            [75,  "+15 pt"],
+            [100, "+30 pt"]
         ] %}
         {% set ticks = [25, 50, 75] %}
     {% endif %}

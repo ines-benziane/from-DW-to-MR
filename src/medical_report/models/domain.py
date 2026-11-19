@@ -49,6 +49,8 @@ class ExamMetadata(BaseModel):
     referring_doctor: Optional[str] = None
     qc_comment: Optional[str] = None
     qc_decision: Optional[Literal["yes", "no", "pending"]] = None
+    patient_size: Optional[float] = None      # metres, DICOM PatientSize (MR console)
+    patient_weight: Optional[float] = None    # kg, DICOM PatientWeight (MR console)
 
 # class QualityCheck(BaseModel):
 #     """Include comments and decision about the quality check."""

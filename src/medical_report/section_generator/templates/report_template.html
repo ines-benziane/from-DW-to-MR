@@ -21,11 +21,17 @@
             <div class="metadata-bar">
                 <div class="metadata-left">
                     <p>{{ t.patient_label }} {{ patient.patient_name }}<br>
-                    {{ t.birth_date_label }} {{ patient.birth_date }}</p>
+                    {{ t.birth_date_label }} {{ patient.birth_date }}
+                    {%- if patient.patient_size or patient.patient_weight %}<br>
+                    {%- if patient.patient_size %}{{ t.height_label }} {{ "%.2f"|format(patient.patient_size) }} m{% endif %}
+                    {%- if patient.patient_size and patient.patient_weight %} · {% endif %}
+                    {%- if patient.patient_weight %}{{ t.weight_label }} {{ "%.0f"|format(patient.patient_weight) }} kg{% endif %}
+                    {%- endif %}</p>
                 </div>
                 <div class="metadata-right">
                     <p>{{ t.referred_by }}<br>
-                    {{ t.exam_date_label }} {{ acquisition.exam_date }}</p>
+                    {% from "synthesis/macros.html" import fmt_date %}
+                    {{ t.exam_date_label }} {{ fmt_date(acquisition.exam_date) }}</p>
                 </div>
             </div>
 
@@ -39,19 +45,8 @@
 
             <div class="content">
                 {% from "T2/macros.html" import anatomical_header %}
-                {% set _muscles_info_thighs = [
-                    ('VL', 'Vastus Lateralis'), ('VI', 'Vastus Intermedius'), ('VM', 'Vastus Medialis'),
-                    ('RF', 'Rectus Femoris'), ('SAR', 'Sartorius'), ('GRA', 'Gracilis'),
-                    ('SM', 'Semimembranosus'), ('ST', 'Semitendinosus'), ('BF', 'Biceps Femoris'),
-                    ('AM', 'Adductor Magnus'), ('AL', 'Adductor Longus')
-                ] %}
-                {% set _muscles_info_legs = [
-                    ('TA', 'Tibialis Anterior'), ('ED', 'Extensor Digitorum'),
-                    ('PER', 'Fibularis / Peroneus longus'),
-                    ('DPC', 'Deep Posterior Compartment (TP + long toe & hallux flexors)'),
-                    ('POP', 'Popliteus'), ('SOL', 'Soleus'),
-                    ('GAS_MED', 'Gastrocnemius Medialis'), ('GAS_LAT', 'Gastrocnemius Lateralis')
-                ] %}
+                {% from "shared_macros.html" import section_header %}
+                {# legend muscles: report_muscles (src/domain/report_muscles.py), same list as the tables #}
                 {% set ns = namespace(seen_segments=[]) %}
                 {% for report in all_reports %}
                     <div class="report-section" style="margin-bottom: 30px; break-inside: avoid; page-break-inside: avoid;">
@@ -71,16 +66,24 @@
                             {% set module_path = biomarker ~ '/' ~ section_name ~ '/' ~ region ~ '/section_design.html' %}
                         {% endif %}
                         {% if region not in ns.seen_segments %}
+                            {% set not_first_segment = ns.seen_segments | length > 0 %}
                             {% set ns.seen_segments = ns.seen_segments + [region] %}
                             {% if region == 'thighs' %}
-                                {{ anatomical_header(t.lower_limbs, t.thighs, _muscles_info_thighs, body_image='images/corps_entier_thighs_highlighted_without_slices.png', schema_alt='Schéma Cuisse') }}
+                                {{ anatomical_header(t.lower_limbs, t.thighs, report_muscles.thighs, body_image='images/corps_entier_thighs_highlighted_without_slices.png', schema_alt='Schéma Cuisse', space_before=not_first_segment) }}
                             {% elif region == 'legs' %}
-                                {{ anatomical_header(t.lower_limbs, t.legs, _muscles_info_legs, body_image='images/corps_entier_legs_highlighted_without_slices.png', schema_image='images/jambe_schema.png', schema_alt='Schéma Jambe') }}
+                                {{ anatomical_header(t.lower_limbs, t.legs, report_muscles.legs, body_image='images/corps_entier_legs_highlighted_without_slices.png', schema_image='images/jambe_schema.png', schema_alt='Schéma Jambe', space_before=not_first_segment) }}
                             {% endif %}
                         {% endif %}
                         {% include module_path ignore missing with context %}
 
                     </div>
+
+                    {# end of a segment: say which biomarker has no result (e.g. no thighs T2) instead of leaving it out #}
+                    {% if loop.last or all_reports[loop.index].acquisition.segment != region %}
+                        {% for missing in missing_sections[region] %}
+                            {{ section_header(t[missing | lower ~ "_" ~ region ~ "_title"], t.section_missing) }}
+                        {% endfor %}
+                    {% endif %}
 
                     {% if not loop.last %}
                         <!-- <hr class="module-separator" style="border: 2px solid #eee; margin: 40px 0;"> -->

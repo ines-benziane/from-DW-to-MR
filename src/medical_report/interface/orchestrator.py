@@ -71,10 +71,11 @@ def find_antecedents(exam_id, current_date, section, method, version, path):
     return [domain.Exam.model_validate_json(f.read_text()) for _, f in antecedents]
 
 
-def get_exam(exam_id, path, config_data=None, reader_cls=json_reader.JsonReader, antecedent_id = None):
+def get_exam(exam_id, path, config_data=None, reader_cls=json_reader.JsonReader, antecedent_ids =()):
     """
     config_data: optional config dict to use instead of reading config.json.
     Enables programmatic config injection (e.g. from batch_compare).
+    antecedent_ids: exam IDs of the same patient's earlier exams (any order).
     """
     exams = []
     if config_data is not None:
@@ -83,8 +84,7 @@ def get_exam(exam_id, path, config_data=None, reader_cls=json_reader.JsonReader,
         with open(config, "r") as f:
             sections = json.load(f)
     reader = reader_cls(exam_id, path)
-    if antecedent_id:
-        reader_ant = reader_cls(antecedent_id, path)
+    readers_ant = [reader_cls(ant_id, path) for ant_id in antecedent_ids]
     for section in sections["section"]:
         for method, version in section["method"].items():
             operator, v = parse_version(version)
@@ -112,10 +112,12 @@ def get_exam(exam_id, path, config_data=None, reader_cls=json_reader.JsonReader,
                     exam_id, current_date, section, method, version,
                     path,
                 )
-                if antecedent_id:
-                    ant_response = reader_ant.fetch_data(req)
+                for reader_a in readers_ant:
+                    ant_response = reader_a.fetch_data(req)
                     if ant_response.exam is not None:
                         response.antecedents.append(ant_response.exam)
+                # oldest first: the report takes antecedents[-1] as the most recent
+                response.antecedents.sort(key=lambda e: e.metadata.exam_date)
                 response.template_version = section.get("version")
                 exams.append(response)
                 break

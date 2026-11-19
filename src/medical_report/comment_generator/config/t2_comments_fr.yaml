@@ -11,7 +11,7 @@ categories:
 
   discrete:
     condition: "nb_elevated == 1"
-    template: "Discrète augmentation de la moyenne du T2 musculaire en regard de {muscles} suggérant l'existence de processus pathologiques actifs."
+    template: "Discrète augmentation de la moyenne du T2 musculaire en regard du muscle {muscles} suggérant l'existence de processus pathologiques actifs."
 
   moderate:
     condition: "nb_elevated >= 2 and nb_elevated <= 3"
