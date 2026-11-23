@@ -2,7 +2,7 @@
 {% from "shared_macros.html" import no_antecedent_message, comment_block, qc_block, section_header, block_note, segmentation_note %}
 {% from "synthesis/macros.html" import synthesis_slice_row, evolution_colorbar, evolution_title %}
 
-{% set muscles_list = diagram_muscle_ids("legs") %}{# table rows = muscles of the diagram; the others: muscle_notes #}
+{% set muscles_list = muscle_ids("legs") %}{# table rows = every muscle of the report list; unknown ones: muscle_notes #}
 
 <div class="module-ff">
     {{ section_header(t.ff_legs_title, t.ff_intro) }}

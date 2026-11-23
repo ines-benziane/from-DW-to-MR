@@ -96,7 +96,8 @@
      m        : value mode: muscle dict with stats, color, path; evolution mode: evolution dict with pct, status, path.
      label    : text printed before the value ("TA: " in a table, "L " on the notes line).
      FF : text in the muscle colour; from 24 % black text on the muscle colour (contrast); bold above 50 %.
-     T2 : text in the muscle colour; black on the muscle colour between 37 and 38 ms; bold above 39 ms.
+     T2 : text in the muscle colour; black on the muscle colour between 37 and 38 ms (always, for a light
+          colormap: t2_display.values_on_color); bold above 39 ms.
      evolution : red bold if worse, green bold if better, grey if stable.
      "*" : muscle not on the slice shown (volumetric value). #}
 {% macro value_span(m, biomarker, label, evolution=false) -%}
@@ -116,7 +117,8 @@
             {%- set bold = v > 0.5 -%}
         {%- else -%}
             {%- set text = label ~ "%.1f"|format(v) ~ " ms" ~ star -%}
-            {%- set style = highlight if (v >= 37 and v < 38) else "color: " ~ m.color ~ ";" -%}
+            {#- values_on_color: light palette, every value black on its colour (color_mappers.t2_display) #}
+            {%- set style = highlight if (t2_display.values_on_color or (v >= 37 and v < 38)) else "color: " ~ m.color ~ ";" -%}
             {%- set bold = v > 39 -%}
         {%- endif -%}
         <span style="{{ style }}">{% if bold %}<strong>{{ text }}</strong>{% else %}{{ text }}{% endif %}</span>
@@ -128,17 +130,18 @@
 {# --- Under a value or evolution table, so that no segmented muscle is lost ---
      muscles      : every muscle of the section (both sides); value mode: dicts with stats,
                     evolution mode: evolution dicts with pct. path is none = not on the slice shown.
-     muscles_list : the table rows = the muscles drawn on the diagram (diagram_muscle_ids).
-     1. the other segmented muscles: one sentence with their full names, then their values laid out
-        like the table above (L column on the left, R column on the right), same colour code (value_span);
-     2. "*" note when a muscle is not on the slice shown (its value is volumetric). #}
+     muscles_list : the table rows = every muscle of the report list (muscle_ids).
+     1. segmented muscles missing from that list (e.g. a new segmentation model): one sentence, then
+        their values laid out like the table above (L column on the left, R column on the right), same
+        colour code (value_span);
+     2. "*" note when a muscle is not on the patient's slice shown (its value is volumetric). #}
 {% macro side_values(muscles, side, biomarker, evolution, font_size) %}
     <div class="metrics-col notes-side-{{ side }}" style="flex: 1;">
         <table style="width: 100%; font-size: {{ font_size }}; border-collapse: collapse; table-layout: fixed;">
             {% for pair in muscles | selectattr("side", "equalto", side) | sort(attribute="id") | batch(2) %}
             <tr>
                 {% for m in pair %}
-                <td style="padding: 1px 3px; text-align: left; white-space: nowrap;">{{ value_span(m, biomarker, m.id ~ ": ", evolution) }}</td>
+                <td style="padding: 1px 3px; text-align: left; white-space: nowrap;">{{ value_span(m, biomarker, abbr(m.id) ~ ": ", evolution) }}</td>
                 {% endfor %}
             </tr>
             {% endfor %}
@@ -153,10 +156,7 @@
     {% if others %}
     <div style="margin-top: 6px;">
         <div style="font-size: 7.5pt; color: #555; text-align: center; margin-bottom: 2px;">
-            {{ t.not_on_diagram_intro }}
-            {% for id, sides in others | groupby("id") -%}
-                {{ id }}{{ " (" ~ muscle_names[id] ~ ")" if id in muscle_names }}{{ ", " if not loop.last else "." }}
-            {%- endfor %}
+            {{ t.other_muscles_intro }}
         </div>
         <div style="display: flex; justify-content: space-around; align-items: flex-start;">
             {{ side_values(others, "L", biomarker, evolution, font_size) }}

@@ -6,11 +6,11 @@ from weasyprint import HTML, CSS
 import base64
 import unicodedata
 import mimetypes
-from medical_report.section_generator.src.infrastructure.color_mappers import get_color, generate_colorbar_image, generate_evolution_colorbar_image
+from medical_report.section_generator.src.infrastructure.color_mappers import get_color, generate_colorbar_image, generate_evolution_colorbar_image, t2_display
 from medical_report.tools.smooth_outlines import B_spline
 from medical_report.section_generator.FF_diagram.main_bsplines import generate_ff_svg
-from medical_report.section_generator.src.domain.services.synthesis_builder import build_synthesis_data, build_muscle_evolutions
-from medical_report.section_generator.src.domain.report_muscles import REPORT_MUSCLES, MUSCLE_NAMES, diagram_muscle_ids
+from medical_report.section_generator.src.domain.services.synthesis_builder import build_synthesis_data, build_muscle_evolutions, EVOLUTION_THRESHOLD
+from medical_report.section_generator.src.domain.report_muscles import REPORT_MUSCLES, MUSCLE_NAMES, muscle_ids, abbr
 from medical_report.comment_generator import select_comment
 
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "config/report_config.json")
@@ -55,8 +55,11 @@ def generate_html(data, t):
     env.globals['t'] = t
     # muscles of the report (src/domain/report_muscles.py): legend, table rows, notes under the tables
     env.globals['report_muscles'] = REPORT_MUSCLES
-    env.globals['diagram_muscle_ids'] = diagram_muscle_ids
+    env.globals['muscle_ids'] = muscle_ids
     env.globals['muscle_names'] = MUSCLE_NAMES
+    env.globals['abbr'] = abbr
+    # how the T2 colormap is shown (colorbar labels, legend, table values): see color_mappers.t2_display
+    env.globals['t2_display'] = data.get("t2_display") or t2_display()
     template = env.get_template(TEMPLATE_FILE)
 
     html_output = template.render(data=data, **data)
@@ -398,7 +401,9 @@ def create_pdf(exams, output_name=None, output_dir=None, save_html=True,
             "missing_sections": missing_sections(all_sections),
             "synthesis": build_synthesis_data(all_sections),
             "synthesis_version": synthesis_version or "v1",
-            "evo_colorbar": generate_evolution_colorbar_image(),
+            # one colorbar per biomarker: own scale and own grey band (stable = within the threshold)
+            "t2_display": t2_display(colormap_name),
+            "evo_colorbar": {b: generate_evolution_colorbar_image(b, EVOLUTION_THRESHOLD[b]) for b in ("T2", "FF")},
             "header": {
                 "report_title": t["report_title"],
                 "lab_address" : t["lab_address"],

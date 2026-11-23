@@ -3,7 +3,10 @@ Establish a personnalized color_map for T2 values using Crameri palettes.
 Very small T2 values are neutral (medical incertainty = visual neutrality).
 
 """
+import math
+
 from cmcrameri import cm
+from matplotlib import colormaps
 from PIL import Image
 import io
 import base64
@@ -29,32 +32,36 @@ def get_color_from_FF(FF_mean: float, palette_name=None) -> str:
 
 
 EVOLUTION_MAX = {"T2": 15.0, "FF": 30.0}
+EVOLUTION_STABLE_COLOR = "rgb(200, 203, 208)"   # grey: variation within the threshold, as the grey text of the tables
 _VIK_CUT = 0.07  # skip vik[0.43–0.57] (white center) → direct bleu/rouge
 
-def get_color_from_evolution(pct: float, biomarker: str = "T2") -> str:
-    """vik sans centre blanc : bleu pour négatif, rouge pour positif, blanc pur pour 0."""
+def get_color_from_evolution(pct: float, biomarker: str = "T2", threshold: float = 0.0) -> str:
+    """vik sans centre blanc : bleu pour négatif, rouge pour positif.
+    threshold : variation jusqu'à laquelle l'évolution est dite stable (synthesis_builder.EVOLUTION_THRESHOLD) :
+    gris, comme le texte « stable » des tableaux ; au-delà, la couleur s'intensifie du seuil jusqu'au max."""
     max_val = EVOLUTION_MAX.get(biomarker, 30.0)
     if pct is None:
         return "rgb(200, 200, 200)"
-    if pct == 0:
-        normalized = 0.5
-    elif pct > 0:
-        t = min(pct / max_val, 1.0)
-        normalized = (0.5 + _VIK_CUT) + t * (0.5 - _VIK_CUT)  # [0.62 → 1.0]
-    else:
-        t = min(abs(pct) / max_val, 1.0)
-        normalized = (0.5 - _VIK_CUT) - t * (0.5 - _VIK_CUT)  # [0.38 → 0.0]
+    if abs(pct) <= threshold:
+        return EVOLUTION_STABLE_COLOR if threshold else _vik(0.5)
+    t = min((abs(pct) - threshold) / (max_val - threshold), 1.0)
+    if pct > 0:
+        return _vik((0.5 + _VIK_CUT) + t * (0.5 - _VIK_CUT))  # [0.57 → 1.0]
+    return _vik((0.5 - _VIK_CUT) - t * (0.5 - _VIK_CUT))      # [0.43 → 0.0]
+
+
+def _vik(normalized):
     r, g, b, _ = cm.vik(normalized)
     return f"rgb({int(r*255)}, {int(g*255)}, {int(b*255)})"
 
 
-def generate_evolution_colorbar_image(width=500) -> str:
-    """Colorbar for evolution: vik centered on 0%, spanning the full color range."""
+def generate_evolution_colorbar_image(biomarker="FF", threshold=0.0, width=500) -> str:
+    """Colorbar for evolution: vik centered on 0, from -max to +max of the biomarker, grey band = stable."""
     img = Image.new("RGB", (width, 1))
-    _max = 30.0
+    _max = EVOLUTION_MAX.get(biomarker, 30.0)
     for x in range(width):
         pct = -_max + (x / (width - 1)) * 2 * _max
-        color_str = get_color_from_evolution(pct, "FF")
+        color_str = get_color_from_evolution(pct, biomarker, threshold)
         nums = color_str.replace("rgb(", "").replace(")", "").split(",")
         img.putpixel((x, 0), (int(nums[0].strip()), int(nums[1].strip()), int(nums[2].strip())))
     buffer = io.BytesIO()
@@ -196,6 +203,24 @@ def get_color_from_T2_mean_bam_r(T2_mean: float, _palette_name: str = None) -> s
     return f"rgb({int(r*255)}, {int(g*255)}, {int(b*255)})"
 
 
+SIGMOID_SLOPE_MS = 2.0   # width of the jump around 39 ms: 37 → 41 ms covers most of it
+SIGMOID_WEIGHT = 0.6     # share of the sigmoid; the rest is a linear ramp over 10-60 ms
+
+
+def get_color_from_T2_mean_sigmoid(T2_mean: float, _palette_name: str = None) -> str:
+    """Yellow to red, the threshold of 39 ms as only landmark (proposal to compare with the default one).
+    Grey below 24 ms, as the default one (values not interpreted yet).
+    Position in the palette = sigmoid centred on 39 ms (the threshold stands out) mixed with a linear
+    ramp over 24-60 ms (values on the same side of the threshold still differ)."""
+    if T2_mean < LOW_THRESHOLD:
+        return "rgb(180, 180, 180)"
+    linear = min(max((T2_mean - LOW_THRESHOLD) / (T2_MEAN_MAX - LOW_THRESHOLD), 0.0), 1.0)
+    sigmoid = 1.0 / (1.0 + math.exp(-(T2_mean - HIGH_THRESHOLD) / SIGMOID_SLOPE_MS))
+    t = SIGMOID_WEIGHT * sigmoid + (1.0 - SIGMOID_WEIGHT) * linear
+    r, g, b, _ = colormaps["YlOrRd"](0.12 + t * (0.80 - 0.12))   # light yellow → red (not the darkest red)
+    return f"rgb({int(r*255)}, {int(g*255)}, {int(b*255)})"
+
+
 if __name__ == "__main__":
     for t2 in [15, 20, 24, 30, 35, 39, 42, 50, 55]:
         print(f"T2={t2} → {get_color_from_T2_mean(t2, 'vikO')}")
@@ -205,10 +230,21 @@ _FF_MAPPER          = {"function": get_color_from_FF,        "palette_name": Non
 _FF_LAPAZ_MAPPER    = {"function": ff_to_color_lapaz,        "palette_name": None, "zones": FF_ZONES}
 _FF_DAVOS_MAPPER    = {"function": ff_to_color_davos,        "palette_name": None, "zones": FF_ZONES}
 _FF_GRAYSCALE_MAPPER = {"function": ff_to_color_grayscale,   "palette_name": None, "zones": None}
-_T2_DEFAULT      = {"function": get_color_from_T2_mean_lajolla, "palette_name": "vikO"}
+# How the report shows a T2 colormap: colorbar labels (position in % of 10-60 ms), the colour legend under
+# the bar (t2_scale_note) or not, and the table values: in the muscle colour (black on the colour only
+# where it is too light, 37-38 ms) or always black on the colour (light palettes).
+T2_DISPLAY_DEFAULT = {"labels": [[0, "10 ms"], [28, "24"], [54, "37"], [62, "41"], [100, "60 ms"]],
+                      "ticks": [58], "top_labels": [[58, "39"]], "scale_note": True, "values_on_color": False}
+T2_DISPLAY_THRESHOLD_ONLY = {"labels": [[0, "10 ms"], [28, "24"], [100, "60 ms"]],
+                             "ticks": [58], "top_labels": [[58, "39"]], "scale_note": False, "values_on_color": True}
+
+_T2_DEFAULT      = {"function": get_color_from_T2_mean_lajolla, "palette_name": "vikO", "display": T2_DISPLAY_DEFAULT}
 
 COLORMAP_REGISTRY = {
     "default":  {"T2": _T2_DEFAULT,                                                    "FF": _FF_MAPPER},
+    # yellow → red, sigmoid on 39 ms + linear (proposal 2026-11, to compare with "default")
+    "sigmoid39": {"T2": {"function": get_color_from_T2_mean_sigmoid, "palette_name": None,
+                         "display": T2_DISPLAY_THRESHOLD_ONLY}, "FF": _FF_MAPPER},
     # T2 variants (FF inchangé)
     "hawaii_r": {"T2": {"function": get_color_from_T2_mean_hawaii_r, "palette_name": None}, "FF": _FF_MAPPER},
     "roma_r":   {"T2": {"function": get_color_from_T2_mean_roma_r,   "palette_name": None}, "FF": _FF_MAPPER},
@@ -235,6 +271,12 @@ def get_color(biomarker, stats, colormap_name="default"):
     color = mapper["function"](value, mapper["palette_name"])
     return color or "rgb(150, 150, 150)"
 
+
+
+def t2_display(colormap_name="default"):
+    """How the report shows the T2 colormap (labels, legend, table values), see T2_DISPLAY_DEFAULT."""
+    mapper = COLORMAP_REGISTRY.get(colormap_name, COLORMAP_REGISTRY["default"])["T2"]
+    return mapper.get("display", T2_DISPLAY_DEFAULT)
 
 
 def generate_colorbar_image(biomarker, colormap_name="default", width=500):

@@ -32,7 +32,7 @@
                     {% set val = muscle.stats['FF'] %}
                     <path d="{{ muscle.path }}" fill="{{ muscle.color }}"
                         {% if val is number and val|float > 0.5 %}stroke-width="0.8" stroke="#000"{% endif %}>
-                        <title>{{ muscle.id }}: {{ "%.1f"|format(val * 100) if val is number else "--" }}%</title>
+                        <title>{{ abbr(muscle.id) }}: {{ "%.1f"|format(val * 100) if val is number else "--" }}%</title>
                     </path>
                 {% endfor %}
             </g>
@@ -50,7 +50,7 @@
                 {% for m in pair %}
                     {% set muscle_data = muscles_data | selectattr("id", "equalto", m) | first %}
                     <td style="padding: 2px 5px; text-align: left; white-space: nowrap;">
-                        {% if muscle_data %}{{ value_span(muscle_data, "FF", m ~ ": ") }}{% else %}<span style="color: #bbb;">{{ m }}: --</span>{% endif %}
+                        {% if muscle_data %}{{ value_span(muscle_data, "FF", abbr(m) ~ ": ") }}{% else %}<span style="color: #bbb;">{{ abbr(m) }}: --</span>{% endif %}
                     </td>
                 {% endfor %}
             </tr>
@@ -87,7 +87,7 @@
                     {% set val = muscle.stats['FF'] %}
                     <path d="{{ muscle.path }}" fill="{{ muscle.color }}"
                         {% if val is number and val|float > 0.5 %}stroke-width="0.8" stroke="#000"{% endif %}>
-                        <title>{{ muscle.id }}: {{ "%.1f"|format(val * 100) if val is number else "--" }}%</title>
+                        <title>{{ abbr(muscle.id) }}: {{ "%.1f"|format(val * 100) if val is number else "--" }}%</title>
                     </path>
                 {% endfor %}
             </g>

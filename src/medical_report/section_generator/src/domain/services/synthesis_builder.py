@@ -49,7 +49,7 @@ def build_muscle_evolutions(current_muscles, antecedent_muscles, biomarker):
             "arrow": arrow,
             "threshold_crossed": threshold_crossed,
             "color": m.get("color", "rgb(150,150,150)"),
-            "evolution_color": get_color_from_evolution(pct, biomarker),
+            "evolution_color": get_color_from_evolution(pct, biomarker, EVOLUTION_THRESHOLD.get(biomarker, 5.0)),
             "path": m.get("path", ""),
         })
 

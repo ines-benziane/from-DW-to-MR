@@ -3,17 +3,9 @@
    ============================================================ #}
 {% from "shared_macros.html" import colorbar as _colorbar, segmentation_note, muscle_notes, value_span %}
 
+{# labels of the colormap in use (color_mappers.t2_display): positions in % of 10-60 ms #}
 {% macro colorbar_t2(colorbar_src, with_segmentation_note=true) %}
-    {% set labels = [
-        [0,   "10 ms"],
-        [28,  "24"],
-        [54,  "37"],
-        [62,  "41"],
-        [100, "60 ms"]
-    ] %}
-    {% set ticks = [58] %}
-    {% set top_labels = [[58, "39"]] %}
-    {{ _colorbar(colorbar_src, labels, ticks, height=20, font_size="9pt", top_labels=top_labels) }}
+    {{ _colorbar(colorbar_src, t2_display.labels, t2_display.ticks, height=20, font_size="9pt", top_labels=t2_display.top_labels) }}
     {% if with_segmentation_note %}{{ segmentation_note() }}{% endif %}
 {% endmacro %}
 
@@ -30,7 +22,7 @@
                     {% set val = muscle.stats['T2'] %}
                     <path d="{{ muscle.path }}" fill="{{ muscle.color }}"
                         {% if val is number and val|float > 39 %}stroke-width="0.8" stroke="#000"{% endif %}>
-                        <title>{{ muscle.id }}: {{ "%.1f"|format(val) ~ " ms" if val is number else "--" }}</title>
+                        <title>{{ abbr(muscle.id) }}: {{ "%.1f"|format(val) ~ " ms" if val is number else "--" }}</title>
                     </path>
                 {% endfor %}
             </g>
@@ -48,7 +40,7 @@
                 {% for m in pair %}
                     {% set muscle_data = muscles_data | selectattr("id", "equalto", m) | first %}
                     <td style="padding: 1px 3px; text-align: left; white-space: nowrap;">
-                        {% if muscle_data %}{{ value_span(muscle_data, "T2", m ~ ": ") }}{% else %}<span style="color: #bbb;">{{ m }}: --</span>{% endif %}
+                        {% if muscle_data %}{{ value_span(muscle_data, "T2", abbr(m) ~ ": ") }}{% else %}<span style="color: #bbb;">{{ abbr(m) }}: --</span>{% endif %}
                     </td>
                 {% endfor %}
             </tr>
@@ -88,7 +80,7 @@
 {# --- En-tête anatomique --- #}
 {# muscles: entries of report_muscles (id, name, diagram), see src/domain/report_muscles.py #}
 {# space_before: room before a segment that follows another one on the same page (cut at a page break) #}
-{% macro anatomical_header(region, segment, muscles, body_image="images/corps_entier_thighs_highlighted.png", schema_image="images/cuisse_schema.png", schema_alt="Schéma", space_before=false) %}
+{% macro anatomical_header(region, segment, muscles, body_image="images/corps_entier_thighs_highlighted.png", schema_image="images/cuisse_schema.png", schema_alt="Schéma", space_before=false, left_column=none) %}
     <div style="display: flex; align-items: flex-start; margin: {{ '40px' if space_before else '8px' }} 0 8px 0;">
         {# body lower than the title on its right, its note right under it #}
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; margin-right: 25px; height: 240px;">
@@ -98,32 +90,39 @@
             <span style="font-size: 6.5pt; color: #888; font-style: italic; text-align: center; margin-top: 2px;">{{ t.anatomical_zone_note }}</span>
         </div>
 
-        <div style="flex: 0 0 auto; padding-top: 0; width: 280px;">
+        {# same 240 px column as the two pictures, the "*" note at its bottom: the three notes on one line #}
+        <div style="flex: 0 0 auto; padding-top: 0; width: 280px; height: 240px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
             <h3 style="margin-top: 0; color: #0056b3; text-align: center;">{{ t.anatomical_landmarks }}, {{ segment }}</h3>
             <p style="margin-top: 3px;">
                 <strong>{{ t.region_label }}</strong> {{ region }}<br>
                 <strong>{{ t.segments_label }}</strong> {{ segment }}<br>
             </p>
-            <div style="font-size: 8.5pt; line-height: 1.4; margin-top: 8px;">
+            <div style="font-size: 7.5pt; line-height: 1.35; margin-top: 8px;">
                 <strong style="display:block; margin-bottom:4px;">{{ t.muscles_label }}</strong>
-                {# only the muscles drawn on the diagram (the others are listed under the value tables),
-                   in two independent columns filled top to bottom: unlike a grid, a long name does not leave
-                   blank space beside a short one (CSS column-count is avoided: WeasyPrint hangs on it) #}
+                {# every muscle of the report: the only place where the abbreviations are defined. Those not
+                   drawn on the diagram are flagged with "*". Two independent columns filled top to bottom: unlike a grid, a long
+                   name does not leave blank space beside a short one (CSS column-count is avoided: WeasyPrint
+                   hangs on it) #}
                 <div style="display: flex; gap: 16px;">
-                    {# one more muscle on the left: long names wrap on the right, so both columns end at the same height #}
-                {% set listed = muscles | selectattr("diagram") | list %}
-                {% set split = (listed | length + 2) // 2 %}
-                {% for column in [listed[:split], listed[split:]] %}
+                    {# left_column: number of muscles in the left column (thighs: 8, up to ST, the long names
+                       wrap on the right); by default half, one more on the left for an odd count (legs 4/4) #}
+                {% set split = left_column or (muscles | length + 1) // 2 %}
+                {% for column in [muscles[:split], muscles[split:]] %}
                     <ul style="flex: 1; margin: 0; padding-left: 0; list-style: none;">
                         {% for m in column %}
-                        <li style="margin-bottom: 2px;"><strong>{{ m.id }}</strong>&nbsp; {{ m.name }}
+                        <li style="margin-bottom: 2px;"><strong>{{ m.abbr }}{{ "*" if not m.diagram }}</strong>&nbsp; {{ m.name }}
                             {#- diagram label only when the reader cannot guess it from the name (DLPC: "TP" already in it) #}
-                            {%- if m.diagram != m.id and m.diagram not in m.name %} <em style="color:#888;">({{ t.on_diagram_as }} {{ m.diagram }})</em>{% endif %}</li>
+                            {%- if m.diagram and m.diagram != m.abbr and m.diagram not in m.name %} <em style="color:#888;">({{ t.on_diagram_as }} {{ m.diagram }})</em>{% endif %}</li>
                         {% endfor %}
                     </ul>
                     {% endfor %}
                 </div>
             </div>
+          </div>
+            {% if muscles | rejectattr("diagram") | list %}
+            <div style="font-size: 6.5pt; color: #888; font-style: italic; margin-top: 2px;">* {{ t.not_on_diagram_note }}</div>
+            {% endif %}
         </div>
 
         {# same box as the body image (205 px, bottom of a 240 px column): both pictures share their centre
@@ -187,7 +186,7 @@
                     {% set val = muscle.stats['T2'] %}
                     <path d="{{ muscle.path }}" fill="{{ muscle.color }}"
                         {% if val is number and val|float > 39 %}stroke-width="0.8" stroke="#000"{% endif %}>
-                        <title>{{ muscle.id }}: {{ "%.1f"|format(val) ~ " ms" if val is number else "--" }}</title>
+                        <title>{{ abbr(muscle.id) }}: {{ "%.1f"|format(val) ~ " ms" if val is number else "--" }}</title>
                     </path>
                 {% endfor %}
             </g>

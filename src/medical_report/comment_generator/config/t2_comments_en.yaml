@@ -11,12 +11,12 @@ categories:
 
   discrete:
     condition: "nb_elevated == 1"
-    template: "Mild increase in muscular T2 mean value at {muscles}, suggesting the presence of active pathological processes."
+    template: "Mild elevation of muscular T2 mean value at {muscles}, suggesting the presence of active pathological processes."
 
   moderate:
     condition: "nb_elevated >= 2 and nb_elevated <= 3"
-    template: "Moderate and significant increase in muscular T2 mean values across several muscle territories, suggesting the presence of active pathological processes."
+    template: "Moderate and significant elevation of muscular T2 mean values across several muscle territories, suggesting the presence of active pathological processes."
 
   significant:
     condition: "nb_elevated >= 4"
-    template: "Significant increase in muscular T2 mean values across several muscle territories, suggesting the presence of active pathological processes."
+    template: "Significant elevation of muscular T2 mean values across several muscle territories, suggesting the presence of active pathological processes."

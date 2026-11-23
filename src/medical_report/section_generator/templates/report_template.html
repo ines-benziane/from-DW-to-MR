@@ -69,7 +69,7 @@
                             {% set not_first_segment = ns.seen_segments | length > 0 %}
                             {% set ns.seen_segments = ns.seen_segments + [region] %}
                             {% if region == 'thighs' %}
-                                {{ anatomical_header(t.lower_limbs, t.thighs, report_muscles.thighs, body_image='images/corps_entier_thighs_highlighted_without_slices.png', schema_alt='Schéma Cuisse', space_before=not_first_segment) }}
+                                {{ anatomical_header(t.lower_limbs, t.thighs, report_muscles.thighs, body_image='images/corps_entier_thighs_highlighted_without_slices.png', schema_alt='Schéma Cuisse', space_before=not_first_segment, left_column=8) }}
                             {% elif region == 'legs' %}
                                 {{ anatomical_header(t.lower_limbs, t.legs, report_muscles.legs, body_image='images/corps_entier_legs_highlighted_without_slices.png', schema_image='images/jambe_schema.png', schema_alt='Schéma Jambe', space_before=not_first_segment) }}
                             {% endif %}

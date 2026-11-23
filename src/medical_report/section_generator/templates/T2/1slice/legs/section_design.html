@@ -2,7 +2,7 @@
 {% from "shared_macros.html" import no_antecedent_message, comment_block, qc_block, section_header, block_note, segmentation_note %}
 {% from "synthesis/macros.html" import synthesis_slice_row, evolution_colorbar, evolution_title %}
 
-{% set muscles_list = diagram_muscle_ids("legs") %}{# table rows = muscles of the diagram; the others: muscle_notes #}
+{% set muscles_list = muscle_ids("legs") %}{# table rows = every muscle of the report list; unknown ones: muscle_notes #}
 
 <div class="module-t2">
     {{ section_header(t.t2_legs_title, t.t2_intro) }}
@@ -12,7 +12,7 @@
             <div style="font-size:11pt; font-weight:normal; color:#0056b3; text-align:left; margin:0 0 8px 0;">{{ t.t2_mean_volumetric }}</div>
             {{ block_note(t.mean_volumetric_note) }}
             {{ colorbar_t2(report.colorbar, with_segmentation_note=false) }}
-            {{ block_note(t.t2_scale_note) }}
+            {% if t2_display.scale_note %}{{ block_note(t.t2_scale_note) }}{% endif %}
             {{ segmentation_note() }}
             {{ slice_row(summary_slice, muscles_list, show_title=false, size=90) }}
         </div>

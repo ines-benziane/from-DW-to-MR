@@ -17,15 +17,21 @@
 {# --- Tableau evolution pour un côté --- #}
 {% macro evolution_muscle_table(evolutions, side, side_label, biomarker, muscles_list=none) %}
     {% set muscles = evolutions | selectattr("side", "equalto", side) | list %}
-    {# same muscles as the value table above (muscles_list); without it, every segmented muscle #}
-    {% if muscles_list %}{% set muscles = muscles | selectattr("id", "in", muscles_list) | list %}{% endif %}
+    {# same muscles, in the same order, as the value table above (muscles_list); without it, every segmented muscle #}
+    {% if muscles_list %}
+        {% set ns = namespace(ordered=[]) %}
+        {% for id in muscles_list %}
+            {% set ns.ordered = ns.ordered + (muscles | selectattr("id", "equalto", id) | list) %}
+        {% endfor %}
+        {% set muscles = ns.ordered %}
+    {% endif %}
     <div class="metrics-col" style="flex: 1;">
         <table style="width: 100%; font-size: 7.5pt; border-collapse: collapse; table-layout: fixed;">
             {% for pair in muscles | batch(2) %}
             <tr>
                 {% for e in pair %}
                 <td style="padding: 1px 3px; text-align: left; white-space: nowrap;">
-                    {{ value_span(e, biomarker, e.id ~ ": ", evolution=true) }}
+                    {{ value_span(e, biomarker, abbr(e.id) ~ ": ", evolution=true) }}
                 </td>
                 {% endfor %}
             </tr>
@@ -51,7 +57,7 @@
             <g stroke="#2c3e50" stroke-width="0.5" transform="translate({{ mirror_tx }},0) scale(-1,1)">
                 {% for muscle in muscles %}
                     <path d="{{ muscle.path }}" fill="{{ muscle.color }}">
-                        <title>{{ muscle.id }}</title>
+                        <title>{{ abbr(muscle.id) }}</title>
                     </path>
                 {% endfor %}
             </g>
@@ -82,7 +88,7 @@
                 {% for muscle in muscles %}
                     {% set evo = evo_map.get(muscle.id) %}
                     <path d="{{ muscle.path }}" fill="{{ evo.evolution_color if evo else '#ecf0f1' }}">
-                        <title>{{ muscle.id }}: {{ evo.arrow ~ ' ' ~ evo.pct ~ unit if evo and evo.pct is not none else '--' }}</title>
+                        <title>{{ abbr(muscle.id) }}: {{ evo.arrow ~ ' ' ~ evo.pct ~ unit if evo and evo.pct is not none else '--' }}</title>
                     </path>
                 {% endfor %}
             </g>
@@ -158,5 +164,7 @@
         ] %}
         {% set ticks = [25, 50, 75] %}
     {% endif %}
-    {{ _colorbar(colorbar_src, labels, ticks, width=width, height=height, font_size=font_size) }}
+    {# colorbar_src: one image per biomarker (generate_pdf, evo_colorbar) #}
+    {% set src = colorbar_src[biomarker] if colorbar_src is mapping else colorbar_src %}
+    {{ _colorbar(src, labels, ticks, width=width, height=height, font_size=font_size) }}
 {% endmacro %}
