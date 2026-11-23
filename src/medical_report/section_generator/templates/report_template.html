@@ -29,8 +29,8 @@
                     {%- endif %}</p>
                 </div>
                 <div class="metadata-right">
-                    {#- blank after "Dr", wide enough to write the name by hand #}
-                    <p>{{ t.referred_by }}<span style="display: inline-block; width: 45mm;"></span><br>
+                    {#- blank after "Dr", wide enough to write the name by hand; both lines start at the same place #}
+                    <p style="display: inline-block; text-align: left;">{{ t.referred_by }}<span style="display: inline-block; width: 45mm;"></span><br>
                     {% from "synthesis/macros.html" import fmt_date %}
                     {{ t.exam_date_label }} {{ fmt_date(acquisition.exam_date) }}</p>
                 </div>
