@@ -44,6 +44,7 @@ class ExamMetadata(BaseModel):
     acquisition : str
     segmentation: str
     biomarker : str
+    job_id : Optional[str] = None
     patient_name: Optional[str] = None
     birth_date: Optional[str] = None
     referring_doctor: Optional[str] = None
@@ -51,6 +52,7 @@ class ExamMetadata(BaseModel):
     qc_decision: Optional[Literal["yes", "no", "pending"]] = None
     patient_size: Optional[float] = None      # metres, DICOM PatientSize (MR console)
     patient_weight: Optional[float] = None    # kg, DICOM PatientWeight (MR console)
+
 
 # class QualityCheck(BaseModel):
 #     """Include comments and decision about the quality check."""
